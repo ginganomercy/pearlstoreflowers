@@ -34,7 +34,7 @@ export const App: React.FC = () => {
       {/* Studio Header & Brand Value */}
       <StoreHeader studio={studio} totalProducts={allProducts.length} />
 
-      {/* Category Navigation & Live Search */}
+      {/* Category Navigation & Live Search in Botanical Mint */}
       <CategoryFilter
         categories={categoryCounts}
         activeCategory={activeCategory}
@@ -43,17 +43,17 @@ export const App: React.FC = () => {
         onSearchChange={setSearchQuery}
       />
 
-      {/* Catalog Main Content (Madame Florist Grid) */}
+      {/* Catalog Main Content */}
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">
         {/* Results Counter & Active Context */}
-        <div className="flex items-center justify-between pb-4 mb-6 border-b border-stone-200/80 text-xs text-stone-500">
+        <div className="flex items-center justify-between pb-4 mb-6 border-b border-botanical-200 text-xs text-stone-500">
           <div className="flex items-center gap-2 font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-atelier-terracotta" />
+            <span className="w-1.5 h-1.5 rounded-full bg-botanical-600 animate-pulse" />
             <span className="font-medium text-stone-800">
               Menampilkan {filteredProducts.length} dari {allProducts.length} koleksi buket
             </span>
             {activeCategory !== 'Semua' && (
-              <span className="text-stone-400 hidden sm:inline">
+              <span className="text-botanical-700 hidden sm:inline font-semibold">
                 • [Koleksi: {activeCategory}]
               </span>
             )}
@@ -71,7 +71,7 @@ export const App: React.FC = () => {
                 setActiveCategory('Semua');
                 setSearchQuery('');
               }}
-              className="inline-flex items-center gap-1.5 font-mono text-xs text-stone-700 hover:text-stone-900 font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 font-mono text-xs text-botanical-800 hover:text-botanical-950 font-bold transition-colors underline"
             >
               <RefreshCcw className="w-3 h-3" />
               <span>Reset Filter</span>
@@ -93,8 +93,8 @@ export const App: React.FC = () => {
           </div>
         ) : (
           /* Empty Search State */
-          <div className="text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-stone-300 max-w-md mx-auto my-8">
-            <div className="w-12 h-12 mx-auto rounded-2xl bg-[#FAF9F5] border border-stone-200 flex items-center justify-center text-stone-400 mb-3">
+          <div className="text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-botanical-300 max-w-md mx-auto my-8">
+            <div className="w-12 h-12 mx-auto rounded-2xl bg-botanical-100 border border-botanical-200 flex items-center justify-center text-botanical-700 mb-3">
               <Sparkles className="w-6 h-6" />
             </div>
             <h3 className="font-serif font-bold text-stone-900 text-base mb-1">
@@ -109,7 +109,7 @@ export const App: React.FC = () => {
                 setActiveCategory('Semua');
                 setSearchQuery('');
               }}
-              className="px-4 py-2 rounded-xl bg-stone-900 text-white font-mono text-xs font-semibold hover:bg-stone-800 transition-colors shadow-xs"
+              className="px-4 py-2 rounded-xl bg-botanical-800 text-white font-mono text-xs font-semibold hover:bg-botanical-900 transition-colors shadow-xs"
             >
               Tampilkan Semua Koleksi
             </button>
@@ -120,7 +120,7 @@ export const App: React.FC = () => {
         <HowToOrder studio={studio} />
       </main>
 
-      {/* Footer */}
+      {/* Footer in Dark Botanical Forest */}
       <StoreFooter studio={studio} />
 
       {/* Floating WhatsApp Action for Mobile */}

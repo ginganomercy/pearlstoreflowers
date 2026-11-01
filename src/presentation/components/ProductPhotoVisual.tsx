@@ -21,7 +21,7 @@ export const ProductPhotoVisual: React.FC<ProductPhotoVisualProps> = ({
       onClick={onClick}
       className="relative w-full aspect-[4/5] overflow-hidden cursor-pointer select-none bg-[#F5F2EB] flex items-center justify-center transition-all duration-300"
     >
-      {/* Loading Skeleton */}
+      {/* Loading Shimmer */}
       {hasImage && !isLoaded && (
         <div className="absolute inset-0 bg-[#ECE7DE] animate-pulse" />
       )}
@@ -47,8 +47,8 @@ export const ProductPhotoVisual: React.FC<ProductPhotoVisualProps> = ({
           </div>
 
           <div className="flex flex-col items-center my-auto">
-            <div className="w-16 h-16 rounded-full bg-white/90 shadow-sm border border-stone-200 flex items-center justify-center mb-2">
-              <Flower2 className="w-8 h-8 text-stone-700" />
+            <div className="w-16 h-16 rounded-full bg-botanical-100 shadow-sm border border-botanical-200 flex items-center justify-center mb-2">
+              <Flower2 className="w-8 h-8 text-botanical-800" />
             </div>
             <p className="font-serif text-sm font-semibold text-stone-900 text-center">
               {product.colorTheme}
@@ -61,10 +61,10 @@ export const ProductPhotoVisual: React.FC<ProductPhotoVisualProps> = ({
         </div>
       )}
 
-      {/* Subtle Bottom Vignette Gradient for Readability */}
+      {/* Subtle Bottom Vignette Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none opacity-60 group-hover:opacity-40 transition-opacity" />
 
-      {/* Floating Badges (Madame Florist Style) */}
+      {/* Floating Badges */}
       <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10 pointer-events-none">
         <span className="font-mono text-[10px] font-semibold tracking-wider text-stone-900 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full shadow-sm border border-stone-200/80">
           {product.code}
@@ -81,7 +81,7 @@ export const ProductPhotoVisual: React.FC<ProductPhotoVisualProps> = ({
             Best Seller
           </span>
         ) : (
-          <span className="font-mono text-[10px] text-stone-700 bg-white/90 backdrop-blur-md px-2 py-0.5 rounded-full border border-stone-200/80">
+          <span className="font-mono text-[10px] text-botanical-800 bg-botanical-50/90 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-botanical-200">
             {product.category}
           </span>
         )}
@@ -95,7 +95,7 @@ export const ProductPhotoVisual: React.FC<ProductPhotoVisualProps> = ({
         </span>
 
         <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-white/90 text-stone-900 backdrop-blur-md px-2.5 py-1 rounded-full shadow-sm group-hover:bg-white transition-colors">
-          <Eye className="w-3 h-3 text-stone-700" />
+          <Eye className="w-3 h-3 text-botanical-700" />
           <span>Lihat Detail</span>
         </span>
       </div>

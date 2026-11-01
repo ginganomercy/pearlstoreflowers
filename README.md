@@ -1,18 +1,16 @@
 # Shelwa Craft — Luxury Floral & Hand Bouquet Atelier
 
-Aplikasi web mobile-first resmi untuk etalase katalog buket bunga **Shelwa Craft** (`@shelwa_craft`), dirancang dengan standar butik haute floristerie (terinspirasi dari *Madame Florist*), dioptimalkan untuk akses cepat melalui tautan bio Instagram dengan integrasi langsung ke pemesanan WhatsApp.
+Aplikasi web mobile-first resmi untuk etalase katalog buket bunga **Shelwa Craft** (`@shelwa_craft`), dirancang dengan standar butik haute floristerie (terinspirasi dari *Madame Florist* dengan sentuhan *Botanical Luxury Green*), dioptimalkan untuk akses cepat melalui tautan bio Instagram dengan integrasi langsung ke pemesanan WhatsApp.
 
 ---
 
-## 🌸 Ringkasan Desain (Haute Floristerie — Madame Florist Style)
+## 🌿 Identitas Visual (Botanical Luxury & Haute Floristerie)
 
-- **Latar Belakang & Suasana**: *Warm Luxury Pearl Ivory* (`#FAF9F5`), memberikan kanvas bersih dan hangat khas butik bunga Parisian/Jakarta tanpa kesan kaku atau silau.
-- **Fotografi Asli Beresolusi Tinggi**: Setiap dari 38 produk dilengkapi dengan foto rangkaian buket bunga asli (rasio portrait *4:5*) dengan efek halus *hover zoom*.
-- **Aksen Warna & Harmoni**:
-  - *Champagne Warm Sand* (`#C4AA82`) untuk lencana signature dan garis batas mewah.
-  - *Earthy Terracotta Rose* (`#8B4F3E`) untuk kategori dan aksen floral.
-  - *Deep Botanical Forest* (`#1A3B2B`) untuk tombol aksi WhatsApp.
-- **Tipografi Editorial**: Kombinasi *Playfair Display* (judul luxury serif) dan *Plus Jakarta Sans* / *JetBrains Mono* (spesifikasi teknis).
+- **Deep Botanical Forest (`#183324` / `#142A1D`)**: Digunakan secara megah pada Hero Showcase Banner, Seksi Alur Pemesanan 4 Langkah, dan Tombol Pemesanan WhatsApp.
+- **Fresh Sage Mint (`#EBF4EB` & `#CCE2CC`)**: Menghiasi tab filter kategori, chip komposisi bunga asli, dan lencana portofolio resmi.
+- **Dark Forest Atelier (`#0E1E15`)**: Memberikan fondasi wibawa pada Top Announcement Bar dan Footer resmi.
+- **Fotografi Asli Beresolusi Tinggi**: 38 produk buket bunga terkurasi dipetakan dengan foto rangkaian asli (rasio portrait *4:5*) dengan efek interaktif *hover zoom*.
+- **Tipografi Editorial**: Harmoni *Playfair Display* (judul serif elegan), *Plus Jakarta Sans* (antarmuka bersih), dan *JetBrains Mono* (spesifikasi teknis).
 
 ---
 

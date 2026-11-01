@@ -7,16 +7,25 @@ export default {
   theme: {
     extend: {
       colors: {
+        botanical: {
+          50: '#F4F8F4',   // Very light mint/sage toolbar
+          100: '#EBF4EB',  // Soft sage mint chips & badges
+          200: '#CCE2CC',  // Mint hairline borders
+          300: '#A3D0A3',  // Light herbal green
+          400: '#72B588',  // Vibrant leaf accent
+          500: '#4A9B67',  // Fresh botanical green
+          600: '#327D50',  // Mid-tone evergreen
+          700: '#24613E',  // Deep herbal green
+          800: '#183324',  // Primary Deep Botanical Forest (CTA & Hero)
+          900: '#142A1D',  // Container Forest Pine (How To Order)
+          950: '#0E1E15',  // Darkest Forest Atelier (Footer & Top Bar)
+        },
         atelier: {
           bg: '#FAF9F5',      // Warm luxury pearl ivory
           surface: '#FFFFFF', // Pure white cards
-          border: '#E8E4DC',  // Delicate warm stone border
+          border: '#E8E4DC',  // Warm stone border
           text: '#1C1917',    // Deep charcoal
-          muted: '#78716C',   // Muted stone
-          terracotta: '#8B4F3E', // Warm romantic floral accent
-          champagne: '#C4AA82',  // Luxury gold accent
-          forest: '#1A3B2B',     // Deep botanical forest (WhatsApp CTA)
-          forestHover: '#132E21',
+          champagne: '#C4AA82', // Gold/champagne accent
         },
       },
       fontFamily: {

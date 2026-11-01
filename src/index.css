@@ -9,20 +9,20 @@
   }
 }
 
-/* Custom sleek scrollbar in warm champagne stone */
+/* Custom sleek scrollbar with botanical sage tones */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F2EB;
+  background: #F4F8F4;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8D2C4;
+  background: #CCE2CC;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8B09F;
+  background: #A3D0A3;
 }
 
 /* Smooth scrolling */

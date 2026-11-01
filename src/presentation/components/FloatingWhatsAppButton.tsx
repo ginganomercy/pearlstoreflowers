@@ -21,7 +21,7 @@ export const FloatingWhatsAppButton: React.FC<FloatingWhatsAppButtonProps> = ({
         href={consultWaUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-atelier-forest hover:bg-atelier-forestHover text-white font-semibold text-xs sm:text-sm shadow-xl hover:shadow-2xl transition-all duration-200 active:scale-95 border-2 border-white/90 group"
+        className="inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-botanical-800 hover:bg-botanical-900 text-white font-semibold text-xs sm:text-sm shadow-xl hover:shadow-2xl transition-all duration-200 active:scale-95 border-2 border-white/90 group"
       >
         <MessageCircle className="w-5 h-5 fill-white group-hover:rotate-12 transition-transform duration-200" />
         <span className="hidden xs:inline font-mono tracking-tight">Konsultasi Florist</span>

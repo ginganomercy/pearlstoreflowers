@@ -19,11 +19,11 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
   onSearchChange,
 }) => {
   return (
-    <div className="w-full bg-[#FAF9F5]/95 backdrop-blur-md border-b border-stone-200/80 sticky top-0 z-30 py-3 shadow-2xs transition-all">
+    <div className="w-full bg-botanical-50/95 backdrop-blur-md border-b border-botanical-200 sticky top-0 z-30 py-3 shadow-2xs transition-all">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-3">
-        {/* Search Bar */}
+        {/* Search Bar with Botanical Mint Outline */}
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
+          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-botanical-600">
             <Search className="w-4 h-4" />
           </div>
           <input
@@ -31,7 +31,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Cari buket (contoh: mawar, baby's breath, sunflower, wedding, wisuda, SC-WED-01)..."
-            className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-stone-200 bg-white text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-1 focus:ring-stone-800 focus:border-stone-800 transition-all shadow-2xs"
+            className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-botanical-200 bg-white text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-1 focus:ring-botanical-800 focus:border-botanical-800 transition-all shadow-2xs"
           />
           {searchQuery && (
             <button
@@ -45,7 +45,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
           )}
         </div>
 
-        {/* Category Filter Pills (Madame Florist Collection Navigation) */}
+        {/* Category Navigation (Fresh Sage Mint & Deep Forest Tabs) */}
         <div className="flex items-center justify-between gap-2 overflow-x-auto pb-0.5 no-scrollbar">
           <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto">
             {categories.map((cat) => {
@@ -57,16 +57,16 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
                   onClick={() => onSelectCategory(cat.category)}
                   className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap transition-all duration-150 ${
                     isActive
-                      ? 'bg-stone-900 text-white font-semibold shadow-xs'
-                      : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-200 font-medium'
+                      ? 'bg-botanical-800 text-white font-semibold shadow-xs'
+                      : 'bg-white hover:bg-botanical-100 text-botanical-800 border border-botanical-200 font-medium'
                   }`}
                 >
                   <span>{cat.label}</span>
                   <span
                     className={`font-mono text-[10px] px-1.5 py-0.2 rounded-full transition-colors ${
                       isActive
-                        ? 'bg-stone-800 text-stone-200'
-                        : 'bg-stone-100 text-stone-500'
+                        ? 'bg-botanical-700 text-white'
+                        : 'bg-botanical-100 text-botanical-800 font-bold'
                     }`}
                   >
                     {cat.count}
@@ -76,7 +76,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
             })}
           </div>
 
-          <div className="hidden lg:flex items-center gap-1.5 text-[11px] font-mono text-stone-400 whitespace-nowrap pl-2">
+          <div className="hidden lg:flex items-center gap-1.5 text-[11px] font-mono text-botanical-600 whitespace-nowrap pl-2">
             <SlidersHorizontal className="w-3.5 h-3.5" />
             <span>Katalog Resmi</span>
           </div>
