@@ -93,3 +93,4 @@ export function injectSeoSchema(
 
   scriptEl.textContent = generateFloristJsonLd(studio, products);
 }
+

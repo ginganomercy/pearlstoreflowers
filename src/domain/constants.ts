@@ -24,3 +24,4 @@ export const STANDARD_LEAD_TIME_DAYS = 3;
 /** Default WhatsApp consultation message character limit check */
 export const WHATSAPP_PHONE_MIN_DIGITS = 10;
 export const WHATSAPP_PHONE_MAX_DIGITS = 15;
+

@@ -77,3 +77,4 @@ describe('Performance Optimizer & SEO Infrastructure', () => {
     expect(itemListNode.itemListElement[0].item.offers.price).toBe(275000);
   });
 });
+
