@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx}',
+    './public/**/*.html',
   ],
   theme: {
     extend: {
@@ -26,14 +26,16 @@ export default {
           border: '#E8E4DC',  // Warm stone border
           text: '#1C1917',    // Deep charcoal
           champagne: '#C4AA82', // Gold/champagne accent
+          pearl: '#F8F9FA',   // Luminous pearl accent
         },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
     },
   },
   plugins: [],
-}
+};
+

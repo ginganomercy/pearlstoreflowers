@@ -1,13 +1,13 @@
 {
   "studio": {
-    "name": "Shelwa Craft",
-    "handle": "@shelwa_craft",
-    "tagline": "Custom Floral & Hand Bouquet Studio",
+    "name": "Pearl Store Flowers",
+    "handle": "@pearl.storeflowers",
+    "tagline": "Luxury Floral & Hand Bouquet Atelier",
     "location": "Bandung & Sekitarnya (Jangkauan Kurir Instan & Ekspedisi)",
     "operatingHours": "Senin - Sabtu: 08.00 - 20.00 WIB",
     "whatsappNumber": "6281234567890",
     "whatsappDisplay": "+62 812-3456-7890",
-    "instagramUrl": "https://www.instagram.com/shelwa_craft/",
+    "instagramUrl": "https://www.instagram.com/pearl.storeflowers",
     "services": [
       "Wedding & Bridal Bouquet",
       "Engagement Floral & Boutonniere",
@@ -18,7 +18,7 @@
   "products": [
     {
       "id": "prod-01",
-      "code": "SC-WED-01",
+      "code": "PSF-WED-01",
       "title": "Elegance White Rose Bridal Bouquet",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -36,11 +36,12 @@
       "description": "Bunga tangan pengantin premium bernuansa putih bersih klasik, dirancang kokoh dan nyaman digenggam sepanjang resepsi.",
       "dimension": "Tinggi ~35cm, Diameter ~28cm",
       "colorTheme": "Ivory White & Sage Green",
-      "imageUrl": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-01-elegance-white-rose-bridal-bouquet"
     },
     {
       "id": "prod-02",
-      "code": "SC-WED-02",
+      "code": "PSF-WED-02",
       "title": "Blushing Peach Garden Hand Bouquet",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -58,11 +59,12 @@
       "description": "Paduan warna peach lembut dan pink pastel yang memberi impresi hangat dan romantis untuk akad atau pre-wedding.",
       "dimension": "Tinggi ~38cm, Diameter ~30cm",
       "colorTheme": "Peach Pastel & Dusty Pink",
-      "imageUrl": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-02-blushing-peach-garden-hand-bouquet"
     },
     {
       "id": "prod-03",
-      "code": "SC-WED-03",
+      "code": "PSF-WED-03",
       "title": "Rustic Sunset Dried Flower Bouquet",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -81,11 +83,12 @@
       "description": "Buket bunga kering abadi tahan tahunan dengan tema rustic earthy, aman dikirim ke luar kota melalui ekspedisi reguler.",
       "dimension": "Tinggi ~40cm, Diameter ~25cm",
       "colorTheme": "Warm Terracotta & Beige",
-      "imageUrl": "https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-03-rustic-sunset-dried-flower-bouquet"
     },
     {
       "id": "prod-04",
-      "code": "SC-WED-04",
+      "code": "PSF-WED-04",
       "title": "Crimson Romantic Rose Cascade",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -103,11 +106,12 @@
       "description": "Karakter merah berani yang memancarkan pesona anggun untuk gaun pengantin adat maupun gaun malam modern.",
       "dimension": "Tinggi ~36cm, Diameter ~28cm",
       "colorTheme": "Deep Crimson Red",
-      "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-04-crimson-romantic-rose-cascade"
     },
     {
       "id": "prod-05",
-      "code": "SC-WED-05",
+      "code": "PSF-WED-05",
       "title": "Minimalist Calla Lily Bridal Stems",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -124,11 +128,12 @@
       "description": "Desain modern kontemporer gaya editorial Eropa dengan batang bunga telanjang yang diikat pita sutra elegan.",
       "dimension": "Tinggi ~45cm, Ramping",
       "colorTheme": "Pure White & Natural Stem",
-      "imageUrl": "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-05-minimalist-calla-lily-bridal-stems"
     },
     {
       "id": "prod-06",
-      "code": "SC-WED-06",
+      "code": "PSF-WED-06",
       "title": "Pure Orchid & Spray Rose Cascading",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -146,11 +151,12 @@
       "description": "Buket bertingkat (*cascading*) yang menjuntai anggun dengan bunga anggrek asli segar berkualitas tinggi.",
       "dimension": "Panjang ~50cm",
       "colorTheme": "White Ivory & Cascade Green",
-      "imageUrl": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-06-pure-orchid-spray-rose-cascading"
     },
     {
       "id": "prod-07",
-      "code": "SC-WED-07",
+      "code": "PSF-WED-07",
       "title": "Groom Boutonniere (Bunga Saku Jas)",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -168,11 +174,12 @@
       "description": "Aksesoris bunga saku jas pengantin pria atau keluarga inti dengan peniti pengaman anti-jatuh.",
       "dimension": "Tinggi ~10cm",
       "colorTheme": "White & Green",
-      "imageUrl": "https://images.unsplash.com/photo-1567696911980-2eed69a46042?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1567696911980-2eed69a46042?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-07-groom-boutonniere-bunga-saku-jas"
     },
     {
       "id": "prod-08",
-      "code": "SC-WED-08",
+      "code": "PSF-WED-08",
       "title": "Paket Bundling Wedding (Bouquet + Boutonniere)",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -189,11 +196,12 @@
       "description": "Paket hemat serasi untuk pengantin pria dan wanita dengan tema warna bunga yang selaras.",
       "dimension": "Paket Lengkap",
       "colorTheme": "Custom Sesuai Tema Gaun",
-      "imageUrl": "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-08-paket-bundling-wedding-bouquet-boutonniere"
     },
     {
       "id": "prod-09",
-      "code": "SC-WED-09",
+      "code": "PSF-WED-09",
       "title": "Akad Table Floral Arrangement",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -211,11 +219,12 @@
       "description": "Rangkaian bunga meja horizontal yang estetik untuk meja ijab kabul atau meja VIP pengantin.",
       "dimension": "Panjang ~45cm, Lebar ~20cm",
       "colorTheme": "White & Soft Peach",
-      "imageUrl": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-09-akad-table-floral-arrangement"
     },
     {
       "id": "prod-10",
-      "code": "SC-WED-10",
+      "code": "PSF-WED-10",
       "title": "Preserved Rose Glass Dome Wedding Gift",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -233,11 +242,12 @@
       "description": "Bunga mawar awet abadi di dalam kubah kaca estetik dengan lampu LED hangat, cocok sebagai mahar atau hadiah pernikahan.",
       "dimension": "Tinggi ~21cm, Diameter ~11cm",
       "colorTheme": "Ruby Red & Warm Glow",
-      "imageUrl": "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-wed-10-preserved-rose-glass-dome-wedding-gift"
     },
     {
       "id": "prod-11",
-      "code": "SC-ENG-01",
+      "code": "PSF-ENG-01",
       "title": "Romantic Pastel Engagement Hand Bouquet",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Engagement",
@@ -255,11 +265,12 @@
       "description": "Ukuran ideal untuk sesi foto lamaran, dirancang proporsional agar tidak menutupi detail kebaya calon pengantin.",
       "dimension": "Tinggi ~35cm, Diameter ~26cm",
       "colorTheme": "Lilac & Dusty Rose",
-      "imageUrl": "https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-eng-01-romantic-pastel-engagement-hand-bouquet"
     },
     {
       "id": "prod-12",
-      "code": "SC-ENG-02",
+      "code": "PSF-ENG-02",
       "title": "Sage Green & Ivory Proposal Stems",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Engagement",
@@ -277,11 +288,12 @@
       "description": "Kombinasi paling diminati untuk kebaya bertema sage green, earthy modern, dan lamaran semi-outdoor.",
       "dimension": "Tinggi ~36cm, Diameter ~28cm",
       "colorTheme": "Sage Green & Ivory",
-      "imageUrl": "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-eng-02-sage-green-ivory-proposal-stems"
     },
     {
       "id": "prod-13",
-      "code": "SC-ENG-03",
+      "code": "PSF-ENG-03",
       "title": "Champagne Gold Monochromatic Bouquet",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Engagement",
@@ -299,11 +311,12 @@
       "description": "Nuansa mewah kalem monokromatis champagne gold yang berpadu serasi dengan busana songket atau batik modern.",
       "dimension": "Tinggi ~34cm, Diameter ~25cm",
       "colorTheme": "Champagne & Warm Sand",
-      "imageUrl": "https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-eng-03-champagne-gold-monochromatic-bouquet"
     },
     {
       "id": "prod-14",
-      "code": "SC-ENG-04",
+      "code": "PSF-ENG-04",
       "title": "All-White Baby's Breath Cloud Bouquet",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Engagement",
@@ -319,11 +332,12 @@
       "description": "Gumpalan rimbun baby's breath segar seperti awan putih murni. Pilihan favorit untuk momen kejutan lamaran (*will you marry me*).",
       "dimension": "Tinggi ~38cm, Diameter ~32cm",
       "colorTheme": "Pure Cloud White",
-      "imageUrl": "https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-eng-04-all-white-babys-breath-cloud-bouquet"
     },
     {
       "id": "prod-15",
-      "code": "SC-ENG-05",
+      "code": "PSF-ENG-05",
       "title": "Dusty Blue & White Hydrangea Dream",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Engagement",
@@ -341,11 +355,12 @@
       "description": "Buket dengan kepala hydrangea mekar besar dalam balutan palet biru abu lembut yang menawan.",
       "dimension": "Tinggi ~35cm, Diameter ~27cm",
       "colorTheme": "Dusty Blue & White",
-      "imageUrl": "https://images.unsplash.com/photo-1508615070457-7baeba4003ab?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1508615070457-7baeba4003ab?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-eng-05-dusty-blue-white-hydrangea-dream"
     },
     {
       "id": "prod-16",
-      "code": "SC-ENG-06",
+      "code": "PSF-ENG-06",
       "title": "Paket Lamaran Lengkap (Buket + 2 Bunga Saku)",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Engagement",
@@ -362,11 +377,12 @@
       "description": "Paket serasi untuk pasangan lamaran, dilengkapi korsase saku pria yang senada dengan buket calon mempelai wanita.",
       "dimension": "Paket Lengkap",
       "colorTheme": "Custom Menyesuaikan Kebaya",
-      "imageUrl": "https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-eng-06-paket-lamaran-lengkap-buket-2-bunga-saku"
     },
     {
       "id": "prod-17",
-      "code": "SC-ENG-07",
+      "code": "PSF-ENG-07",
       "title": "Bunga Hiasan Box Cincin Lamaran",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Engagement",
@@ -383,11 +399,12 @@
       "description": "Rangkaian bunga mini awet untuk mempercantik wadah cincin lamaran saat prosesi seserahan.",
       "dimension": "Sesuai Ukuran Box Cincin",
       "colorTheme": "Rustic / Pastel",
-      "imageUrl": "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-eng-07-bunga-hiasan-box-cincin-lamaran"
     },
     {
       "id": "prod-18",
-      "code": "SC-ENG-08",
+      "code": "PSF-ENG-08",
       "title": "Vintage Maroon & Gold Engagement Stems",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Engagement",
@@ -405,11 +422,12 @@
       "description": "Pilihan kontras kuat dan berwibawa untuk tema lamaran malam atau konsep busana adat beludru gelap.",
       "dimension": "Tinggi ~35cm, Diameter ~25cm",
       "colorTheme": "Deep Maroon & Gold Accent",
-      "imageUrl": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-eng-08-vintage-maroon-gold-engagement-stems"
     },
     {
       "id": "prod-19",
-      "code": "SC-GRAD-01",
+      "code": "PSF-GRAD-01",
       "title": "Buket Wisuda Mawar Abadi (Satin Ribbon Flower)",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -426,11 +444,12 @@
       "description": "Terbuat dari pita satin premium yang dilipat presisi dengan tangan. Awet bertahun-tahun sebagai kenang-kenangan wisuda tanpa takut layu.",
       "dimension": "Tinggi ~42cm, Lebar ~30cm",
       "colorTheme": "Red Velvet, Soft Pink, atau Navy",
-      "imageUrl": "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-01-buket-wisuda-mawar-abadi-satin-ribbon-flower"
     },
     {
       "id": "prod-20",
-      "code": "SC-GRAD-02",
+      "code": "PSF-GRAD-02",
       "title": "Buket Wisuda Kawat Bulu (Pipe Cleaner Blossom)",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -447,11 +466,12 @@
       "description": "Tren terpopuler saat ini: bunga kawat bulu tekstur beludru lembut yang lucu, menggemaskan, dan tahan banting dalam pengiriman ekspedisi.",
       "dimension": "Tinggi ~38cm, Lebar ~28cm",
       "colorTheme": "Pastel Rainbow / Soft Pink Yellow",
-      "imageUrl": "https://images.unsplash.com/photo-1507290439931-a861b5a38200?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1507290439931-a861b5a38200?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-02-buket-wisuda-kawat-bulu-pipe-cleaner-blossom"
     },
     {
       "id": "prod-21",
-      "code": "SC-GRAD-03",
+      "code": "PSF-GRAD-03",
       "title": "Buket Wisuda Teddy Bear + Bunga Segar",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -469,11 +489,12 @@
       "description": "Kado wisuda klasik terlengkap: boneka beruang toga lucu dipadu bunga mawar segar harum semerbak.",
       "dimension": "Tinggi ~45cm, Lebar ~32cm",
       "colorTheme": "Black Gold & Fresh Roses",
-      "imageUrl": "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-03-buket-wisuda-teddy-bear-bunga-segar"
     },
     {
       "id": "prod-22",
-      "code": "SC-GRAD-04",
+      "code": "PSF-GRAD-04",
       "title": "Buket Cokelat Ferrero & Bunga Wisuda",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -491,11 +512,12 @@
       "description": "Kombinasi manis cokelat premium Ferrero Rocher dan ornamen bunga cantik untuk sahabat tercinta.",
       "dimension": "Tinggi ~40cm, Lebar ~28cm",
       "colorTheme": "Warm Chocolate & Gold",
-      "imageUrl": "https://images.unsplash.com/photo-1582794543462-0d7922e50cf5?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1582794543462-0d7922e50cf5?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-04-buket-cokelat-ferrero-bunga-wisuda"
     },
     {
       "id": "prod-23",
-      "code": "SC-GRAD-05",
+      "code": "PSF-GRAD-05",
       "title": "Buket Bunga Matahari Semangat Wisuda",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -513,11 +535,12 @@
       "description": "Simbol energi positif, keberhasilan, dan masa depan cerah dengan warna kuning ceria bunga matahari.",
       "dimension": "Tinggi ~45cm, Lebar ~30cm",
       "colorTheme": "Vibrant Yellow & Kraft Earthy",
-      "imageUrl": "https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-05-buket-bunga-matahari-semangat-wisuda"
     },
     {
       "id": "prod-24",
-      "code": "SC-GRAD-06",
+      "code": "PSF-GRAD-06",
       "title": "Buket Wisuda Mini Budget Pelajar",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -534,11 +557,12 @@
       "description": "Buket hemat dengan kualitas tetap cantik rapi, ramah di kantong pelajar dan mahasiswa.",
       "dimension": "Tinggi ~30cm, Ringkas",
       "colorTheme": "Merah / Pink / Putih",
-      "imageUrl": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-06-buket-wisuda-mini-budget-pelajar"
     },
     {
       "id": "prod-25",
-      "code": "SC-GRAD-07",
+      "code": "PSF-GRAD-07",
       "title": "Buket Wisuda Pria (Navy Masculine Theme)",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -556,11 +580,12 @@
       "description": "Desain maskulin bernuansa biru navy gelap yang tidak terlalu feminin, cocok untuk wisudawan pria.",
       "dimension": "Tinggi ~40cm, Lebar ~28cm",
       "colorTheme": "Navy Blue & Silver Grey",
-      "imageUrl": "https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-07-buket-wisuda-pria-navy-masculine-theme"
     },
     {
       "id": "prod-26",
-      "code": "SC-GRAD-08",
+      "code": "PSF-GRAD-08",
       "title": "Buket Wisuda Single Stem Rose in Cone",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -577,11 +602,12 @@
       "description": "Buket tangkai tunggal bergaya cone yang ringkas, praktis dibagikan dalam jumlah banyak untuk teman sekelas.",
       "dimension": "Tinggi ~35cm, Cone Model",
       "colorTheme": "Pilihan Warna Mawar Bebas",
-      "imageUrl": "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-08-buket-wisuda-single-stem-rose-in-cone"
     },
     {
       "id": "prod-27",
-      "code": "SC-GRAD-09",
+      "code": "PSF-GRAD-09",
       "title": "Buket Bunga Kupu-Kupu Menyala (Butterfly LED)",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -599,11 +625,12 @@
       "description": "Buket viral berkilau dengan kupu-kupu dan lampu LED yang dapat dinyalakan saat foto wisuda sore/malam hari.",
       "dimension": "Tinggi ~38cm, Lebar ~30cm",
       "colorTheme": "Magical Purple / Soft Pink LED",
-      "imageUrl": "https://images.unsplash.com/photo-1572454591674-2739f30d8c40?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1572454591674-2739f30d8c40?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-09-buket-bunga-kupu-kupu-menyala-butterfly-led"
     },
     {
       "id": "prod-28",
-      "code": "SC-GRAD-10",
+      "code": "PSF-GRAD-10",
       "title": "Buket Snack Wisuda Populer",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -620,11 +647,12 @@
       "description": "Buket cemilan lezat yang disukai wisudawan, dirangkai kokoh dan tidak mudah copot saat dibawa foto.",
       "dimension": "Tinggi ~42cm, Lebar ~30cm",
       "colorTheme": "Ceria & Menyesuaikan Kemasan",
-      "imageUrl": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-10-buket-snack-wisuda-populer"
     },
     {
       "id": "prod-29",
-      "code": "SC-GRAD-11",
+      "code": "PSF-GRAD-11",
       "title": "Buket Wisuda Kopi Botol & Mawar",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -642,11 +670,12 @@
       "description": "Kado unik pelepas lelah setelah sidang skripsi: kopi literan favorit dirangkai estetik bersama buket bunga.",
       "dimension": "Tinggi ~38cm, Kokoh",
       "colorTheme": "Coffee Brown & Charcoal",
-      "imageUrl": "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-11-buket-wisuda-kopi-botol-mawar"
     },
     {
       "id": "prod-30",
-      "code": "SC-GRAD-12",
+      "code": "PSF-GRAD-12",
       "title": "Grand Jumbo Graduation Rose Bouquet (20 Roses)",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Kelulusan",
@@ -663,11 +692,12 @@
       "description": "Buket ukuran besar (jumbo) yang sangat mencuri perhatian saat sesi foto wisuda di pelataran rektorat.",
       "dimension": "Tinggi ~60cm, Lebar ~45cm",
       "colorTheme": "All Red / Romantic Pink",
-      "imageUrl": "https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-grad-12-grand-jumbo-graduation-rose-bouquet-20-roses"
     },
     {
       "id": "prod-31",
-      "code": "SC-CUST-01",
+      "code": "PSF-CUST-01",
       "title": "Buket Uang Tarik / Money Bouquet (Tanpa Uang Tunai)",
       "category": "Custom",
       "categoryLabel": "Bunga Abadi & Kustom",
@@ -685,11 +715,12 @@
       "description": "Jasa perangkaian buket uang aman tanpa merusak lembaran uang kertas. Nominal isi uang dapat disesuaikan permintaan klien.",
       "dimension": "Menyesuaikan Jumlah Lembar",
       "colorTheme": "Custom Bebas",
-      "imageUrl": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-cust-01-buket-uang-tarik-money-bouquet-tanpa-uang-tunai"
     },
     {
       "id": "prod-32",
-      "code": "SC-CUST-02",
+      "code": "PSF-CUST-02",
       "title": "Buket Balon Ucapan Akrilik Transparan",
       "category": "Custom",
       "categoryLabel": "Bunga Abadi & Kustom",
@@ -706,11 +737,12 @@
       "description": "Balon transparan anti-kempes berstiker ucapan khusus (Happy Birthday / Happy Graduation / Congratulation) di atas bloombox bunga.",
       "dimension": "Tinggi ~50cm, Balon ~30cm",
       "colorTheme": "Pastel / Gold / Rose Gold",
-      "imageUrl": "https://images.unsplash.com/photo-1589244159943-460088ed5c92?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1589244159943-460088ed5c92?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-cust-02-buket-balon-ucapan-akrilik-transparan"
     },
     {
       "id": "prod-33",
-      "code": "SC-CUST-03",
+      "code": "PSF-CUST-03",
       "title": "Bloom Box Bunga Meja Ulang Tahun",
       "category": "Custom",
       "categoryLabel": "Bunga Abadi & Kustom",
@@ -728,11 +760,12 @@
       "description": "Rangkaian bunga estetik di dalam kotak bulat eksklusif yang siap diletakkan langsung di meja kantor atau kamar.",
       "dimension": "Tinggi ~28cm, Diameter Box ~18cm",
       "colorTheme": "Blush Pink / Elegant White",
-      "imageUrl": "https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-cust-03-bloom-box-bunga-meja-ulang-tahun"
     },
     {
       "id": "prod-34",
-      "code": "SC-CUST-04",
+      "code": "PSF-CUST-04",
       "title": "Buket Bunga Kering Pigura Kaca 3D (Shadow Box)",
       "category": "Custom",
       "categoryLabel": "Bunga Abadi & Kustom",
@@ -750,11 +783,12 @@
       "description": "Bunga kering yang diabadikan di dalam pigura kaca 3D. Hadiah abadi yang bisa digantung di dinding kamar.",
       "dimension": "Ukuran 20cm x 25cm",
       "colorTheme": "Natural Wood & Dried Earth",
-      "imageUrl": "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-cust-04-buket-bunga-kering-pigura-kaca-3d-shadow-box"
     },
     {
       "id": "prod-35",
-      "code": "SC-CUST-05",
+      "code": "PSF-CUST-05",
       "title": "Buket Boneka Profesi (Dokter / Perawat / Polisi)",
       "category": "Custom",
       "categoryLabel": "Bunga Abadi & Kustom",
@@ -771,11 +805,12 @@
       "description": "Disesuaikan khusus untuk profesi kelulusan tenaga medis atau pelantikan kedinasan.",
       "dimension": "Tinggi ~42cm, Lebar ~30cm",
       "colorTheme": "White & Medical Blue",
-      "imageUrl": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-cust-05-buket-boneka-profesi-dokter-perawat-polisi"
     },
     {
       "id": "prod-36",
-      "code": "SC-CUST-06",
+      "code": "PSF-CUST-06",
       "title": "Buket Bunga Flanel Karakter Lucu",
       "category": "Custom",
       "categoryLabel": "Bunga Abadi & Kustom",
@@ -792,11 +827,12 @@
       "description": "Buket awet dari bahan kain flanel lembut tanpa debu, aman dan manis untuk kado ulang tahun anak atau sahabat.",
       "dimension": "Tinggi ~35cm, Lebar ~25cm",
       "colorTheme": "Pastel Pink & Yellow",
-      "imageUrl": "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-cust-06-buket-bunga-flanel-karakter-lucu"
     },
     {
       "id": "prod-37",
-      "code": "SC-CUST-07",
+      "code": "PSF-CUST-07",
       "title": "Buket Bunga Kawat Bulu Tulip Pot Mini",
       "category": "Custom",
       "categoryLabel": "Bunga Abadi & Kustom",
@@ -813,11 +849,12 @@
       "description": "Bunga tulip mini duduk di dalam pot yang sangat manis untuk pemanis meja belajar atau meja kerja kantor.",
       "dimension": "Tinggi ~18cm",
       "colorTheme": "Tulip Ungu / Kuning / Pink",
-      "imageUrl": "https://images.unsplash.com/photo-1615469038804-6b91aef7026f?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1615469038804-6b91aef7026f?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-cust-07-buket-bunga-kawat-bulu-tulip-pot-mini"
     },
     {
       "id": "prod-38",
-      "code": "SC-CUST-08",
+      "code": "PSF-CUST-08",
       "title": "Buket Custom Permintaan Khusus (Bawa Referensi Sendiri)",
       "category": "Custom",
       "categoryLabel": "Bunga Abadi & Kustom",
@@ -833,7 +870,8 @@
       "description": "Punya contoh foto buket sendiri dari Pinterest atau Instagram? Kirimkan fotonya ke WhatsApp kami dan kami rangkai semirip mungkin sesuai anggaran Anda.",
       "dimension": "Fleksibel Sesuai Request",
       "colorTheme": "Bebas Sesuai Keinginan",
-      "imageUrl": "https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?auto=format&fit=crop&w=800&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?auto=format&fit=crop&w=800&q=80",
+      "slug": "psf-cust-08-buket-custom-permintaan-khusus-bawa-referensi-sendiri"
     }
   ]
 }

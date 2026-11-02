@@ -1,0 +1,110 @@
+---
+import type { StudioInfo } from '../domain/types';
+import { createWhatsAppConsultLink } from '../application/whatsapp';
+
+interface Props {
+  studio: StudioInfo;
+}
+
+const { studio } = Astro.props;
+const consultWaUrl = createWhatsAppConsultLink(studio, 'Pemesanan Custom');
+---
+
+<section
+  id="cara-pesan"
+  class="w-full bg-botanical-900 text-white py-10 px-5 sm:px-8 rounded-2xl border border-botanical-700 shadow-xl my-10 max-w-5xl mx-auto space-y-8"
+>
+  <div class="text-center max-w-2xl mx-auto space-y-2">
+    <span class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#A8D5BA] uppercase tracking-widest bg-botanical-800 px-3 py-1 rounded-full border border-botanical-700">
+      <span>✨</span>
+      Alur Transaksi & Pengiriman
+    </span>
+    <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-white">
+      Tata Cara Pemesanan di {studio.name}
+    </h2>
+    <p class="text-xs sm:text-sm text-[#D1E6D8]">
+      Proses pemesanan cepat dan mudah via WhatsApp dengan format otomatis yang siap dikonfirmasi oleh tim florist kami.
+    </p>
+  </div>
+
+  <!-- 4 Steps Grid in Botanical Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="p-4 rounded-xl bg-botanical-800/80 border border-botanical-700 space-y-2.5">
+      <div class="w-8 h-8 rounded-lg bg-botanical-700 text-[#A8D5BA] flex items-center justify-center font-mono font-bold text-xs">
+        01
+      </div>
+      <div class="flex items-center gap-1.5 font-semibold text-sm text-white">
+        <span>🔍</span>
+        <h3>Pilih Model Buket</h3>
+      </div>
+      <p class="text-xs text-[#D1E6D8] leading-relaxed">
+        Eksplorasi 38 desain foto buket bunga asli (Wedding, Lamaran, Wisuda, atau Kustom) di etalase ini.
+      </p>
+    </div>
+
+    <div class="p-4 rounded-xl bg-botanical-800/80 border border-botanical-700 space-y-2.5">
+      <div class="w-8 h-8 rounded-lg bg-botanical-700 text-[#A8D5BA] flex items-center justify-center font-mono font-bold text-xs">
+        02
+      </div>
+      <div class="flex items-center gap-1.5 font-semibold text-sm text-white">
+        <span>💬</span>
+        <h3>Pesan via WhatsApp</h3>
+      </div>
+      <p class="text-xs text-[#D1E6D8] leading-relaxed">
+        Format draf terisi otomatis dengan kode dan nama produk, menghemat waktu tanpa ketik ulang rincian.
+      </p>
+    </div>
+
+    <div class="p-4 rounded-xl bg-botanical-800/80 border border-botanical-700 space-y-2.5">
+      <div class="w-8 h-8 rounded-lg bg-botanical-700 text-[#A8D5BA] flex items-center justify-center font-mono font-bold text-xs">
+        03
+      </div>
+      <div class="flex items-center gap-1.5 font-semibold text-sm text-white">
+        <span>📅</span>
+        <h3>Konfirmasi Tanggal</h3>
+      </div>
+      <p class="text-xs text-[#D1E6D8] leading-relaxed">
+        Admin memverifikasi slot tanggal pengiriman, alamat penerima, dan draf kartu ucapan wax-seal Anda.
+      </p>
+    </div>
+
+    <div class="p-4 rounded-xl bg-botanical-800/80 border border-botanical-700 space-y-2.5">
+      <div class="w-8 h-8 rounded-lg bg-botanical-700 text-[#A8D5BA] flex items-center justify-center font-mono font-bold text-xs">
+        04
+      </div>
+      <div class="flex items-center gap-1.5 font-semibold text-sm text-white">
+        <span>🚚</span>
+        <h3>Rangkaian Diantar</h3>
+      </div>
+      <p class="text-xs text-[#D1E6D8] leading-relaxed">
+        Buket dirangkai dengan teliti, difoto sebelum dikirim, dan diantar via kurir instan atau ekspedisi kargo.
+      </p>
+    </div>
+  </div>
+
+  <!-- Policy & Action Bar -->
+  <div class="p-4 sm:p-5 rounded-xl bg-botanical-950/70 border border-botanical-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div class="flex items-start gap-3">
+      <span class="text-xl">🛡️</span>
+      <div class="text-xs space-y-1">
+        <p class="font-semibold text-white">
+          Kebijakan Lead Time & Pengiriman
+        </p>
+        <p class="text-[#D1E6D8]">
+          Pesanan wedding & lamaran disarankan H-3. Buket wisuda & perayaan siap Same-Day sesuai ketersediaan slot harian.
+        </p>
+      </div>
+    </div>
+
+    <a
+      href={consultWaUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-botanical-700 hover:bg-botanical-600 text-white font-mono text-xs font-semibold whitespace-nowrap border border-botanical-500 shadow-xs transition-colors shrink-0"
+    >
+      <span>Tanya Ketersediaan Slot</span>
+      <span>→</span>
+    </a>
+  </div>
+</section>
+

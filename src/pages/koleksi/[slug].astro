@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StoreHeader from '../../components/StoreHeader.astro';
+import StoreFooter from '../../components/StoreFooter.astro';
+import FloatingWhatsApp from '../../components/islands/FloatingWhatsApp.svelte';
+import catalogData from '../../data/catalog.json';
+import type { FlowerProduct, StudioInfo } from '../../domain/types';
+import { generateSingleProductJsonLd } from '../../infrastructure/seo-schema';
+import { createWhatsAppOrderLink } from '../../application/whatsapp';
+import { optimizeImageUrl } from '../../application/image-optimizer';
+
+export async function getStaticPaths() {
+  const products = catalogData.products as FlowerProduct[];
+  const studio = catalogData.studio as StudioInfo;
+
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product, studio, allProducts: products },
+  }));
+}
+
+interface Props {
+  product: FlowerProduct;
+  studio: StudioInfo;
+  allProducts: readonly FlowerProduct[];
+}
+
+const { product, studio, allProducts } = Astro.props;
+
+const jsonLd = generateSingleProductJsonLd(studio, product);
+const waOrderUrl = createWhatsAppOrderLink(product, studio.whatsappNumber, studio.name);
+const optimizedHeroImage = product.imageUrl ? optimizeImageUrl(product.imageUrl, 1200, 85) : '';
+
+// Related products in same category
+const relatedProducts = allProducts
+  .filter((p) => p.category === product.category && p.id !== product.id)
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={`${product.title} (${product.code}) — ${studio.name}`}
+  description={`${product.title}: ${product.description} Mulai dari ${product.priceDisplay}. Hubungi WhatsApp untuk reservasi slot pengiriman.`}
+  ogImage={product.imageUrl}
+  ogType="product"
+  jsonLd={jsonLd}
+>
+  <div id="top" class="min-h-screen flex flex-col bg-atelier-bg text-atelier-text">
+    <StoreHeader studio={studio} />
+
+    <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-10">
+      <!-- Breadcrumb Navigation -->
+      <nav class="flex items-center gap-2 text-xs font-mono text-stone-500 mb-6">
+        <a href="/" class="hover:text-botanical-800 transition-colors">Beranda</a>
+        <span>/</span>
+        <a href="/#katalog" class="hover:text-botanical-800 transition-colors">Koleksi</a>
+        <span>/</span>
+        <span class="text-stone-400">{product.categoryLabel}</span>
+        <span>/</span>
+        <span class="text-stone-900 font-semibold">{product.code}</span>
+      </nav>
+
+      <!-- Main Product Showcase Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-sm">
+        <!-- Visual Gallery -->
+        <div class="space-y-4">
+          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-100 shadow-xs border border-stone-200">
+            {optimizedHeroImage && (
+              <img
+                src={optimizedHeroImage}
+                alt={product.title}
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                class="w-full h-full object-cover"
+              />
+            )}
+            <div class="absolute top-4 left-4 flex gap-2">
+              <span class="font-mono text-xs font-bold px-3 py-1 rounded-md bg-white/95 text-stone-900 shadow-xs">
+                {product.code}
+              </span>
+              <span class="font-mono text-xs font-medium px-3 py-1 rounded-md bg-botanical-800 text-white shadow-xs">
+                {product.categoryLabel}
+              </span>
+            </div>
+          </div>
+
+          <!-- Quality Notice -->
+          <div class="p-3.5 rounded-xl bg-botanical-50 border border-botanical-200 text-xs text-botanical-900 flex items-center gap-2">
+            <span>🌿</span>
+            <span class="leading-tight">
+              Foto di atas adalah portofolio kurasi asli {studio.name}. Rangkaian Anda dirangkai segar menjelang pengiriman.
+            </span>
+          </div>
+        </div>
+
+        <!-- Product Details & Ordering CTA -->
+        <div class="flex flex-col justify-between space-y-6">
+          <div class="space-y-5">
+            <div>
+              <span class="font-mono text-xs tracking-wider uppercase font-bold text-botanical-700 bg-botanical-100 px-3 py-1 rounded-full border border-botanical-200 inline-block mb-3">
+                {product.categoryLabel}
+              </span>
+              <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 leading-tight">
+                {product.title}
+              </h1>
+            </div>
+
+            <!-- Price & Lead Time -->
+            <div class="p-4 rounded-2xl bg-botanical-50/70 border border-botanical-200/80 flex items-baseline justify-between flex-wrap gap-2">
+              <div>
+                <span class="font-mono text-[11px] uppercase tracking-wider text-stone-500 block">
+                  Harga Penawaran
+                </span>
+                <span class="font-serif text-3xl font-extrabold text-stone-900 tracking-tight">
+                  {product.priceDisplay}
+                </span>
+              </div>
+              <div class="text-right">
+                <span class="font-mono text-[11px] uppercase tracking-wider text-stone-500 block">
+                  Estimasi Pengerjaan
+                </span>
+                <span class="inline-flex items-center gap-1 font-mono text-xs font-bold text-botanical-800 bg-white px-3 py-1 rounded-full border border-botanical-200 shadow-2xs">
+                  <span>🕒</span>
+                  <span>{product.leadTime}</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="space-y-2">
+              <h3 class="font-mono text-xs font-bold text-stone-900 uppercase tracking-wide">
+                Deskripsi Rangkaian
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                {product.description}
+              </p>
+            </div>
+
+            <!-- Specifications Table -->
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <div class="p-3.5 rounded-xl border border-stone-200 bg-stone-50/50">
+                <span class="text-stone-400 font-mono text-[10px] block mb-0.5">DIMENSI</span>
+                <p class="font-semibold text-stone-800">{product.dimension}</p>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-stone-200 bg-stone-50/50">
+                <span class="text-stone-400 font-mono text-[10px] block mb-0.5">NUANSA WARNA</span>
+                <p class="font-semibold text-stone-800">{product.colorTheme}</p>
+              </div>
+
+              <div class="col-span-2 p-3.5 rounded-xl border border-stone-200 bg-stone-50/50">
+                <span class="text-stone-400 font-mono text-[10px] block mb-0.5">MATERIAL WRAPPING</span>
+                <p class="font-semibold text-stone-800">{product.wrappingMaterial}</p>
+              </div>
+            </div>
+
+            <!-- Flower Composition Chips -->
+            <div class="space-y-2">
+              <span class="font-mono text-xs font-bold text-botanical-800 uppercase tracking-wide block">
+                Komposisi Bunga & Daun:
+              </span>
+              <div class="flex flex-wrap gap-1.5">
+                {product.flowerComposition.map((stem) => (
+                  <span class="inline-block text-xs bg-botanical-100 text-botanical-900 px-3 py-1 rounded-lg border border-botanical-200 font-medium">
+                    ✓ {stem}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Order Action Box -->
+          <div class="pt-4 border-t border-stone-100 space-y-3">
+            <a
+              href={waOrderUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-2xl bg-botanical-800 hover:bg-botanical-900 text-white font-bold text-sm shadow-md hover:shadow-xl transition-all active:scale-[0.99] border border-botanical-950/20"
+            >
+              <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.891.815 2.796.815 3.183 0 5.769-2.586 5.77-5.766.001-3.182-2.585-5.768-5.77-5.768zm0-2c4.288 0 7.77 3.479 7.772 7.768 0 4.288-3.482 7.768-7.772 7.768-1.289 0-2.518-.32-3.606-.889l-4.425 1.159 1.185-4.328c-.655-1.139-1.002-2.434-1.002-3.71 0-4.289 3.483-7.768 7.772-7.768z"/>
+              </svg>
+              <span>Pesan Sekarang via WhatsApp</span>
+            </a>
+
+            <p class="text-center text-[11px] text-stone-400 font-mono">
+              Format pemesanan otomatis terisi dengan kode {product.code} saat tombol ditekan.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Bouquets Section -->
+      {relatedProducts.length > 0 && (
+        <section class="mt-14 space-y-6">
+          <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+            <h2 class="font-serif text-xl sm:text-2xl font-bold text-stone-900">
+              Koleksi Serupa ({product.categoryLabel})
+            </h2>
+            <a href="/#katalog" class="text-xs font-mono text-botanical-800 hover:underline">
+              Lihat Semua →
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {relatedProducts.map((rel) => (
+              <a
+                href={`/koleksi/${rel.slug}`}
+                class="group bg-white rounded-2xl border border-stone-200 overflow-hidden hover:shadow-lg transition-all"
+              >
+                <div class="aspect-[4/5] bg-stone-100 overflow-hidden">
+                  {rel.imageUrl && (
+                    <img
+                      src={optimizeImageUrl(rel.imageUrl, 500, 75)}
+                      alt={rel.title}
+                      loading="lazy"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
+                </div>
+                <div class="p-4 space-y-1">
+                  <span class="font-mono text-[10px] font-bold text-botanical-800 bg-botanical-100 px-2 py-0.5 rounded">
+                    {rel.code}
+                  </span>
+                  <h3 class="font-serif text-sm font-bold text-stone-900 group-hover:text-botanical-800 transition-colors line-clamp-1">
+                    {rel.title}
+                  </h3>
+                  <p class="font-serif text-base font-bold text-stone-900">
+                    {rel.priceDisplay}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+
+    <StoreFooter studio={studio} />
+    <FloatingWhatsApp client:idle studio={studio} />
+  </div>
+</BaseLayout>
+

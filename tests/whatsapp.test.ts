@@ -8,20 +8,21 @@ import type { FlowerProduct, StudioInfo } from '../src/domain/types';
 
 describe('WhatsApp Application Service', () => {
   const mockStudio: StudioInfo = {
-    name: 'Shelwa Craft',
-    handle: '@shelwa_craft',
-    tagline: 'Custom Floral & Hand Bouquet Studio',
+    name: 'Pearl Store Flowers',
+    handle: '@pearl.storeflowers',
+    tagline: 'Luxury Floral & Hand Bouquet Atelier',
     location: 'Bandung & Sekitarnya',
     operatingHours: '08.00 - 20.00 WIB',
     whatsappNumber: '0812-3456-7890',
     whatsappDisplay: '+62 812-3456-7890',
-    instagramUrl: 'https://www.instagram.com/shelwa_craft/',
+    instagramUrl: 'https://www.instagram.com/pearl.storeflowers',
     services: ['Wedding', 'Engagement', 'Graduation', 'Custom'],
   };
 
   const mockProduct: FlowerProduct = {
     id: 'prod-01',
-    code: 'SC-WED-01',
+    code: 'PSF-WED-01',
+    slug: 'psf-wed-01-elegance-white-rose',
     title: 'Elegance White Rose Bridal Bouquet',
     category: 'Wedding',
     categoryLabel: 'Pernikahan / Bridal',
@@ -49,25 +50,24 @@ describe('WhatsApp Application Service', () => {
     expect(sanitized).toBe('6281234567890');
   });
 
-  it('should generate properly formatted order link when product and phone are provided', () => {
-    const link = createWhatsAppOrderLink(mockProduct, mockStudio.whatsappNumber);
+  it('should generate properly formatted order link referencing Pearl Store Flowers', () => {
+    const link = createWhatsAppOrderLink(mockProduct, mockStudio.whatsappNumber, mockStudio.name);
 
     expect(link).toContain('https://wa.me/6281234567890?text=');
     const decodedUrl = decodeURIComponent(link);
-    expect(decodedUrl).toContain('Kode: SC-WED-01');
+    expect(decodedUrl).toContain('Halo Pearl Store Flowers');
+    expect(decodedUrl).toContain('Kode: PSF-WED-01');
     expect(decodedUrl).toContain('Elegance White Rose Bridal Bouquet');
     expect(decodedUrl).toContain('Rp 275.000');
-    expect(decodedUrl).toContain('Pre-Order H-3');
-    expect(decodedUrl).toContain('Tanggal Acara / Dibutuhkan');
+    expect(decodedUrl).toContain('koleksi/psf-wed-01-elegance-white-rose');
   });
 
-  it('should generate valid consultation link when studio information is provided', () => {
+  it('should generate valid consultation link for Pearl Store Flowers', () => {
     const link = createWhatsAppConsultLink(mockStudio, 'Pernikahan Adat');
 
     expect(link).toContain('https://wa.me/6281234567890?text=');
     const decodedUrl = decodeURIComponent(link);
-    expect(decodedUrl).toContain('Shelwa Craft');
+    expect(decodedUrl).toContain('Pearl Store Flowers');
     expect(decodedUrl).toContain('Pernikahan Adat');
   });
 });
-

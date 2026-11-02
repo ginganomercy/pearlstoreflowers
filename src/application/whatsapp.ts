@@ -1,4 +1,5 @@
 import type { FlowerProduct, StudioInfo } from '../domain/types';
+import { STUDIO_BRAND_NAME } from '../domain/constants';
 
 /**
  * Normalizes phone number into standard international format for WhatsApp URL.
@@ -18,12 +19,13 @@ export function sanitizeWhatsAppPhone(phone: string): string {
  */
 export function createWhatsAppOrderLink(
   product: FlowerProduct,
-  studioPhone: string
+  studioPhone: string,
+  studioName: string = STUDIO_BRAND_NAME
 ): string {
   const sanitizedPhone = sanitizeWhatsAppPhone(studioPhone);
 
   const messageLines = [
-    `Halo Shelwa Craft, saya ingin memesan buket bunga dari etalase:`,
+    `Halo ${studioName}, saya ingin memesan buket bunga dari etalase:`,
     ``,
     `*Detail Produk:*`,
     `• Kode: ${product.code}`,
@@ -31,6 +33,7 @@ export function createWhatsAppOrderLink(
     `• Kategori: ${product.categoryLabel}`,
     `• Estimasi Harga: ${product.priceDisplay}`,
     `• Lead Time: ${product.leadTime}`,
+    product.slug ? `• Link Koleksi: https://shelwa-craft.pages.dev/koleksi/${product.slug}` : '',
     ``,
     `*Rencana Pemesanan:*`,
     `• Tanggal Acara / Dibutuhkan: [Tuliskan Tanggal]`,
@@ -38,7 +41,7 @@ export function createWhatsAppOrderLink(
     `• Catatan Khusus: [Warna pita / Ucapan kartu jika ada]`,
     ``,
     `Mohon informasi ketersediaan slot dan ongkirnya. Terima kasih!`,
-  ];
+  ].filter(Boolean);
 
   const fullText = messageLines.join('\n');
   return `https://wa.me/${sanitizedPhone}?text=${encodeURIComponent(fullText)}`;
@@ -59,4 +62,3 @@ export function createWhatsAppConsultLink(
 
   return `https://wa.me/${sanitizedPhone}?text=${encodeURIComponent(greeting)}`;
 }
-

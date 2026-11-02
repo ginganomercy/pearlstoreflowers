@@ -13,10 +13,12 @@ export function generateFloristJsonLd(
     '@graph': [
       {
         '@type': 'Florist',
-        '@id': 'https://shelwacraft.com/#organization',
+        '@id': 'https://pearlstoreflowers.com/#organization',
         name: studio.name,
         description: studio.tagline,
         telephone: studio.whatsappDisplay,
+        url: 'https://shelwa-craft.pages.dev',
+        sameAs: [studio.instagramUrl],
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Bandung',
@@ -38,12 +40,12 @@ export function generateFloristJsonLd(
             closes: '20:00',
           },
         ],
-        priceRange: 'Rp 150.000 - Rp 500.000',
+        priceRange: 'Rp 35.000 - Rp 385.000',
         areaServed: ['Bandung', 'Cimahi', 'Jawa Barat', 'Indonesia'],
       },
       {
         '@type': 'ItemList',
-        name: 'Katalog Buket Bunga Shelwa Craft',
+        name: `Katalog Buket Bunga ${studio.name}`,
         numberOfItems: products.length,
         itemListElement: products.map((item, index) => ({
           '@type': 'ListItem',
@@ -55,6 +57,7 @@ export function generateFloristJsonLd(
             description: item.description,
             image: item.imageUrl,
             category: item.categoryLabel,
+            url: `https://shelwa-craft.pages.dev/koleksi/${item.slug}`,
             offers: {
               '@type': 'Offer',
               price: item.priceNumeric,
@@ -73,24 +76,38 @@ export function generateFloristJsonLd(
 }
 
 /**
- * Injects or updates JSON-LD script tag in the document head.
+ * Generates specific Schema.org JSON-LD structured data for an individual product landing page.
  */
-export function injectSeoSchema(
+export function generateSingleProductJsonLd(
   studio: StudioInfo,
-  products: readonly FlowerProduct[]
-): void {
-  if (typeof document === 'undefined') return;
+  product: FlowerProduct
+): string {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    sku: product.code,
+    description: product.description,
+    image: product.imageUrl,
+    category: product.categoryLabel,
+    brand: {
+      '@type': 'Brand',
+      name: studio.name,
+    },
+    offers: {
+      '@type': 'Offer',
+      price: product.priceNumeric,
+      priceCurrency: 'IDR',
+      priceValidUntil: '2026-12-31',
+      availability: product.isReadyStock
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/PreOrder',
+      seller: {
+        '@type': 'Florist',
+        name: studio.name,
+      },
+    },
+  };
 
-  const scriptId = 'shelwa-craft-jsonld';
-  let scriptEl = document.getElementById(scriptId) as HTMLScriptElement | null;
-
-  if (!scriptEl) {
-    scriptEl = document.createElement('script');
-    scriptEl.id = scriptId;
-    scriptEl.type = 'application/ld+json';
-    document.head.appendChild(scriptEl);
-  }
-
-  scriptEl.textContent = generateFloristJsonLd(studio, products);
+  return JSON.stringify(schema);
 }
-

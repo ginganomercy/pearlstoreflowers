@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoreHeader from '../components/StoreHeader.astro';
+import HowToOrder from '../components/HowToOrder.astro';
+import StoreFooter from '../components/StoreFooter.astro';
+import CatalogIsland from '../components/islands/CatalogIsland.svelte';
+import FloatingWhatsApp from '../components/islands/FloatingWhatsApp.svelte';
+import catalogData from '../data/catalog.json';
+import type { FlowerProduct, StudioInfo } from '../domain/types';
+import { generateFloristJsonLd } from '../infrastructure/seo-schema';
+
+const studio: StudioInfo = catalogData.studio;
+const products: readonly FlowerProduct[] = catalogData.products as FlowerProduct[];
+const jsonLd = generateFloristJsonLd(studio, products);
+---
+
+<BaseLayout
+  title={`${studio.name} — Luxury Floral & Hand Bouquet Atelier`}
+  description={`Katalog resmi ${studio.name} (${studio.handle}): Buket pengantin, lamaran, wisuda & bunga abadi kustom di Bandung. Pesan via WhatsApp.`}
+  jsonLd={jsonLd}
+>
+  <div id="top" class="min-h-screen flex flex-col bg-atelier-bg text-atelier-text">
+    <!-- Atelier Header -->
+    <StoreHeader studio={studio} totalProducts={products.length} />
+
+    <!-- Main Catalog Island with Instant MiniSearch & Filters -->
+    <main class="flex-1 py-4">
+      <CatalogIsland client:idle products={products} studio={studio} />
+      <HowToOrder studio={studio} />
+    </main>
+
+    <!-- Atelier Footer -->
+    <StoreFooter studio={studio} />
+
+    <!-- Persistent WhatsApp Assistance -->
+    <FloatingWhatsApp client:idle studio={studio} />
+  </div>
+</BaseLayout>
+

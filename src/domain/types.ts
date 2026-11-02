@@ -1,5 +1,5 @@
 /**
- * Domain types for Shelwa Craft Storefront & Flower Catalog.
+ * Domain types for Pearl Store Flowers Storefront & Flower Catalog.
  */
 
 export type ProductCategory =
@@ -12,6 +12,7 @@ export type ProductCategory =
 export interface FlowerProduct {
   readonly id: string;
   readonly code: string;
+  readonly slug: string;
   readonly title: string;
   readonly category: 'Wedding' | 'Engagement' | 'Graduation' | 'Custom';
   readonly categoryLabel: string;
@@ -38,4 +39,10 @@ export interface StudioInfo {
   readonly whatsappDisplay: string;
   readonly instagramUrl: string;
   readonly services: readonly string[];
+}
+
+export interface CategorySummary {
+  readonly category: ProductCategory;
+  readonly count: number;
+  readonly description: string;
 }

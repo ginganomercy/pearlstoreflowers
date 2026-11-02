@@ -1,50 +1,71 @@
-# Shelwa Craft — Luxury Floral & Hand Bouquet Atelier
+# Pearl Store Flowers — Luxury Floral & Hand Bouquet Atelier
 
-Aplikasi web mobile-first resmi untuk etalase katalog buket bunga **Shelwa Craft** (`@shelwa_craft`), dirancang dengan standar butik haute floristerie (*Botanical Luxury Green*), dioptimalkan khusus untuk akses cepat melalui tautan bio Instagram dengan integrasi langsung ke pemesanan WhatsApp.
+Aplikasi web multi-page (*Multi-Page Application / MPA*) resmi berstandar *haute floristerie* untuk **Pearl Store Flowers** ([@pearl.storeflowers](https://www.instagram.com/pearl.storeflowers)), dibangun menggunakan arsitektur mutakhir **Astro + Svelte 5 (Runes) + Tailwind CSS + Zod + MiniSearch** yang ditenagai oleh runtime **Bun** dan dioptimalkan untuk hosting di edge CDN Cloudflare Pages.
 
 ---
 
-## 🚀 Arsitektur Produksi & Optimasi (Hardened Edge SPA)
+## 🏛️ Arsitektur Mutakhir (Cutting-Edge Stack)
 
-- **Fault Tolerance (Error Boundary)**: Membungkus seluruh aplikasi dengan `ErrorBoundary` kelas enterprise untuk mencegah layar putih kosong saat terjadi kendala rendering, dilengkapi dengan tombol reload dan pemesanan WhatsApp darurat.
-- **Adaptive Image Optimizer (WebP Pipeline)**: Mengompresi URL gambar secara dinamis ke format WebP (`w=600&q=75&fm=webp`) yang menghemat kuota pengunjung hingga ~65%, dilengkapi prioritas muat `fetchpriority="high"` untuk produk *above-the-fold*.
-- **Debounced Search Engine (150ms)**: Menstabilkan kalkulasi filter saat pengunjung mengetik cepat di keyboard ponsel, menjaga frame rate tetap halus (60 FPS).
-- **SEO & Social Commerce (JSON-LD)**: Menginjeksikan structured data schema.org jenis `Florist`, `LocalBusiness`, dan `ItemList` berstandar Google Search agar etalase memiliki *Rich Snippets*.
-- **Vendor Chunk Splitting**: Memisahkan bundle produksi Vite (`vendor-react`, `vendor-icons`, dan app logic) untuk memaksimalkan *Long-Term Browser Caching*.
-- **Aksesibilitas (WCAG AA)**: Modal produk dilengkapi `role="dialog"`, `aria-modal="true"`, dan *focus trap* otomatis.
+| Lapisan | Teknologi | Peran & Keunggulan Arsitektur |
+|---|---|---|
+| **SSG Multi-Page** | **Astro 4/5** | Menghasilkan HTML statis murni (*Zero-JS baseline*), sub-milidetik TTFB, dan pre-rendered pages untuk ke-38 buket. |
+| **Reactive Islands** | **Svelte 5** | Interaktivitas terisolasi (*Runes reactivity*) untuk pencarian instan, filter kategori, dan modal tinjau cepat (<8KB client bundle). |
+| **Search Engine** | **MiniSearch** | Mesin pencari *inverted index* lokal dengan fitur *fuzzy search* & toleransi saltik (*typo tolerance*) sub-2 milidetik. |
+| **Data Integrity Guard** | **Zod** | Validasi skema ketat saat build time, mencegah data produk cacat atau SKU duplikat rilis ke produksi. |
+| **Mobile & PWA** | **Web App Manifest** | PWA-ready dengan tema botanical `#183324`, mendukung opsi *Add to Home Screen*. |
+| **Runtime & Toolchain** | **Bun 1.1+** | Native execution untuk dependency resolution, bundler, dan test runner otomatis sub-detik. |
+| **Edge CDN** | **Cloudflare Pages** | Kompatibel penuh dengan output direktori `dist/` tanpa resiko MIME type `application/octet-stream`. |
+
+---
+
+## 📱 WhatsApp & Social Commerce Integration
+
+Setiap buket dari 38 koleksi memiliki URL permanen tersendiri:
+```text
+https://shelwa-craft.pages.dev/koleksi/[slug]
+```
+Setiap halaman dilengkapi dengan tag OpenGraph lengkap (`og:image`, `og:title`, `og:description`) serta Schema.org JSON-LD (`Florist` dan `Product`). Saat tautan buket dibagikan ke WhatsApp, WhatsApp secara otomatis memunculkan kartu preview visual beresolusi tinggi dengan foto buket asli, nama, dan harga produk.
 
 ---
 
 ## 🌿 Identitas Visual (Botanical Luxury & Haute Floristerie)
 
-- **Deep Botanical Forest (`#183324` / `#142A1D`)**: Digunakan secara megah pada Hero Showcase Banner, Seksi Alur Pemesanan 4 Langkah, dan Tombol Pemesanan WhatsApp.
-- **Fresh Sage Mint (`#EBF4EB` & `#CCE2CC`)**: Menghiasi tab filter kategori, chip komposisi bunga asli, dan lencana portofolio resmi.
-- **Dark Forest Atelier (`#0E1E15`)**: Memberikan fondasi wibawa pada Top Announcement Bar dan Footer resmi.
-- **Fotografi Asli Beresolusi Tinggi**: 38 produk buket bunga terkurasi dipetakan dengan foto rangkaian asli (rasio portrait *4:5*) dengan efek interaktif *hover zoom*.
+- **Deep Botanical Forest (`#183324` / `#142A1D`)**: Identitas kemewahan alami pada tombol pemesanan WhatsApp, header showcase, dan panduan order.
+- **Fresh Sage Mint (`#EBF4EB` & `#CCE2CC`)**: Lencana kategori dan chip komposisi bunga asli.
+- **Darkest Forest Atelier (`#0E1E15`)**: Pengumuman rilis *top bar* dan footer resmi.
+- **Warm Ivory Pearl (`#FAF9F5`)**: Latar belakang elegan berpadu dengan kartu putih bersih.
 
 ---
 
-## 📦 Katalog Produk Terkurasi (38 Produk Lengkap)
+## 📦 Katalog Produk (38 Koleksi Terkurasi)
 
-1. **Wedding & Bridal Collection** (10 Produk): Mawar putih Holland, peach Juliet, rustic dried, red velvet, cascading orchid, champagne roses.
-2. **Engagement & Proposal Collection** (8 Produk): Dusty rose, sweet apricot, lavender eustoma, baby's breath cloud, cappuccino roses.
-3. **Graduation & Celebration** (12 Produk): Sunflower cerah, blue hydrangea, pastel gerberas, statice everlasting.
-4. **Custom & Everlasting Gift** (8 Produk): Bloom box luxury, dome bunga abadi, money bouquet styling, frame dried flower.
+1. **Wedding & Bridal Collection** (10 Produk: `PSF-WED-01` s/d `PSF-WED-10`): Mawar putih Holland, peach garden, rustic dried, crimson rose cascade, minimalist calla lily, orchid spray, dsb.
+2. **Engagement & Proposal Collection** (8 Produk: `PSF-ENG-01` s/d `PSF-ENG-08`): Romantic pastel, sage green & ivory, champagne gold, baby's breath cloud, dusty blue hydrangea, dsb.
+3. **Graduation & Celebration** (12 Produk: `PSF-GRAD-01` s/d `PSF-GRAD-12`): Mawar satin abadi, bunga kawat bulu (*pipe cleaner*), boneka wisuda, bunga matahari, butterfly LED, dsb.
+4. **Bunga Abadi & Kustom** (8 Produk: `PSF-CUST-01` s/d `PSF-CUST-08`): Buket uang tarik, balon akrilik transparan, bloom box bunga meja, pigura kaca 3D shadow box, dsb.
 
 ---
 
-## 🛠️ Panduan Menjalankan
+## 🛠️ Perintah Pengujian & Pembangunan
 
 ```bash
-cd "c:\Users\RAFLY A.R\Downloads\shelwa_craft\shelwa-craft-web"
+cd "shelwa-craft-web"
+
+# Instalasi dependency
 bun install
-bun run dev     # Menjalankan server dev di http://localhost:3000
-bun test        # Menjalankan 18 unit test otomatis
-bun run build   # Membangun versi rilis siap deploy di folder dist/
+
+# Menjalankan unit test otomatis (14 pengujian lulus dalam <300ms)
+bun test
+
+# Membangun rilis produksi (39 halaman statis di dist/)
+bun run build
+
+# Menjalankan server lokal pratinjau
+bun run preview
 ```
 
 ---
 
 ## ⚖️ Lisensi & Hak Cipta
 
-© 2026 Shelwa Craft. Dikembangkan oleh **Rafly Ashraffi Rachmat**. Seluruh hak cipta dilindungi undang-undang.
+© 2026 Pearl Store Flowers. Dikembangkan oleh **Rafly Ashraffi Rachmat**. Seluruh hak cipta dilindungi undang-undang.

@@ -3,6 +3,9 @@ node_modules/
 .pnp
 .pnp.js
 
+# Astro cache
+.astro/
+
 # Production build artifacts
 dist/
 dist-ssr/
@@ -24,4 +27,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.log
-

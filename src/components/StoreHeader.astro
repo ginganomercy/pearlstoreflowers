@@ -1,0 +1,137 @@
+---
+import type { StudioInfo } from '../domain/types';
+import { createWhatsAppConsultLink } from '../application/whatsapp';
+
+interface Props {
+  studio: StudioInfo;
+  totalProducts?: number;
+}
+
+const { studio, totalProducts = 38 } = Astro.props;
+const consultWaUrl = createWhatsAppConsultLink(studio);
+---
+
+<header class="w-full bg-white border-b border-stone-200/80">
+  <!-- Top Announcement Bar in Dark Forest Atelier -->
+  <div class="w-full bg-botanical-950 text-[#A8D5BA] border-b border-botanical-900 py-2 px-4 text-center">
+    <p class="text-[11px] font-mono tracking-widest uppercase flex items-center justify-center gap-2 flex-wrap">
+      <span class="text-atelier-champagne">✨</span>
+      <span class="font-semibold text-white">Same-Day & H-3 Delivery Bandung</span>
+      <span class="text-[#3E7B58]">•</span>
+      <span>100% Curated Fresh & Preserved Stems</span>
+      <span class="text-[#3E7B58]">•</span>
+      <span>Free Wax-Seal Personalized Letter</span>
+    </p>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-7 sm:py-8 space-y-7">
+    <!-- Brand Main Identity -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="flex items-start sm:items-center gap-4">
+        <!-- Atelier Brand Monogram with Pearl Flower Motif -->
+        <a href="/" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-botanical-100 border border-botanical-200 text-botanical-800 flex items-center justify-center shadow-xs shrink-0 transition-transform duration-300 hover:scale-105" aria-label="Pearl Store Flowers Beranda">
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 text-botanical-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"></path>
+            <path d="M12 7.5V9"></path>
+            <path d="M7.5 12H9"></path>
+            <path d="M16.5 12H15"></path>
+            <path d="M12 16.5V15"></path>
+          </svg>
+        </a>
+
+        <div class="space-y-1">
+          <div class="flex items-center gap-2.5 flex-wrap">
+            <a href="/" class="hover:text-botanical-800 transition-colors">
+              <h1 class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-stone-900">
+                {studio.name}
+              </h1>
+            </a>
+            <span class="inline-flex items-center gap-1 text-[11px] font-mono font-medium bg-botanical-100 text-botanical-800 border border-botanical-200 px-2.5 py-0.5 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-botanical-600"></span>
+              Verified Atelier
+            </span>
+          </div>
+
+          <p class="text-xs sm:text-sm font-medium text-stone-600">
+            {studio.tagline} — Spesialis Rangkaian Buket Pengantin, Lamaran, & Hadiah Seremonial
+          </p>
+
+          <!-- Location & Operational Hours -->
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3 text-xs text-stone-500 pt-1">
+            <span class="inline-flex items-center gap-1.5">
+              <span>📍</span>
+              <span>{studio.location}</span>
+            </span>
+            <span class="hidden sm:inline text-stone-300">•</span>
+            <span class="inline-flex items-center gap-1.5">
+              <span>🕒</span>
+              <span>{studio.operatingHours}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0">
+        <a
+          href={consultWaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-botanical-800 hover:bg-botanical-900 text-white text-xs font-semibold shadow-xs hover:shadow transition-all border border-botanical-950/30"
+        >
+          <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.891.815 2.796.815 3.183 0 5.769-2.586 5.77-5.766.001-3.182-2.585-5.768-5.77-5.768zm0-2c4.288 0 7.77 3.479 7.772 7.768 0 4.288-3.482 7.768-7.772 7.768-1.289 0-2.518-.32-3.606-.889l-4.425 1.159 1.185-4.328c-.655-1.139-1.002-2.434-1.002-3.71 0-4.289 3.483-7.768 7.772-7.768z"/>
+          </svg>
+          <span>Chat WhatsApp</span>
+        </a>
+
+        <a
+          href={studio.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-botanical-50 hover:bg-botanical-100 text-botanical-800 text-xs font-medium transition-colors border border-botanical-200"
+        >
+          <span>📸</span>
+          <span>{studio.handle}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Atelier Core Value Pillars -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 pt-2">
+      <div class="flex items-center gap-2.5 p-3 rounded-xl bg-botanical-50/70 border border-botanical-200/80">
+        <span class="text-botanical-700 text-lg">🛡️</span>
+        <div class="text-[11px] leading-tight">
+          <p class="font-bold text-botanical-950 font-serif">100% Stem QC</p>
+          <p class="text-stone-500">Kualitas mawar terkurasi</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5 p-3 rounded-xl bg-botanical-50/70 border border-botanical-200/80">
+        <span class="text-botanical-700 text-lg">💌</span>
+        <div class="text-[11px] leading-tight">
+          <p class="font-bold text-botanical-950 font-serif">Wax-Seal Card</p>
+          <p class="text-stone-500">Gratis surat personal</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5 p-3 rounded-xl bg-botanical-50/70 border border-botanical-200/80">
+        <span class="text-botanical-700 text-lg">🚀</span>
+        <div class="text-[11px] leading-tight">
+          <p class="font-bold text-botanical-950 font-serif">Same-Day Ready</p>
+          <p class="text-stone-500">Slot instan tersedia</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5 p-3 rounded-xl bg-botanical-50/70 border border-botanical-200/80">
+        <span class="text-botanical-700 text-lg">📦</span>
+        <div class="text-[11px] leading-tight">
+          <p class="font-bold text-botanical-950 font-serif">Reinforced Pack</p>
+          <p class="text-stone-500">Box kokoh anti-penyok</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
