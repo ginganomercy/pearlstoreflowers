@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import { Flower2, Sparkles, CheckCircle2, Clock, Eye } from 'lucide-react';
 import type { FlowerProduct } from '../../domain/types';
+import { optimizeImageUrl } from '../../application/image-optimizer';
 
 interface ProductPhotoVisualProps {
   readonly product: FlowerProduct;
+  readonly isPriority?: boolean;
   readonly onClick?: () => void;
 }
 
 export const ProductPhotoVisual: React.FC<ProductPhotoVisualProps> = ({
   product,
+  isPriority = false,
   onClick,
 }) => {
   const [imageError, setImageError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const hasImage = Boolean(product.imageUrl) && !imageError;
+  const optimizedUrl = hasImage ? optimizeImageUrl(product.imageUrl || '') : '';
 
   return (
     <div
@@ -28,14 +32,16 @@ export const ProductPhotoVisual: React.FC<ProductPhotoVisualProps> = ({
 
       {hasImage ? (
         <img
-          src={product.imageUrl}
+          src={optimizedUrl}
           alt={product.title}
           onLoad={() => setIsLoaded(true)}
           onError={() => setImageError(true)}
+          loading={isPriority ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={isPriority ? 'high' : 'auto'}
           className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
-          loading="lazy"
         />
       ) : (
         /* Fallback Botanical Plate */

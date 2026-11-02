@@ -1,7 +1,13 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import type { FlowerProduct, ProductCategory, StudioInfo } from '../domain/types';
+import {
+  ABOVE_THE_FOLD_PRIORITY_COUNT,
+  TOTAL_CATALOG_PRODUCTS_COUNT,
+} from '../domain/constants';
 import catalogData from '../data/catalog.json';
 import { filterProducts, getCategoryCounts } from '../application/catalog-service';
+import { useDebouncedValue } from '../application/use-debounced-value';
+import { injectSeoSchema } from '../infrastructure/seo-schema';
 import { StoreHeader } from './components/StoreHeader';
 import { CategoryFilter } from './components/CategoryFilter';
 import { ProductCard } from './components/ProductCard';
@@ -19,20 +25,28 @@ export const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<FlowerProduct | null>(null);
 
+  // Debounce search query to maintain 60fps on mobile viewports
+  const debouncedSearchQuery = useDebouncedValue(searchQuery);
+
+  // Inject structured JSON-LD SEO Schema on mount
+  useEffect(() => {
+    injectSeoSchema(studio, allProducts);
+  }, [studio, allProducts]);
+
   // Compute category statistics
   const categoryCounts = useMemo(() => {
     return getCategoryCounts(allProducts);
   }, [allProducts]);
 
-  // Filter products reactively
+  // Filter products with debounced search query
   const filteredProducts = useMemo(() => {
-    return filterProducts(allProducts, activeCategory, searchQuery);
-  }, [allProducts, activeCategory, searchQuery]);
+    return filterProducts(allProducts, activeCategory, debouncedSearchQuery);
+  }, [allProducts, activeCategory, debouncedSearchQuery]);
 
   return (
     <div className="min-h-screen flex flex-col bg-atelier-bg text-atelier-text">
       {/* Studio Header & Brand Value */}
-      <StoreHeader studio={studio} totalProducts={allProducts.length} />
+      <StoreHeader studio={studio} totalProducts={TOTAL_CATALOG_PRODUCTS_COUNT} />
 
       {/* Category Navigation & Live Search in Botanical Mint */}
       <CategoryFilter
@@ -79,14 +93,15 @@ export const App: React.FC = () => {
           )}
         </div>
 
-        {/* Product Grid */}
+        {/* Product Grid with Above-The-Fold Priority Loading */}
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-            {filteredProducts.map((product) => (
+            {filteredProducts.map((product, index) => (
               <ProductCard
                 key={product.id}
                 product={product}
                 studio={studio}
+                isPriority={index < ABOVE_THE_FOLD_PRIORITY_COUNT}
                 onOpenDetail={setSelectedProduct}
               />
             ))}
@@ -126,7 +141,7 @@ export const App: React.FC = () => {
       {/* Floating WhatsApp Action for Mobile */}
       <FloatingWhatsAppButton studio={studio} />
 
-      {/* Detail Modal */}
+      {/* Detail Modal with Accessible Focus Trap */}
       <ProductDetailModal
         product={selectedProduct}
         studio={studio}

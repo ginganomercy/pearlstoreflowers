@@ -7,12 +7,14 @@ import { ProductPhotoVisual } from './ProductPhotoVisual';
 interface ProductCardProps {
   readonly product: FlowerProduct;
   readonly studio: StudioInfo;
+  readonly isPriority?: boolean;
   readonly onOpenDetail: (product: FlowerProduct) => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   studio,
+  isPriority = false,
   onOpenDetail,
 }) => {
   const waOrderUrl = createWhatsAppOrderLink(product, studio.whatsappNumber);
@@ -23,6 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div>
         <ProductPhotoVisual
           product={product}
+          isPriority={isPriority}
           onClick={() => onOpenDetail(product)}
         />
 

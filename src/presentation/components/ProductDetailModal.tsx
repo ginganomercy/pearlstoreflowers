@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   X,
   MessageCircle,
@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import type { FlowerProduct, StudioInfo } from '../../domain/types';
 import { createWhatsAppOrderLink } from '../../application/whatsapp';
+import { optimizeImageUrl } from '../../application/image-optimizer';
 
 interface ProductDetailModalProps {
   readonly product: FlowerProduct | null;
@@ -24,16 +25,23 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   studio,
   onClose,
 }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
       }
     };
+
     if (product) {
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
+      // Set initial focus to close button for screen reader accessibility
+      setTimeout(() => closeButtonRef.current?.focus(), 50);
     }
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'auto';
@@ -43,9 +51,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   if (!product) return null;
 
   const waOrderUrl = createWhatsAppOrderLink(product, studio.whatsappNumber);
+  const optimizedModalImage = product.imageUrl ? optimizeImageUrl(product.imageUrl, 800, 80) : '';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-stone-900/60 backdrop-blur-xs animate-fade-in">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-product-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-stone-900/60 backdrop-blur-xs animate-fade-in"
+    >
       {/* Backdrop */}
       <div
         className="fixed inset-0"
@@ -54,7 +68,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden z-10 my-auto">
+      <div
+        ref={modalRef}
+        className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden z-10 my-auto"
+      >
         {/* Header Bar */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-stone-100 bg-[#FCFBF8]">
           <div className="flex items-center gap-2">
@@ -66,10 +83,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </span>
           </div>
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors"
-            aria-label="Tutup Detail"
+            className="p-1.5 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors focus:outline-none focus:ring-2 focus:ring-botanical-600"
+            aria-label="Tutup Detail Produk"
           >
             <X className="w-5 h-5" />
           </button>
@@ -78,11 +96,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         {/* Modal Scrollable Body */}
         <div className="p-5 sm:p-6 max-h-[75vh] overflow-y-auto space-y-6">
           {/* Main Visual Display */}
-          {product.imageUrl && (
+          {optimizedModalImage && (
             <div className="w-full aspect-video rounded-xl overflow-hidden bg-stone-100 shadow-xs border border-stone-200">
               <img
-                src={product.imageUrl}
+                src={optimizedModalImage}
                 alt={product.title}
+                loading="eager"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -90,7 +110,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Title & Price */}
           <div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 leading-tight">
+            <h2
+              id="modal-product-title"
+              className="font-serif text-xl sm:text-2xl font-bold text-stone-900 leading-tight"
+            >
               {product.title}
             </h2>
             <div className="mt-2 flex items-baseline justify-between flex-wrap gap-2">
