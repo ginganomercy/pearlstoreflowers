@@ -99,7 +99,7 @@
 
 <section id="katalog" class="w-full">
   <!-- Interactive Category Pills & Search Controls -->
-  <div class="sticky top-0 z-30 bg-atelier-bg/95 backdrop-blur-md py-4 border-b border-botanical-200/80 mb-8 transition-all">
+  <div class="sticky top-0 z-30 bg-atelier-bg/95 backdrop-blur-md py-3.5 sm:py-4 border-b border-botanical-200/80 mb-6 transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
       <!-- Search Input with Typo Tolerance Indicator -->
       <div class="relative w-full">
@@ -154,7 +154,7 @@
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Active Result Status Bar -->
-    <div class="flex items-center justify-between pb-4 mb-6 border-b border-botanical-200 text-xs text-stone-500">
+    <div class="flex items-center justify-between pb-3.5 mb-5 border-b border-botanical-200 text-xs text-stone-500">
       <div class="flex items-center gap-2 font-mono flex-wrap">
         <span class="w-1.5 h-1.5 rounded-full bg-botanical-600 animate-pulse"></span>
         <span class="font-medium text-stone-800">
@@ -184,9 +184,9 @@
       {/if}
     </div>
 
-    <!-- Product Grid: 4 Columns on Desktop (max-w-7xl) -->
+    <!-- Product Grid: 4 Columns on Desktop with Refined Proportions -->
     {#if filteredProducts.length > 0}
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
         {#each filteredProducts as product, index (product.id)}
           {@const isPriority = index < ABOVE_THE_FOLD_PRIORITY_COUNT}
           {@const optimizedImg = product.imageUrl ? optimizeImageUrl(product.imageUrl, IMAGE_TARGET_WIDTH_PX, IMAGE_TARGET_QUALITY_PERCENT) : ''}
@@ -224,53 +224,70 @@
                 </div>
               </button>
 
-              <!-- Card Body -->
-              <div class="p-4 sm:p-5 flex flex-col space-y-3">
-                <div class="flex items-center justify-between text-xs">
-                  <span class="font-mono text-[10px] tracking-wider uppercase font-bold text-botanical-800 bg-botanical-100 border border-botanical-200 px-2.5 py-0.5 rounded-md">
-                    {product.categoryLabel}
+              <!-- Card Body with Precise Balanced Spacing -->
+              <div class="p-4 flex flex-col space-y-2.5">
+                <div class="flex items-center justify-between gap-2 text-xs">
+                  <span class="font-mono text-[10px] tracking-wider uppercase font-bold text-botanical-800 bg-botanical-100 border border-botanical-200 px-2 py-0.5 rounded-md whitespace-nowrap shrink-0">
+                    {product.category}
                   </span>
-                  <span class="font-mono text-[11px] text-stone-400 flex items-center gap-1">
-                    <Box class="w-3 h-3 text-stone-400" />
-                    {product.dimension.split(',')[0]}
+                  <span class="font-mono text-[11px] text-stone-500 flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                    <Box class="w-3.5 h-3.5 text-stone-400 shrink-0" />
+                    <span>{product.dimension.split(',')[0]}</span>
                   </span>
                 </div>
 
-                <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 line-clamp-1">
+                <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 leading-snug">
                   <button
                     type="button"
                     onclick={() => (selectedProduct = product)}
-                    class="text-left group-hover:text-botanical-800 transition-colors cursor-pointer"
+                    class="text-left group-hover:text-botanical-800 transition-colors cursor-pointer line-clamp-2 min-h-[2.6rem] block w-full"
                   >
                     {product.title}
                   </button>
                 </h3>
 
-                <!-- Composition Chips -->
-                <div class="space-y-1.5 pt-1 border-t border-stone-100">
-                  <div class="flex items-center gap-1 text-[11px] font-mono text-botanical-700 font-medium">
-                    <Sparkles class="w-3.5 h-3.5 text-botanical-600 shrink-0" />
-                    <span>Komposisi Bunga:</span>
+                <!-- Composition Chips: Consistent Height & Clean Count -->
+                <div class="space-y-1.5 pt-2 border-t border-stone-100">
+                  <div class="flex items-center justify-between text-[11px] font-mono text-botanical-700 font-medium">
+                    <span class="flex items-center gap-1">
+                      <Sparkles class="w-3.5 h-3.5 text-botanical-600 shrink-0" />
+                      <span>Komposisi Bunga:</span>
+                    </span>
+                    {#if product.flowerComposition.length > 2}
+                      <span class="text-[10px] text-stone-400 font-mono font-normal">
+                        +{product.flowerComposition.length - 2} varian
+                      </span>
+                    {/if}
                   </div>
-                  <div class="flex flex-wrap gap-1">
-                    {#each product.flowerComposition as flower}
-                      <span class="inline-block text-[11px] bg-botanical-100/70 text-botanical-800 px-2 py-0.5 rounded-md border border-botanical-200 font-medium">
+                  <div class="flex flex-wrap gap-1 min-h-[1.6rem]">
+                    {#each product.flowerComposition.slice(0, 2) as flower}
+                      <span class="inline-block text-[11px] bg-botanical-50 text-botanical-800 px-2 py-0.5 rounded-md border border-botanical-200/80 font-medium whitespace-nowrap">
                         {flower}
                       </span>
                     {/each}
+                    {#if product.flowerComposition.length > 2}
+                      <button
+                        type="button"
+                        onclick={() => (selectedProduct = product)}
+                        class="inline-block text-[10px] font-mono bg-stone-100 hover:bg-stone-200 text-stone-600 px-1.5 py-0.5 rounded-md border border-stone-200 transition-colors cursor-pointer"
+                        title="Klik untuk melihat komposisi lengkap"
+                      >
+                        +{product.flowerComposition.length - 2}
+                      </button>
+                    {/if}
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Card Action Footer -->
-            <div class="p-4 sm:p-5 pt-3 border-t border-stone-100 bg-[#FCFBF8]">
-              <div class="flex items-baseline justify-between mb-3">
+            <div class="p-4 pt-3 border-t border-stone-100 bg-[#FCFBF8]">
+              <div class="flex items-baseline justify-between mb-2.5">
                 <div>
                   <span class="font-mono text-[10px] uppercase tracking-wider text-stone-400 block">
                     Mulai Dari
                   </span>
-                  <span class="font-serif text-xl font-bold text-stone-900 tracking-tight">
+                  <span class="font-serif text-lg sm:text-xl font-bold text-stone-900 tracking-tight">
                     {product.priceDisplay}
                   </span>
                 </div>
@@ -279,7 +296,7 @@
                   <button
                     type="button"
                     onclick={() => (selectedProduct = product)}
-                    class="text-xs font-medium text-stone-600 hover:text-botanical-800 flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-botanical-100 transition-colors"
+                    class="text-xs font-medium text-stone-600 hover:text-botanical-800 flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-botanical-100 transition-colors cursor-pointer"
                   >
                     <Info class="w-3.5 h-3.5 text-stone-500" />
                     <span>Detail</span>
