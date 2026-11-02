@@ -37,8 +37,8 @@
   let selectedProduct: FlowerProduct | null = $state(null);
   let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
-  // MiniSearch instance
-  let searchEngine = createCatalogSearchEngine(products);
+  // MiniSearch reactive instance
+  const searchEngine = $derived(createCatalogSearchEngine(products));
 
   function handleSearchInput(e: Event) {
     const target = e.target as HTMLInputElement;
@@ -194,10 +194,12 @@
 
           <article class="group bg-white rounded-2xl border border-stone-200/90 shadow-2xs hover:shadow-xl hover:border-botanical-300 transition-all duration-300 flex flex-col justify-between overflow-hidden">
             <div>
-              <!-- Bouquet Photography -->
-              <div
-                class="relative aspect-[4/5] overflow-hidden bg-stone-100 cursor-pointer"
+              <!-- Bouquet Photography (Accessible Button) -->
+              <button
+                type="button"
+                class="w-full text-left relative aspect-[4/5] overflow-hidden bg-stone-100 cursor-pointer block p-0 border-0"
                 onclick={() => (selectedProduct = product)}
+                aria-label="Lihat spesifikasi {product.title}"
               >
                 {#if optimizedImg}
                   <img
@@ -220,7 +222,7 @@
                     {product.code}
                   </span>
                 </div>
-              </div>
+              </button>
 
               <!-- Card Body -->
               <div class="p-4 sm:p-5 flex flex-col space-y-3">
@@ -234,11 +236,14 @@
                   </span>
                 </div>
 
-                <h3
-                  onclick={() => (selectedProduct = product)}
-                  class="font-serif text-base sm:text-lg font-bold text-stone-900 group-hover:text-botanical-800 transition-colors cursor-pointer line-clamp-1"
-                >
-                  {product.title}
+                <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 line-clamp-1">
+                  <button
+                    type="button"
+                    onclick={() => (selectedProduct = product)}
+                    class="text-left group-hover:text-botanical-800 transition-colors cursor-pointer"
+                  >
+                    {product.title}
+                  </button>
                 </h3>
 
                 <!-- Composition Chips -->

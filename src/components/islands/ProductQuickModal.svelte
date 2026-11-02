@@ -66,12 +66,13 @@
     aria-labelledby="modal-product-title"
     class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-stone-900/65 backdrop-blur-xs transition-opacity duration-200"
   >
-    <!-- Backdrop -->
-    <div
-      class="fixed inset-0"
-      aria-hidden="true"
+    <!-- Backdrop Button -->
+    <button
+      type="button"
+      class="fixed inset-0 bg-transparent border-0 cursor-default p-0"
+      aria-label="Tutup modal latar belakang"
       onclick={onClose}
-    ></div>
+    ></button>
 
     <!-- Modal Dialog Body -->
     <div
