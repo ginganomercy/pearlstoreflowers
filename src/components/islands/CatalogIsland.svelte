@@ -100,7 +100,7 @@
 <section id="katalog" class="w-full">
   <!-- Interactive Category Pills & Search Controls -->
   <div class="sticky top-0 z-30 bg-atelier-bg/95 backdrop-blur-md py-4 border-b border-botanical-200/80 mb-8 transition-all">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
       <!-- Search Input with Typo Tolerance Indicator -->
       <div class="relative w-full">
         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-botanical-600">
@@ -152,7 +152,7 @@
     </div>
   </div>
 
-  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Active Result Status Bar -->
     <div class="flex items-center justify-between pb-4 mb-6 border-b border-botanical-200 text-xs text-stone-500">
       <div class="flex items-center gap-2 font-mono flex-wrap">
@@ -184,9 +184,9 @@
       {/if}
     </div>
 
-    <!-- Product Grid -->
+    <!-- Product Grid: 4 Columns on Desktop (max-w-7xl) -->
     {#if filteredProducts.length > 0}
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
         {#each filteredProducts as product, index (product.id)}
           {@const isPriority = index < ABOVE_THE_FOLD_PRIORITY_COUNT}
           {@const optimizedImg = product.imageUrl ? optimizeImageUrl(product.imageUrl, IMAGE_TARGET_WIDTH_PX, IMAGE_TARGET_QUALITY_PERCENT) : ''}
