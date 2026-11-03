@@ -4,7 +4,6 @@
     X,
     MessageCircle,
     Clock,
-    Sparkles,
     Layers,
     Box,
     Palette,
@@ -57,6 +56,21 @@
       ? optimizeImageUrl(product.imageUrl, MODAL_IMAGE_TARGET_WIDTH_PX, IMAGE_TARGET_QUALITY_PERCENT)
       : ''
   );
+
+  function getModalCategoryBadgeClasses(cat: string): string {
+    switch (cat) {
+      case 'Wedding':
+        return 'bg-softPink-100 text-softPink-800 border-softPink-200';
+      case 'Engagement':
+        return 'bg-softGreen-100 text-softGreen-800 border-softGreen-200';
+      case 'Graduation':
+        return 'bg-softBlue-100 text-softBlue-800 border-softBlue-200';
+      case 'Custom':
+        return 'bg-softYellow-100 text-softYellow-800 border-softYellow-200';
+      default:
+        return 'bg-stone-100 text-stone-800 border-stone-200';
+    }
+  }
 </script>
 
 {#if product}
@@ -64,7 +78,7 @@
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-product-title"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-stone-900/65 backdrop-blur-xs transition-opacity duration-200"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-stone-900/60 backdrop-blur-xs transition-opacity duration-200"
   >
     <!-- Backdrop Button -->
     <button
@@ -74,17 +88,17 @@
       onclick={onClose}
     ></button>
 
-    <!-- Modal Dialog Body -->
+    <!-- Modal Dialog Body (Zero Gradient Policy) -->
     <div
       class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden z-10 my-auto animate-in fade-in zoom-in-95 duration-200"
     >
       <!-- Header Bar -->
       <div class="flex items-center justify-between px-5 py-4 border-b border-stone-100 bg-[#FCFBF8]">
         <div class="flex items-center gap-2">
-          <span class="font-sans text-xs font-semibold px-2.5 py-0.5 rounded bg-stone-100 text-stone-800 border border-stone-200">
+          <span class="font-sans text-xs font-semibold px-2.5 py-0.5 rounded-md bg-stone-100 text-stone-800 border border-stone-200">
             {product.code}
           </span>
-          <span class="font-sans text-xs font-medium text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+          <span class="font-sans text-xs font-semibold px-2.5 py-0.5 rounded-md border {getModalCategoryBadgeClasses(product.category)}">
             {product.categoryLabel}
           </span>
         </div>
@@ -92,7 +106,7 @@
           bind:this={closeBtnEl}
           type="button"
           onclick={onClose}
-          class="p-1.5 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors focus:outline-none focus:ring-2 focus:ring-botanical-600"
+          class="p-1.5 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors focus:outline-none focus:ring-2 focus:ring-softGreen-300"
           aria-label="Tutup Detail Produk"
         >
           <X class="w-5 h-5" />
@@ -126,9 +140,9 @@
             <span class="font-serif text-2xl font-extrabold text-stone-900 tracking-tight">
               {product.priceDisplay}
             </span>
-            <span class="inline-flex items-center gap-1.5 font-sans text-xs font-medium text-botanical-800 bg-stone-100 px-3 py-1 rounded-full border border-stone-200">
-              <Clock class="w-3.5 h-3.5 text-stone-500" />
-              {product.leadTime}
+            <span class="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-softGreen-800 bg-softGreen-50 px-3 py-1 rounded-full border border-softGreen-200">
+              <Clock class="w-3.5 h-3.5 text-softGreen-700" />
+              <span>{product.leadTime}</span>
             </span>
           </div>
         </div>
@@ -175,20 +189,20 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {#each product.flowerComposition as stem}
               <div class="flex items-center gap-2 p-2.5 rounded-lg bg-stone-50 border border-stone-200 text-xs text-stone-800 font-medium">
-                <Check class="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                <Check class="w-3.5 h-3.5 text-softGreen-700 shrink-0" />
                 <span>{stem}</span>
               </div>
             {/each}
           </div>
         </div>
 
-        <!-- Atelier Standard Box -->
-        <div class="p-4 rounded-xl bg-botanical-900 text-white text-xs space-y-2 border border-botanical-700 shadow-xs">
-          <div class="flex items-center gap-1.5 font-serif font-bold text-white text-sm">
-            <HeartHandshake class="w-4 h-4 text-[#A8D5BA]" />
+        <!-- Atelier Standard Box (Solid Soft Green - Zero Gradient) -->
+        <div class="p-4 rounded-xl bg-softGreen-50 text-stone-900 text-xs space-y-2 border border-softGreen-200 shadow-2xs">
+          <div class="flex items-center gap-1.5 font-serif font-bold text-softGreen-800 text-sm">
+            <HeartHandshake class="w-4 h-4 text-softGreen-700" />
             <span>Standar Pengerjaan {studio.name}</span>
           </div>
-          <ul class="space-y-1 text-[#D1E6D8] text-[11px] list-disc list-inside">
+          <ul class="space-y-1 text-stone-600 text-[11px] list-disc list-inside">
             <li>Gratis kartu ucapan cetak premium dengan amplop segel wax personal.</li>
             <li>Pengepakan kokoh menggunakan box tebal khusus kurir instan dan kargo luar kota.</li>
             <li>Bisa request warna pita satin dan kertas pembungkus tanpa biaya tambahan.</li>
@@ -209,7 +223,7 @@
           href={waOrderUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-botanical-800 hover:bg-botanical-900 text-white text-xs font-bold shadow-xs hover:shadow-md transition-all active:scale-[0.99] border border-botanical-950/20"
+          class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-softGreen-800 hover:bg-softGreen-700 text-white text-xs font-bold shadow-xs hover:shadow transition-all active:scale-[0.99] border border-softGreen-900/20"
         >
           <MessageCircle class="w-4 h-4 fill-white" />
           <span>Pesan via WhatsApp</span>
@@ -218,4 +232,3 @@
     </div>
   </div>
 {/if}
-

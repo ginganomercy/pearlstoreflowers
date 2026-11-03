@@ -47,3 +47,21 @@ export interface CategorySummary {
   readonly count: number;
   readonly description: string;
 }
+
+export type SoftColorTheme = 'softPink' | 'softBlue' | 'softYellow' | 'softGreen';
+
+export interface QuickSearchChip {
+  readonly id: string;
+  readonly label: string;
+  readonly query: string;
+  readonly colorTheme: SoftColorTheme;
+  readonly description: string;
+}
+
+export interface SoftColorClasses {
+  readonly bg: string;
+  readonly surface: string;
+  readonly border: string;
+  readonly text: string;
+  readonly accent: string;
+}

@@ -10,13 +10,34 @@ const { studio } = Astro.props;
 const consultWaUrl = createWhatsAppConsultLink(studio);
 ---
 
-<footer class="w-full bg-botanical-950 text-[#D0E2D6] border-t border-botanical-900 mt-20 pt-14 pb-10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-12 border-b border-botanical-900">
+<footer class="w-full bg-white text-stone-700 border-t border-stone-200 mt-20 pt-14 pb-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <!-- 4 Solid Soft Atelier Guarantee Pills (Zero Gradient Policy) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-softPink-50 border border-softPink-200 text-softPink-800 text-xs font-sans font-medium">
+        <span>🌸</span>
+        <span>Spesialis Bridal & Wedding Slawi</span>
+      </div>
+      <div class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-softGreen-50 border border-softGreen-200 text-softGreen-800 text-xs font-sans font-medium">
+        <span>🌿</span>
+        <span>Tangkai Segar Tegal & Brebes Area</span>
+      </div>
+      <div class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-softBlue-50 border border-softBlue-200 text-softBlue-800 text-xs font-sans font-medium">
+        <span>🌊</span>
+        <span>Respons Cepat WhatsApp Harian</span>
+      </div>
+      <div class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-softYellow-50 border border-softYellow-200 text-softYellow-800 text-xs font-sans font-medium">
+        <span>☀️</span>
+        <span>Hadiah Kustom & Kartu Segel Lilin</span>
+      </div>
+    </div>
+
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-12 border-b border-stone-200">
       <!-- Col 1: Brand Atelier & Visi -->
       <div class="space-y-3.5">
         <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl overflow-hidden bg-botanical-900 border border-botanical-700/80 shrink-0">
+          <div class="w-9 h-9 rounded-xl overflow-hidden bg-softPink-50 border border-softPink-200 shrink-0">
             <img
               src="/images/pearl_profile_avatar.jpg"
               alt={`${studio.name} Logo`}
@@ -27,52 +48,52 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
               loading="lazy"
             />
           </div>
-          <span class="font-serif text-lg font-bold text-white tracking-tight">
+          <span class="font-serif text-lg font-bold text-stone-900 tracking-tight">
             {studio.name}
           </span>
         </div>
-        <p class="text-xs text-[#9EBEA8] leading-relaxed">
-          Atelier perangkai buket bunga tangan estetik untuk momen sakral pernikahan, lamaran, wisuda, dan hadiah personal berstandar artisanal.
+        <p class="text-xs text-stone-500 leading-relaxed">
+          Atelier perangkai buket bunga tangan estetik untuk momen sakral pernikahan, lamaran, wisuda, dan hadiah personal berstandar artisanal di Slawi, Tegal & sekitarnya.
         </p>
       </div>
 
       <!-- Col 2: Jangkauan Wilayah & Kurir -->
-      <div class="space-y-3 text-xs text-[#9EBEA8]">
-        <p class="font-semibold text-white text-sm font-serif">
+      <div class="space-y-3 text-xs text-stone-600">
+        <p class="font-semibold text-stone-900 text-sm font-serif">
           Lokasi & Wilayah Kurir
         </p>
         <div class="flex items-start gap-2.5">
-          <svg class="w-4 h-4 text-[#A8D5BA] shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-4 h-4 text-softGreen-700 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
           <span class="leading-relaxed">{studio.location}</span>
         </div>
-        <p class="text-[11px] text-[#7A9E86] leading-relaxed pl-6.5">
+        <p class="text-[11px] text-stone-500 leading-relaxed pl-6.5">
           Tersedia pengiriman kurir roda dua instan khusus buket segar dan ekspedisi kargo kardus tebal untuk bunga abadi.
         </p>
       </div>
 
       <!-- Col 3: Jam Kerja & Kebijakan -->
-      <div class="space-y-3 text-xs text-[#9EBEA8]">
-        <p class="font-semibold text-white text-sm font-serif">
+      <div class="space-y-3 text-xs text-stone-600">
+        <p class="font-semibold text-stone-900 text-sm font-serif">
           Jadwal Atelier
         </p>
         <div class="flex items-start gap-2.5">
-          <svg class="w-4 h-4 text-[#A8D5BA] shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-4 h-4 text-softBlue-700 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
             <polyline points="12 6 12 12 16 14"/>
           </svg>
           <span>{studio.operatingHours}</span>
         </div>
-        <p class="text-[11px] text-[#7A9E86] leading-relaxed pl-6.5">
+        <p class="text-[11px] text-stone-500 leading-relaxed pl-6.5">
           Layanan konsultasi daring via WhatsApp tetap merespons di luar jam operasional untuk antrean pesanan esok hari.
         </p>
       </div>
 
       <!-- Col 4: Kontak Resmi & Kanal Sosial -->
       <div class="space-y-3">
-        <p class="font-semibold text-white text-sm font-serif">
+        <p class="font-semibold text-stone-900 text-sm font-serif">
           Kontak Resmi Atelier
         </p>
         <div class="flex flex-col gap-2.5 text-xs">
@@ -80,20 +101,20 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
             href={consultWaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 text-[#A8D5BA] hover:text-white font-medium transition-colors"
+            class="inline-flex items-center gap-2.5 text-softGreen-800 hover:text-softGreen-900 font-medium transition-colors"
           >
-            <svg class="w-4 h-4 text-[#A8D5BA] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="w-4 h-4 text-softGreen-700 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.891.815 2.796.815 3.183 0 5.769-2.586 5.77-5.766.001-3.182-2.585-5.768-5.77-5.768zm0-2c4.288 0 7.77 3.479 7.772 7.768 0 4.288-3.482 7.768-7.772 7.768-1.289 0-2.518-.32-3.606-.889l-4.425 1.159 1.185-4.328c-.655-1.139-1.002-2.434-1.002-3.71 0-4.289 3.483-7.768 7.772-7.768z"/>
             </svg>
-            <span>WhatsApp Admin: {studio.whatsappDisplay}</span>
+            <span>WhatsApp: {studio.whatsappDisplay}</span>
           </a>
           <a
             href={studio.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 text-[#9EBEA8] hover:text-white transition-colors"
+            class="inline-flex items-center gap-2.5 text-stone-600 hover:text-stone-900 transition-colors"
           >
-            <svg class="w-4 h-4 text-[#A8D5BA] shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="w-4 h-4 text-stone-500 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
               <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
@@ -105,17 +126,17 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
     </div>
 
     <!-- Bottom Copyright & Back to Top -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#9EBEA8]">
+    <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
       <p class="text-center sm:text-left">
-        © 2026 Pearl Store Flowers. Dikembangkan oleh <span class="font-semibold text-white">Rafly Ashraffi Rachmat</span>. Seluruh hak cipta dilindungi undang-undang.
+        © 2026 Pearl Store Flowers. Dikembangkan oleh <span class="font-semibold text-stone-800">Rafly Ashraffi Rachmat</span>. Seluruh hak cipta dilindungi undang-undang.
       </p>
 
       <a
         href="#top"
-        class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-botanical-900 hover:bg-botanical-800 text-white font-medium transition-colors border border-botanical-800"
+        class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition-colors border border-stone-200"
       >
         <span>Kembali ke Atas</span>
-        <svg class="w-3.5 h-3.5 text-[#A8D5BA]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="w-3.5 h-3.5 text-stone-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m18 15-6-6-6 6"/>
         </svg>
       </a>

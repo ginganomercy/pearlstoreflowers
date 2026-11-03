@@ -12,14 +12,20 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
 ---
 
 <header class="w-full bg-white border-b border-stone-200/80">
-  <!-- Top Announcement Bar in Quiet Luxury Atelier Spruce -->
-  <div class="w-full bg-[#132218] text-[#DDD7CD] border-b border-[#1C3224] py-2 px-4 text-center">
-    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 sm:gap-5 flex-wrap text-xs font-sans tracking-normal">
-      <span class="text-white font-medium">Pengiriman Sameday & Terjadwal (Area Slawi, Tegal & Brebes)</span>
-      <span class="text-[#C4AA82] hidden sm:inline">•</span>
-      <span class="text-[#DDD7CD]">Kurasi Tangkai Segar & Bunga Abadi</span>
-      <span class="text-[#C4AA82] hidden sm:inline">•</span>
-      <span class="text-[#DDD7CD]">Gratis Kartu Ucapan Segel Lilin</span>
+  <!-- Top Announcement Bar in Solid Soft Green (Zero Gradient Policy) -->
+  <div class="w-full bg-softGreen-100 text-softGreen-800 border-b border-softGreen-200 py-2.5 px-4 text-center">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 sm:gap-4 flex-wrap text-xs font-sans">
+      <span class="inline-flex items-center gap-1.5 font-semibold text-softGreen-800 px-2 py-0.5 rounded-full bg-white/70 border border-softGreen-200">
+        <span>Pengiriman Sameday & Terjadwal (Area Slawi, Tegal & Brebes)</span>
+      </span>
+      <span class="text-stone-300 hidden sm:inline">•</span>
+      <span class="inline-flex items-center gap-1.5 font-medium text-softPink-800 px-2 py-0.5 rounded-full bg-softPink-100 border border-softPink-200">
+        <span>Kurasi Tangkai Segar & Bunga Abadi</span>
+      </span>
+      <span class="text-stone-300 hidden sm:inline">•</span>
+      <span class="inline-flex items-center gap-1.5 font-medium text-softYellow-800 px-2 py-0.5 rounded-full bg-softYellow-100 border border-softYellow-200">
+        <span>Gratis Kartu Ucapan Segel Lilin</span>
+      </span>
     </div>
   </div>
 
@@ -31,7 +37,7 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
         <a
           href="/"
           style="min-width: 4rem; min-height: 4rem;"
-          class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-botanical-100 border-2 border-botanical-200/90 shadow-xs shrink-0 transition-transform duration-300 hover:scale-105 relative group block"
+          class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-softPink-50 border-2 border-softPink-200 shadow-xs shrink-0 transition-transform duration-300 hover:scale-105 relative group block"
           aria-label="Pearl Store Flowers Beranda"
         >
           <img
@@ -48,12 +54,12 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
 
         <div class="space-y-1">
           <div class="flex items-center gap-3 flex-wrap">
-            <a href="/" class="hover:text-botanical-800 transition-colors">
+            <a href="/" class="hover:text-softGreen-800 transition-colors">
               <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-stone-900">
                 {studio.name}
               </h1>
             </a>
-            <span class="text-xs font-serif italic text-stone-500 tracking-wide border-l border-stone-200 pl-3">
+            <span class="text-xs font-serif italic text-softPink-800 bg-softPink-50 px-2.5 py-0.5 rounded-full border border-softPink-200 tracking-wide">
               Floral & Bouquet Atelier • Est. 2024
             </span>
           </div>
@@ -64,16 +70,16 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
 
           <!-- Location & Operational Hours with Pure SVG Icons -->
           <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4 text-xs text-stone-500 pt-1">
-            <span class="inline-flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5 text-botanical-700 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <span class="inline-flex items-center gap-1.5 text-softGreen-800 font-medium">
+              <svg class="w-3.5 h-3.5 text-softGreen-700 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
               <span>{studio.location}</span>
             </span>
             <span class="hidden sm:inline text-stone-300">•</span>
-            <span class="inline-flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5 text-botanical-700 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <span class="inline-flex items-center gap-1.5 text-stone-600">
+              <svg class="w-3.5 h-3.5 text-stone-500 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"/>
                 <polyline points="12 6 12 12 16 14"/>
               </svg>
@@ -89,7 +95,7 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
           href={consultWaUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-botanical-800 hover:bg-botanical-900 text-white text-xs font-semibold shadow-xs hover:shadow transition-all border border-botanical-950/30"
+          class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-softGreen-800 hover:bg-softGreen-700 text-white text-xs font-semibold shadow-xs hover:shadow transition-all border border-softGreen-900/30"
         >
           <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.891.815 2.796.815 3.183 0 5.769-2.586 5.77-5.766.001-3.182-2.585-5.768-5.77-5.768zm0-2c4.288 0 7.77 3.479 7.772 7.768 0 4.288-3.482 7.768-7.772 7.768-1.289 0-2.518-.32-3.606-.889l-4.425 1.159 1.185-4.328c-.655-1.139-1.002-2.434-1.002-3.71 0-4.289 3.483-7.768 7.772-7.768z"/>
@@ -113,51 +119,55 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
       </div>
     </div>
 
-    <!-- Atelier Core Value Pillars with Refined Editorial Cards -->
+    <!-- Atelier Core Value Pillars: 4 Solid Soft Colors (Zero Gradient) -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-2">
-      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-stone-50/80 border border-stone-200/90 hover:bg-white hover:shadow-xs transition-all">
-        <div class="w-9 h-9 rounded-lg bg-white border border-stone-200 text-botanical-800 flex items-center justify-center shadow-2xs shrink-0">
-          <svg class="w-4 h-4 text-botanical-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Pillar 1: Soft Green -->
+      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-softGreen-50 border border-softGreen-200 hover:bg-softGreen-100/80 transition-all">
+        <div class="w-9 h-9 rounded-lg bg-white border border-softGreen-200 text-softGreen-700 flex items-center justify-center shadow-2xs shrink-0">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
         </div>
         <div class="text-[11px] leading-tight">
-          <p class="font-bold text-stone-900 font-serif text-xs">Kurasi Bunga Segar</p>
-          <p class="text-stone-500">Kuntum pilihan mekar sempurna</p>
+          <p class="font-bold text-softGreen-800 font-serif text-xs">Kurasi Bunga Segar</p>
+          <p class="text-stone-600">Kuntum pilihan mekar sempurna</p>
         </div>
       </div>
 
-      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-stone-50/80 border border-stone-200/90 hover:bg-white hover:shadow-xs transition-all">
-        <div class="w-9 h-9 rounded-lg bg-white border border-stone-200 text-botanical-800 flex items-center justify-center shadow-2xs shrink-0">
-          <svg class="w-4 h-4 text-botanical-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Pillar 2: Soft Pink -->
+      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-softPink-50 border border-softPink-200 hover:bg-softPink-100/80 transition-all">
+        <div class="w-9 h-9 rounded-lg bg-white border border-softPink-200 text-softPink-700 flex items-center justify-center shadow-2xs shrink-0">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h9"/>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
             <path d="m16 19 2 2 4-4"/>
           </svg>
         </div>
         <div class="text-[11px] leading-tight">
-          <p class="font-bold text-stone-900 font-serif text-xs">Kartu Bersegel Lilin</p>
-          <p class="text-stone-500">Surat ucapan elegan gratis</p>
+          <p class="font-bold text-softPink-800 font-serif text-xs">Kartu Bersegel Lilin</p>
+          <p class="text-stone-600">Surat ucapan elegan gratis</p>
         </div>
       </div>
 
-      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-stone-50/80 border border-stone-200/90 hover:bg-white hover:shadow-xs transition-all">
-        <div class="w-9 h-9 rounded-lg bg-white border border-stone-200 text-botanical-800 flex items-center justify-center shadow-2xs shrink-0">
-          <svg class="w-4 h-4 text-botanical-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Pillar 3: Soft Blue -->
+      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-softBlue-50 border border-softBlue-200 hover:bg-softBlue-100/80 transition-all">
+        <div class="w-9 h-9 rounded-lg bg-white border border-softBlue-200 text-softBlue-700 flex items-center justify-center shadow-2xs shrink-0">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
             <polyline points="12 6 12 12 16 14"/>
           </svg>
         </div>
         <div class="text-[11px] leading-tight">
-          <p class="font-bold text-stone-900 font-serif text-xs">Layanan Sameday</p>
-          <p class="text-stone-500">Slot instan harian tersedia</p>
+          <p class="font-bold text-softBlue-800 font-serif text-xs">Layanan Sameday</p>
+          <p class="text-stone-600">Slot instan harian tersedia</p>
         </div>
       </div>
 
-      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-stone-50/80 border border-stone-200/90 hover:bg-white hover:shadow-xs transition-all">
-        <div class="w-9 h-9 rounded-lg bg-white border border-stone-200 text-botanical-800 flex items-center justify-center shadow-2xs shrink-0">
-          <svg class="w-4 h-4 text-botanical-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Pillar 4: Soft Kuning -->
+      <div class="flex items-center gap-3 p-3.5 rounded-xl bg-softYellow-50 border border-softYellow-200 hover:bg-softYellow-100/80 transition-all">
+        <div class="w-9 h-9 rounded-lg bg-white border border-softYellow-200 text-softYellow-700 flex items-center justify-center shadow-2xs shrink-0">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m7.5 4.27 9 5.15"/>
             <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
             <path d="m3.3 7 8.7 5 8.7-5"/>
@@ -165,8 +175,8 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
           </svg>
         </div>
         <div class="text-[11px] leading-tight">
-          <p class="font-bold text-stone-900 font-serif text-xs">Proteksi Buket Aman</p>
-          <p class="text-stone-500">Hardbox kokoh menjaga bentuk</p>
+          <p class="font-bold text-softYellow-800 font-serif text-xs">Proteksi Buket Aman</p>
+          <p class="text-stone-600">Hardbox kokoh menjaga bentuk</p>
         </div>
       </div>
     </div>

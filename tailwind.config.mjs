@@ -7,6 +7,38 @@ export default {
   theme: {
     extend: {
       colors: {
+        softPink: {
+          50: '#FDF2F8',
+          100: '#FCE7F3',
+          200: '#FBCFE8',
+          300: '#F472B6',
+          700: '#BE185D',
+          800: '#9D174D',
+        },
+        softBlue: {
+          50: '#F0F9FF',
+          100: '#E0F2FE',
+          200: '#BAE6FD',
+          300: '#38BDF8',
+          700: '#0369A1',
+          800: '#075985',
+        },
+        softYellow: {
+          50: '#FEFCE8',
+          100: '#FEF9C3',
+          200: '#FEF08A',
+          300: '#FACC15',
+          700: '#A16207',
+          800: '#854D0E',
+        },
+        softGreen: {
+          50: '#F0FDF4',
+          100: '#DCFCE7',
+          200: '#BBF7D0',
+          300: '#4ADE80',
+          700: '#15803D',
+          800: '#14532D',
+        },
         botanical: {
           50: '#F4F8F4',   // Very light mint/sage toolbar
           100: '#EBF4EB',  // Soft sage mint chips & badges
