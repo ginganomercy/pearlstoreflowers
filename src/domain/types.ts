@@ -38,6 +38,7 @@ export interface StudioInfo {
   readonly whatsappNumber: string;
   readonly whatsappDisplay: string;
   readonly instagramUrl: string;
+  readonly avatarUrl?: string;
   readonly services: readonly string[];
 }
 

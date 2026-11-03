@@ -9,6 +9,12 @@
   "description": "Katalog resmi buket bunga tangan pengantin, lamaran, wisuda & bunga kustom Pearl Store Flowers Bandung.",
   "icons": [
     {
+      "src": "/images/pearl_profile_avatar.jpg",
+      "sizes": "150x150",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
