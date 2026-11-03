@@ -6,6 +6,11 @@ import {
   STUDIO_BRAND_NAME,
   STUDIO_HANDLE,
   STUDIO_INSTAGRAM_URL,
+  STUDIO_WHATSAPP_NUMBER,
+  STUDIO_X_HANDLE,
+  STUDIO_X_URL,
+  STUDIO_THREADS_HANDLE,
+  STUDIO_THREADS_URL,
 } from '../src/domain/constants';
 
 describe('Catalog Data Guard (Zod Validation)', () => {
@@ -19,6 +24,11 @@ describe('Catalog Data Guard (Zod Validation)', () => {
     expect(validated.studio.name).toBe(STUDIO_BRAND_NAME);
     expect(validated.studio.handle).toBe(STUDIO_HANDLE);
     expect(validated.studio.instagramUrl).toBe(STUDIO_INSTAGRAM_URL);
+    expect(validated.studio.whatsappNumber).toBe(STUDIO_WHATSAPP_NUMBER);
+    expect(validated.studio.xHandle).toBe(STUDIO_X_HANDLE);
+    expect(validated.studio.xUrl).toBe(STUDIO_X_URL);
+    expect(validated.studio.threadsHandle).toBe(STUDIO_THREADS_HANDLE);
+    expect(validated.studio.threadsUrl).toBe(STUDIO_THREADS_URL);
   });
 
   it('should enforce every product has valid PSF- code and unique slug', () => {

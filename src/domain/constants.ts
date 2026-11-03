@@ -7,6 +7,12 @@
 export const STUDIO_BRAND_NAME = 'Pearl Store Flowers';
 export const STUDIO_HANDLE = '@pearl.storeflowers';
 export const STUDIO_INSTAGRAM_URL = 'https://www.instagram.com/pearl.storeflowers';
+export const STUDIO_WHATSAPP_NUMBER = '6285198256961';
+export const STUDIO_WHATSAPP_DISPLAY = '+62 851-9825-6961';
+export const STUDIO_X_HANDLE = '@pearlflower64';
+export const STUDIO_X_URL = 'https://x.com/pearlflower64';
+export const STUDIO_THREADS_HANDLE = '@pearl.storeflowers';
+export const STUDIO_THREADS_URL = 'https://www.threads.net/@pearl.storeflowers';
 export const STUDIO_TAGLINE = 'Luxury Floral & Hand Bouquet Atelier';
 export const STUDIO_DEFAULT_CITY = 'Slawi, Tegal';
 export const STUDIO_WORKSHOP_ADDRESS = 'Ruko Kirana Lestari Blok D5, Jl. Raya Slawi Jatibarang, Tegal/Slawi';
@@ -94,48 +100,54 @@ export const CATEGORY_SOFT_COLOR_MAP = {
   Engagement: 'softGreen',
 } as const;
 
-/** Curated quick-search suggestion chips with zero-gradient solid soft themes */
+/** Curated quick-search suggestion chips with zero-gradient solid soft themes & bold vector icons */
 export const QUICK_SEARCH_SUGGESTIONS = [
   {
     id: 'chip-rose-pink',
-    label: '🌸 Mawar Pink',
+    label: 'Mawar Pink',
     query: 'Mawar Pink',
     colorTheme: 'softPink' as const,
+    iconType: 'flower' as const,
     description: 'Buket mawar romantic blush',
   },
   {
     id: 'chip-grad-blue',
-    label: '🌊 Wisuda Biru',
+    label: 'Wisuda Biru',
     query: 'Wisuda',
     colorTheme: 'softBlue' as const,
+    iconType: 'graduation' as const,
     description: 'Koleksi buket wisuda & hadiah kelulusan',
   },
   {
     id: 'chip-sunflower-yellow',
-    label: '☀️ Sunflower',
+    label: 'Sunflower',
     query: 'Sunflower',
     colorTheme: 'softYellow' as const,
+    iconType: 'sun' as const,
     description: 'Bunga matahari cerah & segar',
   },
   {
     id: 'chip-sage-rustic',
-    label: '🌿 Sage & Rustic',
+    label: 'Sage & Rustic',
     query: 'Rustic',
     colorTheme: 'softGreen' as const,
+    iconType: 'leaf' as const,
     description: 'Bunga kering abadi & foliage sage',
   },
   {
     id: 'chip-bridal-wedding',
-    label: '💍 Bridal Rose',
+    label: 'Bridal Rose',
     query: 'Bridal',
     colorTheme: 'softPink' as const,
+    iconType: 'gem' as const,
     description: 'Hand bouquet pengantin & akad',
   },
   {
     id: 'chip-money-custom',
-    label: '🎁 Buket Uang',
+    label: 'Buket Uang',
     query: 'Uang',
     colorTheme: 'softYellow' as const,
+    iconType: 'gift' as const,
     description: 'Buket uang tarik & akrilik balon',
   },
 ] as const;

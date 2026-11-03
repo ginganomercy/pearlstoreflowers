@@ -14,6 +14,10 @@ export const StudioSchema = z.object({
   whatsappNumber: z.string().min(WHATSAPP_PHONE_MIN_DIGITS).max(WHATSAPP_PHONE_MAX_DIGITS),
   whatsappDisplay: z.string().min(5),
   instagramUrl: z.string().url(),
+  xHandle: z.string().startsWith('@').optional(),
+  xUrl: z.string().url().optional(),
+  threadsHandle: z.string().startsWith('@').optional(),
+  threadsUrl: z.string().url().optional(),
   services: z.array(z.string()).min(1),
 });
 

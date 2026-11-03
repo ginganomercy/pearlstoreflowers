@@ -17,8 +17,12 @@ export function generateFloristJsonLd(
         name: studio.name,
         description: studio.tagline,
         telephone: studio.whatsappDisplay,
-        url: 'https://shelwa-craft.pages.dev',
-        sameAs: [studio.instagramUrl],
+        url: 'https://pearlstoreflowers.pages.dev',
+        sameAs: [
+          studio.instagramUrl,
+          studio.threadsUrl,
+          studio.xUrl,
+        ].filter(Boolean) as string[],
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Ruko Kirana Lestari Blok D5, Jl. Raya Slawi Jatibarang',

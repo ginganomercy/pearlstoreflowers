@@ -38,6 +38,10 @@ export interface StudioInfo {
   readonly whatsappNumber: string;
   readonly whatsappDisplay: string;
   readonly instagramUrl: string;
+  readonly xHandle?: string;
+  readonly xUrl?: string;
+  readonly threadsHandle?: string;
+  readonly threadsUrl?: string;
   readonly avatarUrl?: string;
   readonly services: readonly string[];
 }
@@ -50,11 +54,14 @@ export interface CategorySummary {
 
 export type SoftColorTheme = 'softPink' | 'softBlue' | 'softYellow' | 'softGreen';
 
+export type QuickSearchIcon = 'flower' | 'graduation' | 'sun' | 'leaf' | 'gem' | 'gift';
+
 export interface QuickSearchChip {
   readonly id: string;
   readonly label: string;
   readonly query: string;
   readonly colorTheme: SoftColorTheme;
+  readonly iconType: QuickSearchIcon;
   readonly description: string;
 }
 

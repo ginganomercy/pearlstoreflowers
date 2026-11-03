@@ -8,7 +8,13 @@
     MessageCircle,
     CheckCircle2,
     Sparkles,
-    ExternalLink
+    ExternalLink,
+    Flower2,
+    GraduationCap,
+    Sun,
+    Leaf,
+    Gem,
+    Gift
   } from 'lucide-svelte';
   import type { FlowerProduct, ProductCategory, StudioInfo } from '../../domain/types';
   import {
@@ -91,19 +97,19 @@
     ];
   });
 
-  /** Solid Soft Color Helpers (Zero Gradient Policy) */
+  /** Solid Soft Color Helpers: Richer & Defined Solid Soft Palette (Zero Gradient Policy) */
   function getCategoryBadgeClasses(cat: string): string {
     switch (cat) {
       case 'Wedding':
-        return 'bg-softPink-100 text-softPink-800 border-softPink-200';
+        return 'bg-softPink-200 text-softPink-950 border-2 border-softPink-400 font-bold shadow-2xs';
       case 'Engagement':
-        return 'bg-softGreen-100 text-softGreen-800 border-softGreen-200';
+        return 'bg-softGreen-200 text-softGreen-950 border-2 border-softGreen-400 font-bold shadow-2xs';
       case 'Graduation':
-        return 'bg-softBlue-100 text-softBlue-800 border-softBlue-200';
+        return 'bg-softBlue-200 text-softBlue-950 border-2 border-softBlue-400 font-bold shadow-2xs';
       case 'Custom':
-        return 'bg-softYellow-100 text-softYellow-800 border-softYellow-200';
+        return 'bg-softYellow-200 text-softYellow-950 border-2 border-softYellow-400 font-bold shadow-2xs';
       default:
-        return 'bg-stone-100 text-stone-800 border-stone-200';
+        return 'bg-stone-200 text-stone-900 border-2 border-stone-400 font-bold shadow-2xs';
     }
   }
 
@@ -111,52 +117,52 @@
     if (isActive) {
       switch (catName) {
         case 'Wedding':
-          return 'bg-softPink-100 text-softPink-800 border-softPink-300 font-bold shadow-xs';
+          return 'bg-softPink-200 text-softPink-950 border-2 border-softPink-500 font-extrabold shadow-xs ring-2 ring-softPink-300';
         case 'Engagement':
-          return 'bg-softGreen-100 text-softGreen-800 border-softGreen-300 font-bold shadow-xs';
+          return 'bg-softGreen-200 text-softGreen-950 border-2 border-softGreen-500 font-extrabold shadow-xs ring-2 ring-softGreen-300';
         case 'Graduation':
-          return 'bg-softBlue-100 text-softBlue-800 border-softBlue-300 font-bold shadow-xs';
+          return 'bg-softBlue-200 text-softBlue-950 border-2 border-softBlue-500 font-extrabold shadow-xs ring-2 ring-softBlue-300';
         case 'Custom':
-          return 'bg-softYellow-100 text-softYellow-800 border-softYellow-300 font-bold shadow-xs';
+          return 'bg-softYellow-200 text-softYellow-950 border-2 border-softYellow-500 font-extrabold shadow-xs ring-2 ring-softYellow-300';
         default:
-          return 'bg-stone-900 text-white font-bold shadow-xs border-stone-900';
+          return 'bg-stone-900 text-white font-extrabold shadow-xs border-2 border-stone-900';
       }
     } else {
       switch (catName) {
         case 'Wedding':
-          return 'bg-white hover:bg-softPink-50 text-softPink-800 border-softPink-200';
+          return 'bg-softPink-100 hover:bg-softPink-200 text-softPink-950 border-2 border-softPink-400 font-bold';
         case 'Engagement':
-          return 'bg-white hover:bg-softGreen-50 text-softGreen-800 border-softGreen-200';
+          return 'bg-softGreen-100 hover:bg-softGreen-200 text-softGreen-950 border-2 border-softGreen-400 font-bold';
         case 'Graduation':
-          return 'bg-white hover:bg-softBlue-50 text-softBlue-800 border-softBlue-200';
+          return 'bg-softBlue-100 hover:bg-softBlue-200 text-softBlue-950 border-2 border-softBlue-400 font-bold';
         case 'Custom':
-          return 'bg-white hover:bg-softYellow-50 text-softYellow-800 border-softYellow-200';
+          return 'bg-softYellow-100 hover:bg-softYellow-200 text-softYellow-950 border-2 border-softYellow-400 font-bold';
         default:
-          return 'bg-white hover:bg-stone-50 text-stone-700 border-stone-200';
+          return 'bg-stone-100 hover:bg-stone-200 text-stone-800 border-2 border-stone-400 font-bold';
       }
     }
   }
 
   function getQuickChipClasses(colorTheme: string, isActive: boolean): string {
-    const base = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans font-medium transition-all duration-150 border cursor-pointer';
+    const base = 'inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-sans font-bold transition-all duration-150 border-2 cursor-pointer shadow-2xs';
     switch (colorTheme) {
       case 'softPink':
         return isActive
-          ? `${base} bg-softPink-100 text-softPink-800 border-softPink-300 font-bold shadow-xs`
-          : `${base} bg-softPink-50/70 hover:bg-softPink-100 text-softPink-800 border-softPink-200`;
+          ? `${base} bg-softPink-300 text-softPink-950 border-softPink-500 shadow-xs ring-2 ring-softPink-400`
+          : `${base} bg-softPink-200 hover:bg-softPink-300 text-softPink-950 border-softPink-400`;
       case 'softBlue':
         return isActive
-          ? `${base} bg-softBlue-100 text-softBlue-800 border-softBlue-300 font-bold shadow-xs`
-          : `${base} bg-softBlue-50/70 hover:bg-softBlue-100 text-softBlue-800 border-softBlue-200`;
+          ? `${base} bg-softBlue-300 text-softBlue-950 border-softBlue-500 shadow-xs ring-2 ring-softBlue-400`
+          : `${base} bg-softBlue-200 hover:bg-softBlue-300 text-softBlue-950 border-softBlue-400`;
       case 'softYellow':
         return isActive
-          ? `${base} bg-softYellow-100 text-softYellow-800 border-softYellow-300 font-bold shadow-xs`
-          : `${base} bg-softYellow-50/70 hover:bg-softYellow-100 text-softYellow-800 border-softYellow-200`;
+          ? `${base} bg-softYellow-300 text-softYellow-950 border-softYellow-500 shadow-xs ring-2 ring-softYellow-400`
+          : `${base} bg-softYellow-200 hover:bg-softYellow-300 text-softYellow-950 border-softYellow-400`;
       case 'softGreen':
       default:
         return isActive
-          ? `${base} bg-softGreen-100 text-softGreen-800 border-softGreen-300 font-bold shadow-xs`
-          : `${base} bg-softGreen-50/70 hover:bg-softGreen-100 text-softGreen-800 border-softGreen-200`;
+          ? `${base} bg-softGreen-300 text-softGreen-950 border-softGreen-500 shadow-xs ring-2 ring-softGreen-400`
+          : `${base} bg-softGreen-200 hover:bg-softGreen-300 text-softGreen-950 border-softGreen-400`;
     }
   }
 
@@ -174,8 +180,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3.5">
       <!-- Search Input with Typo Tolerance Indicator -->
       <div class="relative w-full">
-        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-softGreen-700">
-          <Search class="w-4 h-4" />
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-softGreen-900">
+          <Search class="w-4 h-4" strokeWidth={2.75} />
         </div>
         <input
           type="text"
@@ -194,14 +200,14 @@
             class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-stone-400 hover:text-stone-700"
             aria-label="Bersihkan pencarian"
           >
-            <RefreshCcw class="w-4 h-4" />
+            <RefreshCcw class="w-4 h-4" strokeWidth={2.75} />
           </button>
         {/if}
       </div>
 
-      <!-- Quick Search Suggestion Pills (4 Solid Soft Colors - Zero Gradient) -->
+      <!-- Quick Search Suggestion Pills (Thick Bold Vector Icons - Zero Gradient) -->
       <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-        <span class="text-[11px] font-sans text-stone-400 shrink-0 font-medium">
+        <span class="text-[11px] font-sans text-stone-500 shrink-0 font-bold uppercase tracking-wider">
           Rekomendasi:
         </span>
         {#each QUICK_SEARCH_SUGGESTIONS as chip}
@@ -212,12 +218,25 @@
             class={getQuickChipClasses(chip.colorTheme, isActive)}
             title={chip.description}
           >
-            <span>{chip.label}</span>
+            {#if chip.iconType === 'flower'}
+              <Flower2 class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else if chip.iconType === 'graduation'}
+              <GraduationCap class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else if chip.iconType === 'sun'}
+              <Sun class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else if chip.iconType === 'leaf'}
+              <Leaf class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else if chip.iconType === 'gem'}
+              <Gem class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else if chip.iconType === 'gift'}
+              <Gift class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {/if}
+            <span class="font-bold">{chip.label}</span>
           </button>
         {/each}
       </div>
 
-      <!-- Category Filter Tabs: 4 Solid Soft Colors -->
+      <!-- Category Filter Tabs: Thick Bold Vector Icons & 4 Solid Soft Colors -->
       <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none pt-1">
         {#each categories as cat}
           {@const isActive = activeCategory === cat.name}
@@ -226,6 +245,17 @@
             onclick={() => (activeCategory = cat.name)}
             class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-sans whitespace-nowrap transition-all duration-150 border {getCategoryTabClasses(cat.name, isActive)}"
           >
+            {#if cat.name === 'Wedding'}
+              <Flower2 class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else if cat.name === 'Engagement'}
+              <Leaf class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else if cat.name === 'Graduation'}
+              <GraduationCap class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else if cat.name === 'Custom'}
+              <Gift class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {:else}
+              <Sparkles class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
+            {/if}
             <span>{cat.name}</span>
             <span
               class="px-1.5 py-0.2 rounded-full text-[10px] {isActive
@@ -302,7 +332,7 @@
                 {/if}
                 <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex justify-center">
                   <span class="inline-flex items-center gap-1.5 text-xs text-stone-900 font-medium bg-white/95 px-3 py-1.5 rounded-xl shadow-xs border border-stone-200">
-                    <Info class="w-3.5 h-3.5 text-softGreen-800" />
+                    <Info class="w-3.5 h-3.5 text-softGreen-800" strokeWidth={2.75} />
                     <span>Lihat Spesifikasi Rangkaian</span>
                   </span>
                 </div>
@@ -320,7 +350,7 @@
                     {product.category}
                   </span>
                   <span class="font-sans text-[11px] text-stone-500 flex items-center gap-1.5 shrink-0 whitespace-nowrap">
-                    <Box class="w-3.5 h-3.5 text-stone-400 shrink-0" />
+                    <Box class="w-3.5 h-3.5 text-stone-600 shrink-0" strokeWidth={2.75} />
                     <span>{product.dimension.split(',')[0]}</span>
                   </span>
                 </div>
@@ -384,7 +414,7 @@
                     onclick={() => (selectedProduct = product)}
                     class="text-xs font-medium text-stone-600 hover:text-softGreen-800 flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-stone-100 transition-colors cursor-pointer"
                   >
-                    <Info class="w-3.5 h-3.5 text-stone-500" />
+                    <Info class="w-3.5 h-3.5 text-stone-600" strokeWidth={2.75} />
                     <span>Detail</span>
                   </button>
                   <a
@@ -392,7 +422,7 @@
                     class="text-xs font-medium text-stone-500 hover:text-softGreen-800 p-1.5 rounded-lg hover:bg-stone-100 transition-colors"
                     title="Buka halaman permanen buket ini"
                   >
-                    <ExternalLink class="w-3.5 h-3.5" />
+                    <ExternalLink class="w-3.5 h-3.5" strokeWidth={2.75} />
                   </a>
                 </div>
               </div>
@@ -404,7 +434,7 @@
                 rel="noopener noreferrer"
                 class="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-softGreen-800 hover:bg-softGreen-700 text-white text-xs font-semibold shadow-xs hover:shadow transition-all duration-150 active:scale-[0.99] border border-softGreen-900/20"
               >
-                <MessageCircle class="w-4 h-4 fill-white" />
+                <MessageCircle class="w-4 h-4 fill-white" strokeWidth={2.75} />
                 <span>Pesan via WhatsApp</span>
               </a>
             </div>
@@ -412,10 +442,10 @@
         {/each}
       </div>
     {:else}
-      <!-- Empty State with Concierge WhatsApp Fallback (Solid Soft Yellow/Pink - Zero Gradient) -->
-      <div class="text-center py-16 px-6 bg-softYellow-50 border border-softYellow-200 rounded-3xl max-w-lg mx-auto my-8 space-y-4">
-        <div class="w-14 h-14 mx-auto rounded-2xl bg-white border border-softYellow-200 flex items-center justify-center text-softYellow-800 shadow-2xs">
-          <Search class="w-7 h-7" />
+      <!-- Empty State with Concierge WhatsApp Fallback (Solid Soft Yellow - Zero Gradient) -->
+      <div class="text-center py-16 px-6 bg-softYellow-100 border-2 border-softYellow-400 rounded-3xl max-w-lg mx-auto my-8 space-y-4 shadow-2xs">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-white border-2 border-softYellow-400 flex items-center justify-center text-softYellow-900 shadow-2xs">
+          <Search class="w-7 h-7" strokeWidth={2.75} />
         </div>
         <div class="space-y-1.5">
           <h3 class="font-serif font-bold text-stone-900 text-lg">

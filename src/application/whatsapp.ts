@@ -33,7 +33,7 @@ export function createWhatsAppOrderLink(
     `• Kategori: ${product.categoryLabel}`,
     `• Estimasi Harga: ${product.priceDisplay}`,
     `• Lead Time: ${product.leadTime}`,
-    product.slug ? `• Link Koleksi: https://shelwa-craft.pages.dev/koleksi/${product.slug}` : '',
+    product.slug ? `• Link Koleksi: https://pearlstoreflowers.pages.dev/koleksi/${product.slug}` : '',
     ``,
     `*Rencana Pemesanan:*`,
     `• Tanggal Acara / Dibutuhkan: [Tuliskan Tanggal]`,
