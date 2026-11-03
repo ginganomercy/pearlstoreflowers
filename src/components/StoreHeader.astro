@@ -89,66 +89,67 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
         </div>
       </div>
 
-      <!-- Quick Action Buttons: Multi-Channel Concierge (WhatsApp, Instagram, Threads, X) -->
-      <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0">
+      <!-- Quick Action Buttons: Icon-Only Bold Multi-Channel Concierge (WhatsApp, Instagram, Threads, X) -->
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- WhatsApp Icon-Only Button -->
         <a
           href={consultWaUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4.5 py-2.5 rounded-xl bg-softGreen-800 hover:bg-softGreen-900 text-white text-xs font-bold shadow-xs hover:shadow transition-all border border-softGreen-900 active:scale-[0.98]"
-          title="Konsultasi cepat via WhatsApp resmi"
+          class="w-11 h-11 rounded-2xl bg-softGreen-800 hover:bg-softGreen-900 text-white flex items-center justify-center shadow-xs hover:shadow transition-all border-2 border-softGreen-900 active:scale-[0.95] shrink-0"
+          title={`Chat WhatsApp: ${studio.whatsappDisplay}`}
+          aria-label={`Chat WhatsApp Resmi (${studio.whatsappDisplay})`}
         >
-          <svg class="w-4 h-4 fill-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <svg class="w-5.5 h-5.5 fill-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.891.815 2.796.815 3.183 0 5.769-2.586 5.77-5.766.001-3.182-2.585-5.768-5.77-5.768zm0-2c4.288 0 7.77 3.479 7.772 7.768 0 4.288-3.482 7.768-7.772 7.768-1.289 0-2.518-.32-3.606-.889l-4.425 1.159 1.185-4.328c-.655-1.139-1.002-2.434-1.002-3.71 0-4.289 3.483-7.768 7.772-7.768z"/>
           </svg>
-          <span>Chat WhatsApp</span>
         </a>
 
-        <!-- Instagram Pill -->
+        <!-- Instagram Icon-Only Button -->
         <a
           href={studio.instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-softPink-100 hover:bg-softPink-200 text-softPink-950 text-xs font-bold transition-all border-2 border-softPink-300 shadow-2xs active:scale-[0.98]"
-          title="Kunjungi Instagram resmi @pearl.storeflowers"
+          class="w-11 h-11 rounded-2xl bg-softPink-200 hover:bg-softPink-300 text-softPink-950 flex items-center justify-center transition-all border-2 border-softPink-400 shadow-2xs active:scale-[0.95] shrink-0"
+          title={`Instagram: ${studio.handle}`}
+          aria-label={`Instagram Resmi ${studio.handle}`}
         >
-          <svg class="w-4 h-4 text-softPink-900 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-5 h-5 text-softPink-950 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
             <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
             <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
           </svg>
-          <span class="hidden md:inline">IG</span>
         </a>
 
-        <!-- Threads Pill -->
+        <!-- Threads Icon-Only Button -->
         {studio.threadsUrl && (
           <a
             href={studio.threadsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-softBlue-100 hover:bg-softBlue-200 text-softBlue-950 text-xs font-bold transition-all border-2 border-softBlue-300 shadow-2xs active:scale-[0.98]"
-            title="Kunjungi Threads resmi @pearl.storeflowers"
+            class="w-11 h-11 rounded-2xl bg-softBlue-200 hover:bg-softBlue-300 text-softBlue-950 flex items-center justify-center transition-all border-2 border-softBlue-400 shadow-2xs active:scale-[0.95] shrink-0"
+            title={`Threads: ${studio.threadsHandle || '@pearl.storeflowers'}`}
+            aria-label={`Threads Resmi ${studio.threadsHandle || '@pearl.storeflowers'}`}
           >
-            <svg class="w-4 h-4 text-softBlue-900 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="w-5 h-5 text-softBlue-950 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12.186 20.916c-4.811 0-8.729-3.918-8.729-8.73 0-4.811 3.918-8.729 8.729-8.729 4.812 0 8.73 3.918 8.73 8.73 0 2.247-.852 4.303-2.28 5.864l-1.503-1.378c1.085-1.187 1.733-2.757 1.733-4.486 0-3.684-2.996-6.68-6.68-6.68-3.684 0-6.68 2.996-6.68 6.68 0 3.683 2.996 6.679 6.68 6.679 2.502 0 4.686-1.381 5.823-3.428l1.789.992c-1.505 2.709-4.398 4.54-7.662 4.54zm.004-5.362c-1.853 0-3.359-1.507-3.359-3.36 0-1.854 1.506-3.36 3.359-3.36 1.854 0 3.36 1.506 3.36 3.36 0 .524-.122 1.02-.338 1.464l-1.884-.715c.108-.231.171-.486.171-.749 0-.91-.74-1.65-1.65-1.65s-1.65.74-1.65 1.65.74 1.65 1.65 1.65c.348 0 .671-.108.938-.293l1.196 1.488c-.628.508-1.423.815-2.293.815z"/>
             </svg>
-            <span class="hidden md:inline">Threads</span>
           </a>
         )}
 
-        <!-- X (Twitter) Pill -->
+        <!-- X (Twitter) Icon-Only Button -->
         {studio.xUrl && (
           <a
             href={studio.xUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 text-xs font-bold transition-all border-2 border-stone-300 shadow-2xs active:scale-[0.98]"
-            title="Kunjungi akun X resmi @pearlflower64"
+            class="w-11 h-11 rounded-2xl bg-stone-200 hover:bg-stone-300 text-stone-900 flex items-center justify-center transition-all border-2 border-stone-400 shadow-2xs active:scale-[0.95] shrink-0"
+            title={`X (Twitter): ${studio.xHandle || '@pearlflower64'}`}
+            aria-label={`X Twitter Resmi ${studio.xHandle || '@pearlflower64'}`}
           >
-            <svg class="w-3.5 h-3.5 text-stone-900 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="w-4.5 h-4.5 text-stone-900 shrink-0" viewBox="0 0 24 24" fill="currentColor">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
-            <span class="hidden md:inline">X</span>
           </a>
         )}
       </div>
