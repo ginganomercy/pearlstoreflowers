@@ -134,15 +134,15 @@
           <button
             type="button"
             onclick={() => (activeCategory = cat.name)}
-            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-medium whitespace-nowrap transition-all duration-200 {activeCategory === cat.name
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-sans font-medium whitespace-nowrap transition-all duration-200 {activeCategory === cat.name
               ? 'bg-botanical-800 text-white shadow-xs font-semibold'
-              : 'bg-white hover:bg-botanical-50 text-stone-700 border border-botanical-200'}"
+              : 'bg-white hover:bg-stone-50 text-stone-700 border border-stone-200'}"
           >
             <span>{cat.name}</span>
             <span
               class="px-1.5 py-0.2 rounded-full text-[10px] {activeCategory === cat.name
                 ? 'bg-botanical-700 text-white'
-                : 'bg-botanical-100 text-botanical-800'}"
+                : 'bg-stone-100 text-stone-600'}"
             >
               {cat.count}
             </span>
@@ -154,20 +154,21 @@
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Active Result Status Bar -->
-    <div class="flex items-center justify-between pb-3.5 mb-5 border-b border-botanical-200 text-xs text-stone-500">
-      <div class="flex items-center gap-2 font-mono flex-wrap">
-        <span class="w-1.5 h-1.5 rounded-full bg-botanical-600 animate-pulse"></span>
-        <span class="font-medium text-stone-800">
+    <div class="flex items-center justify-between pb-3.5 mb-5 border-b border-stone-200 text-xs text-stone-500">
+      <div class="flex items-center gap-2 font-sans flex-wrap">
+        <span class="font-medium text-stone-700">
           Menampilkan {filteredProducts.length} dari {products.length} koleksi buket
         </span>
         {#if activeCategory !== 'Semua'}
-          <span class="text-botanical-700 hidden sm:inline font-semibold">
-            • [Koleksi: {activeCategory}]
+          <span class="text-stone-300">•</span>
+          <span class="text-botanical-800 font-semibold">
+            Koleksi {activeCategory}
           </span>
         {/if}
         {#if debouncedSearchQuery}
-          <span class="text-stone-400 hidden sm:inline">
-            • [Pencarian: &ldquo;{debouncedSearchQuery}&rdquo;]
+          <span class="text-stone-300">•</span>
+          <span class="text-stone-600 italic">
+            Kata kunci &ldquo;{debouncedSearchQuery}&rdquo;
           </span>
         {/if}
       </div>
@@ -176,7 +177,7 @@
         <button
           type="button"
           onclick={resetFilters}
-          class="inline-flex items-center gap-1.5 font-mono text-xs text-botanical-800 hover:text-botanical-950 font-bold transition-colors underline"
+          class="inline-flex items-center gap-1.5 font-sans text-xs text-botanical-800 hover:text-botanical-950 font-semibold transition-colors"
         >
           <RefreshCcw class="w-3 h-3" />
           <span>Reset Filter</span>
@@ -218,19 +219,19 @@
                   </span>
                 </div>
                 <div class="absolute top-3 left-3">
-                  <span class="font-mono text-[10px] font-bold px-2.5 py-1 rounded-md bg-white/95 text-stone-900 shadow-xs border border-white/40">
+                  <span class="font-sans text-[10px] font-semibold tracking-wider px-2.5 py-1 rounded-md bg-white/95 text-stone-800 shadow-xs border border-white/60">
                     {product.code}
                   </span>
                 </div>
               </button>
 
-              <!-- Card Body with Precise Balanced Spacing -->
+              <!-- Card Body with Refined Atelier Spacing -->
               <div class="p-4 flex flex-col space-y-2.5">
                 <div class="flex items-center justify-between gap-2 text-xs">
-                  <span class="font-mono text-[10px] tracking-wider uppercase font-bold text-botanical-800 bg-botanical-100 border border-botanical-200 px-2 py-0.5 rounded-md whitespace-nowrap shrink-0">
+                  <span class="font-sans text-[10px] tracking-wider uppercase font-semibold text-emerald-800 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-md whitespace-nowrap shrink-0">
                     {product.category}
                   </span>
-                  <span class="font-mono text-[11px] text-stone-500 flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                  <span class="font-sans text-[11px] text-stone-500 flex items-center gap-1.5 shrink-0 whitespace-nowrap">
                     <Box class="w-3.5 h-3.5 text-stone-400 shrink-0" />
                     <span>{product.dimension.split(',')[0]}</span>
                   </span>
@@ -246,22 +247,19 @@
                   </button>
                 </h3>
 
-                <!-- Composition Chips: Consistent Height & Clean Count -->
+                <!-- Composition Chips: Tasteful Editorial Presentation -->
                 <div class="space-y-1.5 pt-2 border-t border-stone-100">
-                  <div class="flex items-center justify-between text-[11px] font-mono text-botanical-700 font-medium">
-                    <span class="flex items-center gap-1">
-                      <Sparkles class="w-3.5 h-3.5 text-botanical-600 shrink-0" />
-                      <span>Komposisi Bunga:</span>
-                    </span>
+                  <div class="flex items-center justify-between text-[11px] font-sans text-stone-600 font-medium">
+                    <span>Komposisi Rangkaian:</span>
                     {#if product.flowerComposition.length > 2}
-                      <span class="text-[10px] text-stone-400 font-mono font-normal">
+                      <span class="text-[10px] text-stone-400 font-sans font-normal">
                         +{product.flowerComposition.length - 2} varian
                       </span>
                     {/if}
                   </div>
                   <div class="flex flex-wrap gap-1 min-h-[1.6rem]">
                     {#each product.flowerComposition.slice(0, 2) as flower}
-                      <span class="inline-block text-[11px] bg-botanical-50 text-botanical-800 px-2 py-0.5 rounded-md border border-botanical-200/80 font-medium whitespace-nowrap">
+                      <span class="inline-block text-[11px] bg-stone-50 text-stone-700 px-2 py-0.5 rounded-md border border-stone-200/80 font-medium whitespace-nowrap">
                         {flower}
                       </span>
                     {/each}
@@ -269,7 +267,7 @@
                       <button
                         type="button"
                         onclick={() => (selectedProduct = product)}
-                        class="inline-block text-[10px] font-mono bg-stone-100 hover:bg-stone-200 text-stone-600 px-1.5 py-0.5 rounded-md border border-stone-200 transition-colors cursor-pointer"
+                        class="inline-block text-[10px] font-sans bg-stone-100 hover:bg-stone-200 text-stone-600 px-1.5 py-0.5 rounded-md border border-stone-200 transition-colors cursor-pointer font-medium"
                         title="Klik untuk melihat komposisi lengkap"
                       >
                         +{product.flowerComposition.length - 2}
@@ -284,7 +282,7 @@
             <div class="p-4 pt-3 border-t border-stone-100 bg-[#FCFBF8]">
               <div class="flex items-baseline justify-between mb-2.5">
                 <div>
-                  <span class="font-mono text-[10px] uppercase tracking-wider text-stone-400 block">
+                  <span class="font-sans text-[10px] uppercase tracking-wider text-stone-400 block font-medium">
                     Mulai Dari
                   </span>
                   <span class="font-serif text-lg sm:text-xl font-bold text-stone-900 tracking-tight">
@@ -296,14 +294,14 @@
                   <button
                     type="button"
                     onclick={() => (selectedProduct = product)}
-                    class="text-xs font-medium text-stone-600 hover:text-botanical-800 flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-botanical-100 transition-colors cursor-pointer"
+                    class="text-xs font-medium text-stone-600 hover:text-botanical-800 flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-stone-100 transition-colors cursor-pointer"
                   >
                     <Info class="w-3.5 h-3.5 text-stone-500" />
                     <span>Detail</span>
                   </button>
                   <a
                     href="/koleksi/{product.slug}"
-                    class="text-xs font-medium text-stone-500 hover:text-botanical-800 p-1.5 rounded-lg hover:bg-botanical-100 transition-colors"
+                    class="text-xs font-medium text-stone-500 hover:text-botanical-800 p-1.5 rounded-lg hover:bg-stone-100 transition-colors"
                     title="Buka halaman permanen buket ini"
                   >
                     <ExternalLink class="w-3.5 h-3.5" />
@@ -327,20 +325,20 @@
       </div>
     {:else}
       <!-- Empty State -->
-      <div class="text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-botanical-300 max-w-md mx-auto my-8">
-        <div class="w-12 h-12 mx-auto rounded-2xl bg-botanical-100 border border-botanical-200 flex items-center justify-center text-botanical-700 mb-3">
-          <Sparkles class="w-6 h-6" />
+      <div class="text-center py-16 px-4 bg-white rounded-2xl border border-dashed border-stone-300 max-w-md mx-auto my-8">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-stone-100 border border-stone-200 flex items-center justify-center text-stone-500 mb-3">
+          <Search class="w-6 h-6" />
         </div>
         <h3 class="font-serif font-bold text-stone-900 text-base mb-1">
           Buket Tidak Ditemukan
         </h3>
         <p class="text-xs text-stone-500 mb-4 leading-relaxed">
-          Tidak ada buket yang cocok dengan &ldquo;{debouncedSearchQuery}&rdquo;. Silakan ganti kata kunci atau diskusikan pesanan buket kustom Anda langsung dengan florist kami.
+          Tidak ada buket yang cocok dengan &ldquo;{debouncedSearchQuery}&rdquo;. Silakan gunakan kata kunci lain atau konsultasikan pesanan custom langsung via WhatsApp.
         </p>
         <button
           type="button"
           onclick={resetFilters}
-          class="px-4 py-2 rounded-xl bg-botanical-800 text-white font-mono text-xs font-semibold hover:bg-botanical-900 transition-colors shadow-xs"
+          class="px-4 py-2 rounded-xl bg-botanical-800 text-white font-sans text-xs font-semibold hover:bg-botanical-900 transition-colors shadow-xs"
         >
           Tampilkan Semua Koleksi
         </button>

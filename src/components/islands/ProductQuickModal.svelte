@@ -81,10 +81,10 @@
       <!-- Header Bar -->
       <div class="flex items-center justify-between px-5 py-4 border-b border-stone-100 bg-[#FCFBF8]">
         <div class="flex items-center gap-2">
-          <span class="font-mono text-xs font-semibold px-2.5 py-0.5 rounded bg-botanical-100 text-botanical-800 border border-botanical-200">
+          <span class="font-sans text-xs font-semibold px-2.5 py-0.5 rounded bg-stone-100 text-stone-800 border border-stone-200">
             {product.code}
           </span>
-          <span class="font-mono text-xs font-medium text-botanical-800 bg-botanical-50 px-2 py-0.5 rounded border border-botanical-200">
+          <span class="font-sans text-xs font-medium text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
             {product.categoryLabel}
           </span>
         </div>
@@ -126,15 +126,15 @@
             <span class="font-serif text-2xl font-extrabold text-stone-900 tracking-tight">
               {product.priceDisplay}
             </span>
-            <span class="inline-flex items-center gap-1 font-mono text-xs font-medium text-botanical-800 bg-botanical-100 px-3 py-1 rounded-full border border-botanical-200">
-              <Clock class="w-3.5 h-3.5 text-botanical-600" />
+            <span class="inline-flex items-center gap-1.5 font-sans text-xs font-medium text-botanical-800 bg-stone-100 px-3 py-1 rounded-full border border-stone-200">
+              <Clock class="w-3.5 h-3.5 text-stone-500" />
               {product.leadTime}
             </span>
           </div>
         </div>
 
         <!-- Description -->
-        <div class="p-4 bg-botanical-50/70 rounded-xl border border-botanical-200/70">
+        <div class="p-4 bg-stone-50 rounded-xl border border-stone-200/80">
           <p class="text-xs sm:text-sm text-stone-700 leading-relaxed">
             {product.description}
           </p>
@@ -143,24 +143,24 @@
         <!-- Specifications Grid -->
         <div class="grid grid-cols-2 gap-3 text-xs">
           <div class="p-3.5 rounded-xl border border-stone-200 bg-white shadow-2xs">
-            <div class="flex items-center gap-1.5 text-botanical-600 font-mono text-[11px] mb-1">
-              <Box class="w-3.5 h-3.5 text-botanical-600" />
+            <div class="flex items-center gap-1.5 text-stone-500 font-sans text-[11px] mb-1 font-medium">
+              <Box class="w-3.5 h-3.5 text-stone-400" />
               <span>Dimensi Rangkaian</span>
             </div>
             <p class="font-semibold text-stone-800">{product.dimension}</p>
           </div>
 
           <div class="p-3.5 rounded-xl border border-stone-200 bg-white shadow-2xs">
-            <div class="flex items-center gap-1.5 text-botanical-600 font-mono text-[11px] mb-1">
-              <Palette class="w-3.5 h-3.5 text-botanical-600" />
+            <div class="flex items-center gap-1.5 text-stone-500 font-sans text-[11px] mb-1 font-medium">
+              <Palette class="w-3.5 h-3.5 text-stone-400" />
               <span>Nuansa Warna</span>
             </div>
             <p class="font-semibold text-stone-800">{product.colorTheme}</p>
           </div>
 
           <div class="col-span-2 p-3.5 rounded-xl border border-stone-200 bg-white shadow-2xs">
-            <div class="flex items-center gap-1.5 text-botanical-600 font-mono text-[11px] mb-1">
-              <Layers class="w-3.5 h-3.5 text-botanical-600" />
+            <div class="flex items-center gap-1.5 text-stone-500 font-sans text-[11px] mb-1 font-medium">
+              <Layers class="w-3.5 h-3.5 text-stone-400" />
               <span>Wrapping & Finishing</span>
             </div>
             <p class="font-semibold text-stone-800">{product.wrappingMaterial}</p>
@@ -169,13 +169,12 @@
 
         <!-- Flower Composition List -->
         <div class="space-y-2">
-          <div class="flex items-center gap-1.5 font-mono text-xs font-bold text-botanical-800 uppercase tracking-wide">
-            <Sparkles class="w-3.5 h-3.5 text-botanical-600" />
-            <span>Komposisi Rangkaian Bunga:</span>
+          <div class="font-serif font-bold text-sm text-stone-900 tracking-tight">
+            Komposisi Rangkaian Bunga:
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {#each product.flowerComposition as stem}
-              <div class="flex items-center gap-2 p-2.5 rounded-lg bg-botanical-50 border border-botanical-200 text-xs text-botanical-900 font-medium">
+              <div class="flex items-center gap-2 p-2.5 rounded-lg bg-stone-50 border border-stone-200 text-xs text-stone-800 font-medium">
                 <Check class="w-3.5 h-3.5 text-emerald-700 shrink-0" />
                 <span>{stem}</span>
               </div>
