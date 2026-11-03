@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppNavBar from '../components/layout/AppNavBar.astro';
+import StoreFooter from '../components/StoreFooter.astro';
+import GooeyNavMenu from '../components/islands/GooeyNavMenu.svelte';
+import SocialDPad from '../components/shared/SocialDPad.astro';
+import CorePillars from '../components/shared/CorePillars.astro';
+import catalogData from '../data/catalog.json';
+import type { FlowerProduct, StudioInfo } from '../domain/types';
+import { generateFloristJsonLd } from '../infrastructure/seo-schema';
+import { createWhatsAppConsultLink } from '../application/whatsapp';
+
+const studio: StudioInfo = catalogData.studio;
+const products: readonly FlowerProduct[] = catalogData.products as FlowerProduct[];
+const jsonLd = generateFloristJsonLd(studio, products);
+const consultWaUrl = createWhatsAppConsultLink(studio, 'Konsultasi Tentang Atelier');
+---
+
+<BaseLayout
+  title={`Tentang Atelier & Lokasi Studio — ${studio.name}`}
+  description={`Mengenal ${studio.name} (${studio.handle}): Atelier buket pengantin, lamaran & wisuda di Ruko Kirana Lestari Blok D5, Slawi - Tegal. Hubungi channel resmi.`}
+  jsonLd={jsonLd}
+>
+  <div id="top" class="min-h-screen flex flex-col bg-atelier-bg text-atelier-text">
+    <AppNavBar studio={studio} currentPath="/tentang" totalProducts={products.length} />
+
+    <main class="flex-1 py-8 sm:py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14">
+        <!-- Hero Header -->
+        <div class="text-center space-y-3">
+          <span class="inline-flex items-center gap-1.5 font-sans text-xs font-bold px-3.5 py-1 rounded-full bg-softYellow-200 text-softYellow-950 border-2 border-softYellow-400 shadow-2xs">
+            Profil Resmi Atelier
+          </span>
+          <h1 class="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+            Tentang Pearl Store Flowers
+          </h1>
+          <p class="font-sans text-sm sm:text-base text-stone-600 max-w-xl mx-auto leading-relaxed">
+            Dedikasi merangkai keindahan murni untuk hari pernikahan, lamaran, wisuda, dan setiap momen berharga Anda di Slawi, Tegal & sekitarnya.
+          </p>
+        </div>
+
+        <!-- Studio Profile Card with Authentic Avatar -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white border-2 border-stone-200 shadow-2xs flex flex-col sm:flex-row items-center sm:items-start gap-6">
+          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-softPink-200 border-2 border-softPink-400 shadow-xs shrink-0">
+            <img
+              src="/images/pearl_profile_avatar.jpg"
+              alt={`${studio.name} Official Avatar`}
+              width="112"
+              height="112"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+
+          <div class="space-y-3 text-center sm:text-left flex-1">
+            <div class="flex items-center justify-center sm:justify-start gap-2.5 flex-wrap">
+              <h2 class="font-serif text-2xl font-bold text-stone-900">{studio.name}</h2>
+              <span class="text-xs font-serif italic text-softPink-950 bg-softPink-200 px-3 py-0.5 rounded-full border border-softPink-400 font-bold">
+                Est. 2024
+              </span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-stone-700 leading-relaxed font-sans">
+              Pearl Store Flowers lahir dari hasrat menghadirkan estetika floristry modern yang bernilai rasa tinggi. Setiap tangkai bunga segar dipilih melalui kurasi ketat pada fase mekar optimal, sementara koleksi bunga abadi kami (pita satin, kawat bulu pipa chenille, dan bunga kering) dirangkai dengan ketelitian tangan (*handcrafted*) tanpa kompromi kualitas.
+            </p>
+
+            <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-xs text-stone-600 font-medium">
+              <span class="inline-flex items-center gap-1.5 text-softGreen-950 font-bold">
+                <svg class="w-4 h-4 text-softGreen-800 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>{studio.location}</span>
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-stone-700">
+                <svg class="w-4 h-4 text-stone-600 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span>{studio.operatingHours}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Multi-Channel Hub: The Social D-Pad Showcase -->
+        <section class="space-y-6">
+          <div class="border-b border-stone-200 pb-3">
+            <h2 class="font-serif text-xl sm:text-2xl font-bold text-stone-900">
+              Koneksi Resmi Multi-Channel Atelier
+            </h2>
+            <p class="text-xs text-stone-500 font-sans mt-0.5">
+              Gunakan Social D-Pad atau daftar kanal di bawah ini untuk terhubung langsung dengan tim kami.
+            </p>
+          </div>
+
+          <div class="p-6 sm:p-8 rounded-3xl bg-stone-50 border-2 border-stone-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-3 text-center md:text-left max-w-md">
+              <span class="text-xs font-serif font-bold text-softGreen-950 bg-softGreen-200 px-3 py-1 rounded-full border border-softGreen-400 inline-block">
+                Interactive Concierge Pad
+              </span>
+              <h3 class="font-serif text-xl font-bold text-stone-900">
+                Atelier Directional Social D-Pad
+              </h3>
+              <p class="text-xs text-stone-600 leading-relaxed font-sans">
+                Klik tombol arah pada stik kendali atelier untuk mengakses WhatsApp (Atas), Instagram (Kiri), Threads (Kanan), atau X Twitter (Bawah).
+              </p>
+
+              <div class="pt-2 grid grid-cols-2 gap-2 text-xs font-sans font-bold">
+                <div class="p-2.5 rounded-xl bg-white border border-stone-200 text-softGreen-950">
+                  <span class="text-[10px] text-stone-400 block uppercase font-normal">Atas</span>
+                  WhatsApp: {studio.whatsappDisplay}
+                </div>
+                <div class="p-2.5 rounded-xl bg-white border border-stone-200 text-softPink-950">
+                  <span class="text-[10px] text-stone-400 block uppercase font-normal">Kiri</span>
+                  Instagram: {studio.handle}
+                </div>
+                <div class="p-2.5 rounded-xl bg-white border border-stone-200 text-softBlue-950">
+                  <span class="text-[10px] text-stone-400 block uppercase font-normal">Kanan</span>
+                  Threads: {studio.threadsHandle || '@pearl.storeflowers'}
+                </div>
+                <div class="p-2.5 rounded-xl bg-white border border-stone-200 text-softYellow-950">
+                  <span class="text-[10px] text-stone-400 block uppercase font-normal">Bawah</span>
+                  X: {studio.xHandle || '@pearlflower64'}
+                </div>
+              </div>
+            </div>
+
+            <!-- Featured Social D-Pad Component -->
+            <div class="p-4 rounded-3xl bg-white border-2 border-stone-200 shadow-xs shrink-0 flex flex-col items-center">
+              <SocialDPad studio={studio} showLabel={true} />
+            </div>
+          </div>
+        </section>
+
+        <!-- Studio Address & Pick-up Details -->
+        <section class="space-y-4">
+          <div class="border-b border-stone-200 pb-3">
+            <h2 class="font-serif text-xl font-bold text-stone-900">
+              Lokasi Studio & Pengambilan Mandiri (Self Pick-up)
+            </h2>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border-2 border-stone-200 shadow-2xs space-y-4 text-xs font-sans">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-softGreen-200 border-2 border-softGreen-400 text-softGreen-950 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="space-y-1">
+                <p class="font-bold text-sm text-stone-900">{studio.location}</p>
+                <p class="text-stone-600 leading-relaxed">
+                  Studio kami terletak di area strategis Slawi, Kabupaten Tegal. Kami melayani pengambilan pesanan secara mandiri (*self pick-up*) dengan konfirmasi jam pengambilan via WhatsApp terlebih dahulu agar rangkaian telah siap dalam kondisi prima saat dijemput.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Value Pillars -->
+        <section class="space-y-4">
+          <h2 class="font-serif text-lg font-bold text-stone-900">Nilai Inti Kualitas Atelier</h2>
+          <CorePillars />
+        </section>
+      </div>
+    </main>
+
+    <StoreFooter studio={studio} />
+    <GooeyNavMenu client:idle studio={studio} currentPath="/tentang" />
+  </div>
+</BaseLayout>
+

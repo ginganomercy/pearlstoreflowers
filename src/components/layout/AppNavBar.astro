@@ -1,0 +1,106 @@
+---
+import type { StudioInfo } from '../../domain/types';
+import { createWhatsAppConsultLink } from '../../application/whatsapp';
+import SlidingNavbar from '../islands/SlidingNavbar.svelte';
+
+interface Props {
+  studio: StudioInfo;
+  currentPath?: string;
+  totalProducts?: number;
+}
+
+const { studio, currentPath = '/', totalProducts = 38 } = Astro.props;
+const consultWaUrl = createWhatsAppConsultLink(studio);
+---
+
+<header class="w-full bg-white border-b-2 border-stone-200 sticky top-0 z-40" transition:persist="main-app-navbar">
+  <!-- Top Announcement Bar: Ultra-Compact Single Line on Mobile, Full on Desktop -->
+  <div class="w-full bg-softGreen-200 text-softGreen-950 border-b border-softGreen-400 py-1.5 px-3 text-center">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-sans font-bold">
+      <span class="inline-flex items-center gap-1 text-softGreen-950">
+        <svg class="w-3.5 h-3.5 text-softGreen-800 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>Sameday Slawi, Tegal & Brebes</span>
+      </span>
+      <span class="text-softGreen-600 hidden sm:inline">•</span>
+      <span class="hidden sm:inline-flex items-center gap-1 text-softPink-950">
+        <span>Kurasi Bunga Segar & Abadi</span>
+      </span>
+      <span class="text-softGreen-600 hidden sm:inline">•</span>
+      <span class="inline-flex items-center gap-1 text-softYellow-950">
+        <span>Gratis Kartu Segel Lilin</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Main App Bar (56px on Mobile, 72px on Desktop) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14 sm:h-18 gap-4">
+      <!-- Left: Atelier Brand Identity -->
+      <div class="flex items-center gap-3">
+        <a
+          href="/"
+          data-astro-prefetch="load"
+          class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-softPink-200 border-2 border-softPink-400 shadow-2xs shrink-0 transition-transform hover:scale-105 block"
+          aria-label="Pearl Store Flowers Beranda"
+        >
+          <img
+            src="/images/pearl_profile_avatar.jpg"
+            alt={studio.name}
+            width="44"
+            height="44"
+            class="w-full h-full object-cover rounded-xl"
+            loading="eager"
+          />
+        </a>
+
+        <div>
+          <a href="/" data-astro-prefetch="load" class="hover:text-softGreen-800 transition-colors">
+            <span class="font-serif text-base sm:text-xl font-bold tracking-tight text-stone-900 block leading-tight">
+              {studio.name}
+            </span>
+          </a>
+          <span class="text-[10px] sm:text-xs text-stone-500 font-sans font-medium hidden sm:block">
+            {studio.location} • Est. 2024
+          </span>
+        </div>
+      </div>
+
+      <!-- Center: Desktop Magnetic Sliding Pill Navigation Island -->
+      <SlidingNavbar client:load currentPath={currentPath} totalProducts={totalProducts} />
+
+      <!-- Right: Quick Action Controls -->
+      <div class="flex items-center gap-2">
+        <!-- Search Trigger Icon Button -->
+        <a
+          href="/koleksi"
+          data-astro-prefetch="load"
+          class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 border-2 border-stone-300 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+          title="Cari Koleksi Buket"
+          aria-label="Cari Koleksi Buket"
+        >
+          <svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </a>
+
+        <!-- WhatsApp Direct Consultation Button -->
+        <a
+          href={consultWaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-softGreen-800 hover:bg-softGreen-700 text-white font-sans text-xs font-bold border-2 border-softGreen-900 shadow-xs hover:shadow transition-all active:scale-95 shrink-0"
+          title={`Chat WhatsApp: ${studio.whatsappDisplay}`}
+        >
+          <svg class="w-4 h-4 fill-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.677.15-.201.301-.778.979-.953 1.18-.175.201-.351.226-.652.075-.301-.15-1.27-.468-2.42-1.493-.895-.798-1.5-1.784-1.675-2.085-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.15-.175.201-.301.301-.501.101-.201.05-.377-.025-.527-.075-.15-.677-1.631-.928-2.233-.244-.587-.492-.507-.677-.517-.175-.009-.376-.011-.577-.011s-.527.075-.803.377c-.276.301-1.053 1.029-1.053 2.509 0 1.48 1.079 2.909 1.229 3.109.15.201 2.123 3.242 5.143 4.547.718.311 1.279.497 1.716.636.721.23 1.377.197 1.896.12.578-.087 1.78-.728 2.031-1.431.251-.703.251-1.305.176-1.431-.075-.126-.276-.201-.577-.351zM12.004 21.75c-1.75 0-3.465-.458-4.978-1.328l-.357-.205-3.699.97 1.002-3.606-.23-.377A9.708 9.708 0 0 1 2.25 12.004c0-5.377 4.377-9.754 9.754-9.754 2.606 0 5.056 1.015 6.899 2.858a9.697 9.697 0 0 1 2.858 6.896c0 5.38-4.377 9.754-9.757 9.754zm0-17.508c-4.275 0-7.754 3.479-7.754 7.758 0 1.365.357 2.698 1.034 3.873l.161.279-.611 2.203 2.261-.593.271.161a7.71 7.71 0 0 0 3.888 1.078c4.277 0 7.757-3.48 7.757-7.758 0-2.072-.807-4.021-2.273-5.487a7.71 7.71 0 0 0-5.488-2.274z"/>
+          </svg>
+          <span class="hidden sm:inline">Chat Florist</span>
+          <span class="sm:hidden font-bold">Chat</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+

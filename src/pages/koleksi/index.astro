@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AppNavBar from '../../components/layout/AppNavBar.astro';
+import StoreFooter from '../../components/StoreFooter.astro';
+import CatalogIsland from '../../components/islands/CatalogIsland.svelte';
+import GooeyNavMenu from '../../components/islands/GooeyNavMenu.svelte';
+import catalogData from '../../data/catalog.json';
+import type { FlowerProduct, StudioInfo } from '../../domain/types';
+import { generateFloristJsonLd } from '../../infrastructure/seo-schema';
+
+const studio: StudioInfo = catalogData.studio;
+const products: readonly FlowerProduct[] = catalogData.products as FlowerProduct[];
+const jsonLd = generateFloristJsonLd(studio, products);
+---
+
+<BaseLayout
+  title={`Katalog Koleksi Buket Lengkap — ${studio.name}`}
+  description={`Eksplorasi 38 rangkaian buket bunga mawar, wisuda, lamaran & bunga kustom di Slawi - Tegal. Cari cepat dengan filter & pesan via WhatsApp.`}
+  jsonLd={jsonLd}
+>
+  <div id="top" class="min-h-screen flex flex-col bg-atelier-bg text-atelier-text">
+    <!-- Clean Responsive App Bar -->
+    <AppNavBar studio={studio} currentPath="/koleksi" totalProducts={products.length} />
+
+    <!-- Dedicated Catalog Surface with MiniSearch & Filters -->
+    <main class="flex-1 py-4">
+      <CatalogIsland client:idle products={products} studio={studio} />
+    </main>
+
+    <!-- Atelier Footer -->
+    <StoreFooter studio={studio} />
+
+    <!-- Liquid Gooey Floral Navigation Hub -->
+    <GooeyNavMenu client:idle studio={studio} currentPath="/koleksi" />
+  </div>
+</BaseLayout>
+

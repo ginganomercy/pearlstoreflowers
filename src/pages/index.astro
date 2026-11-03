@@ -1,39 +1,227 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import StoreHeader from '../components/StoreHeader.astro';
+import AppNavBar from '../components/layout/AppNavBar.astro';
+import CorePillars from '../components/shared/CorePillars.astro';
 import HowToOrder from '../components/HowToOrder.astro';
 import StoreFooter from '../components/StoreFooter.astro';
-import CatalogIsland from '../components/islands/CatalogIsland.svelte';
-import FloatingWhatsApp from '../components/islands/FloatingWhatsApp.svelte';
+import GooeyNavMenu from '../components/islands/GooeyNavMenu.svelte';
 import catalogData from '../data/catalog.json';
 import type { FlowerProduct, StudioInfo } from '../domain/types';
 import { generateFloristJsonLd } from '../infrastructure/seo-schema';
+import { createWhatsAppConsultLink, createWhatsAppOrderLink } from '../application/whatsapp';
 
 const studio: StudioInfo = catalogData.studio;
 const products: readonly FlowerProduct[] = catalogData.products as FlowerProduct[];
 const jsonLd = generateFloristJsonLd(studio, products);
+const consultWaUrl = createWhatsAppConsultLink(studio, 'Konsultasi Beranda Showcase');
+
+// Curated 6 Best-Seller Bouquets across categories
+const featuredProducts = products.filter((p) =>
+  ['PSF-WED-01', 'PSF-WED-02', 'PSF-ENG-01', 'PSF-GRAD-01', 'PSF-GRAD-05', 'PSF-CUST-01'].includes(p.code)
+);
+
+const categories = [
+  { name: 'Wedding', desc: 'Buket Mawar Pengantin & Akad', color: 'bg-softPink-200 border-softPink-400 text-softPink-950', count: 10 },
+  { name: 'Engagement', desc: 'Lamaran & Kotak Cincin', color: 'bg-softGreen-200 border-softGreen-400 text-softGreen-950', count: 8 },
+  { name: 'Graduation', desc: 'Wisuda & Boneka Teddy', color: 'bg-softBlue-200 border-softBlue-400 text-softBlue-950', count: 12 },
+  { name: 'Custom', desc: 'Buket Uang, Balon & Kawat Bulu', color: 'bg-softYellow-200 border-softYellow-400 text-softYellow-950', count: 8 },
+];
 ---
 
 <BaseLayout
   title={`${studio.name} — Luxury Floral & Hand Bouquet Atelier`}
-  description={`Katalog resmi ${studio.name} (${studio.handle}): Buket pengantin, lamaran, wisuda & bunga abadi kustom di Slawi, Tegal & sekitarnya. Pesan via WhatsApp.`}
+  description={`Atelier buket pengantin, lamaran, wisuda & bunga abadi kustom di Slawi, Tegal & sekitarnya. Pengiriman Sameday, kartu segel lilin gratis, dan konsultasi WhatsApp.`}
   jsonLd={jsonLd}
 >
   <div id="top" class="min-h-screen flex flex-col bg-atelier-bg text-atelier-text">
-    <!-- Atelier Header -->
-    <StoreHeader studio={studio} totalProducts={products.length} />
+    <!-- Clean Responsive App Bar (56px Mobile / 72px Desktop) -->
+    <AppNavBar studio={studio} currentPath="/" totalProducts={products.length} />
 
-    <!-- Main Catalog Island with Instant MiniSearch & Filters -->
-    <main class="flex-1 py-4">
-      <CatalogIsland client:idle products={products} studio={studio} />
-      <HowToOrder studio={studio} />
+    <main class="flex-1 space-y-12 sm:space-y-16 pb-12">
+      <!-- Hero Showcase Banner -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
+        <div class="relative rounded-3xl overflow-hidden bg-white border-2 border-stone-200 p-6 sm:p-12 shadow-xs">
+          <div class="max-w-2xl space-y-4 sm:space-y-6">
+            <div class="inline-flex items-center gap-2">
+              <span class="text-xs font-serif italic text-softPink-950 bg-softPink-200 px-3 py-1 rounded-full border-2 border-softPink-400 tracking-wide font-bold">
+                Floral & Bouquet Atelier • Est. 2024
+              </span>
+            </div>
+
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-stone-900 tracking-tight leading-[1.15]">
+              Rangkaian Bunga Mewah Penuh Makna.
+            </h1>
+
+            <p class="font-sans text-xs sm:text-base text-stone-600 leading-relaxed">
+              Spesialis buket pengantin, lamaran, wisuda, dan hadiah seremonial dengan kurasi kuntum mekar sempurna di Slawi, Tegal & Brebes. Dilengkapi gratis kartu ucapan segel lilin vintage.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+              <a
+                href="/koleksi"
+                data-astro-prefetch="load"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-sans text-xs sm:text-sm font-bold shadow-xs hover:shadow transition-all active:scale-95"
+              >
+                <span>Eksplorasi 38 Koleksi Buket</span>
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                </svg>
+              </a>
+
+              <a
+                href={consultWaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-softGreen-200 hover:bg-softGreen-300 text-softGreen-950 font-sans text-xs sm:text-sm font-bold border-2 border-softGreen-400 shadow-2xs hover:scale-105 active:scale-95 transition-all"
+              >
+                <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.677.15-.201.301-.778.979-.953 1.18-.175.201-.351.226-.652.075-.301-.15-1.27-.468-2.42-1.493-.895-.798-1.5-1.784-1.675-2.085-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.15-.175.201-.301.301-.501.101-.201.05-.377-.025-.527-.075-.15-.677-1.631-.928-2.233-.244-.587-.492-.507-.677-.517-.175-.009-.376-.011-.577-.011s-.527.075-.803.377c-.276.301-1.053 1.029-1.053 2.509 0 1.48 1.079 2.909 1.229 3.109.15.201 2.123 3.242 5.143 4.547.718.311 1.279.497 1.716.636.721.23 1.377.197 1.896.12.578-.087 1.78-.728 2.031-1.431.251-.703.251-1.305.176-1.431-.075-.126-.276-.201-.577-.351zM12.004 21.75c-1.75 0-3.465-.458-4.978-1.328l-.357-.205-3.699.97 1.002-3.606-.23-.377A9.708 9.708 0 0 1 2.25 12.004c0-5.377 4.377-9.754 9.754-9.754 2.606 0 5.056 1.015 6.899 2.858a9.697 9.697 0 0 1 2.858 6.896c0 5.38-4.377 9.754-9.757 9.754zm0-17.508c-4.275 0-7.754 3.479-7.754 7.758 0 1.365.357 2.698 1.034 3.873l.161.279-.611 2.203 2.261-.593.271.161a7.71 7.71 0 0 0 3.888 1.078c4.277 0 7.757-3.48 7.757-7.758 0-2.072-.807-4.021-2.273-5.487a7.71 7.71 0 0 0-5.488-2.274z"/>
+                </svg>
+                <span>Konsultasi Florist</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Quick Jump Cards (4 Core Solid Soft Colors) -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          {categories.map((cat) => (
+            <a
+              href="/koleksi"
+              data-astro-prefetch="load"
+              class={`p-4 sm:p-5 rounded-2xl border-2 shadow-2xs hover:shadow-md transition-all hover:scale-[1.02] active:scale-95 flex flex-col justify-between space-y-3 ${cat.color}`}
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-serif font-bold text-base sm:text-lg">{cat.name}</span>
+                <span class="text-[10px] font-sans font-bold px-2 py-0.5 rounded-full bg-white text-stone-900 border border-stone-200">
+                  {cat.count} Desain
+                </span>
+              </div>
+              <p class="text-[11px] font-sans opacity-90 leading-tight">
+                {cat.desc}
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Featured Curated Bouquets (Top 6 Best Sellers) -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+          <div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+              Koleksi Unggulan Atelier
+            </h2>
+            <p class="text-xs text-stone-500 font-sans mt-0.5">
+              Rangkaian terfavorit pilihan calon pengantin dan wisudawan.
+            </p>
+          </div>
+
+          <a
+            href="/koleksi"
+            data-astro-prefetch="load"
+            class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-softGreen-800 hover:text-softGreen-900 transition-colors"
+          >
+            <span>Semua 38 Buket</span>
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- 2-Column Mobile Grid, 3-Column Desktop Grid for Showcase -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
+          {featuredProducts.map((product) => {
+            const waLink = createWhatsAppOrderLink(product, studio.whatsappNumber, studio.name);
+            return (
+              <article class="bg-white rounded-2xl border border-stone-200 shadow-2xs hover:shadow-xl hover:border-softGreen-300 transition-all flex flex-col justify-between overflow-hidden">
+                <div>
+                  <a href={`/koleksi/${product.slug}`} data-astro-prefetch="viewport" class="block relative aspect-[4/5] overflow-hidden bg-stone-100">
+                    <img
+                      src={product.imageUrl}
+                      alt={product.title}
+                      loading="lazy"
+                      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div class="absolute top-2 left-2">
+                      <span class="font-sans text-[9px] sm:text-[10px] font-semibold tracking-wider px-2 py-0.5 rounded-md bg-white text-stone-800 shadow-xs border border-stone-200">
+                        {product.code}
+                      </span>
+                    </div>
+                  </a>
+
+                  <div class="p-2.5 sm:p-4 space-y-1 sm:space-y-2">
+                    <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-softPink-950 bg-softPink-200 px-2 py-0.5 rounded border border-softPink-400 inline-block">
+                      {product.category}
+                    </span>
+                    <h3 class="font-serif text-xs sm:text-base font-bold text-stone-900 leading-snug line-clamp-2 min-h-[2rem] sm:min-h-[2.6rem]">
+                      <a href={`/koleksi/${product.slug}`} data-astro-prefetch="viewport" class="hover:text-softGreen-800 transition-colors">
+                        {product.title}
+                      </a>
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="p-2.5 sm:p-4 pt-2 sm:pt-3 border-t border-stone-100 bg-[#FCFBF8] space-y-2">
+                  <div class="flex items-baseline justify-between">
+                    <div>
+                      <span class="font-sans text-[9px] uppercase tracking-wider text-stone-400 block font-medium">Mulai Dari</span>
+                      <span class="font-serif text-xs sm:text-lg font-bold text-stone-900 tracking-tight">{product.priceDisplay}</span>
+                    </div>
+                    <a href={`/koleksi/${product.slug}`} class="text-[11px] sm:text-xs text-stone-500 hover:text-softGreen-800 font-medium">
+                      Detail →
+                    </a>
+                  </div>
+
+                  <a
+                    href={waLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-softGreen-800 hover:bg-softGreen-700 text-white font-bold text-[11px] sm:text-xs shadow-xs transition-all active:scale-[0.98]"
+                  >
+                    <span>Pesan via WhatsApp</span>
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div class="text-center pt-4">
+          <a
+            href="/koleksi"
+            class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-sans text-xs sm:text-sm font-bold shadow-md hover:scale-105 active:scale-95 transition-all"
+          >
+            <span>Buka Katalog Lengkap (38 Koleksi)</span>
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Core Value Pillars Section -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div class="border-b border-stone-200 pb-3">
+          <h2 class="font-serif text-xl sm:text-2xl font-bold text-stone-900">
+            Jaminan Standar Kualitas Atelier
+          </h2>
+        </div>
+        <CorePillars />
+      </section>
+
+      <!-- How to Order Preview -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <HowToOrder studio={studio} />
+      </section>
     </main>
 
     <!-- Atelier Footer -->
     <StoreFooter studio={studio} />
 
-    <!-- Persistent WhatsApp Assistance -->
-    <FloatingWhatsApp client:idle studio={studio} />
+    <!-- Liquid Gooey Floral Navigation Hub -->
+    <GooeyNavMenu client:idle studio={studio} currentPath="/" />
   </div>
 </BaseLayout>
-

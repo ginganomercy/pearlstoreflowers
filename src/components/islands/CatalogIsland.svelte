@@ -117,13 +117,13 @@
     if (isActive) {
       switch (catName) {
         case 'Wedding':
-          return 'bg-softPink-200 text-softPink-950 border-2 border-softPink-500 font-extrabold shadow-xs ring-2 ring-softPink-300';
+          return 'bg-softPink-200 text-softPink-950 border-2 border-softPink-500 font-extrabold shadow-xs';
         case 'Engagement':
-          return 'bg-softGreen-200 text-softGreen-950 border-2 border-softGreen-500 font-extrabold shadow-xs ring-2 ring-softGreen-300';
+          return 'bg-softGreen-200 text-softGreen-950 border-2 border-softGreen-500 font-extrabold shadow-xs';
         case 'Graduation':
-          return 'bg-softBlue-200 text-softBlue-950 border-2 border-softBlue-500 font-extrabold shadow-xs ring-2 ring-softBlue-300';
+          return 'bg-softBlue-200 text-softBlue-950 border-2 border-softBlue-500 font-extrabold shadow-xs';
         case 'Custom':
-          return 'bg-softYellow-200 text-softYellow-950 border-2 border-softYellow-500 font-extrabold shadow-xs ring-2 ring-softYellow-300';
+          return 'bg-softYellow-200 text-softYellow-950 border-2 border-softYellow-500 font-extrabold shadow-xs';
         default:
           return 'bg-stone-900 text-white font-extrabold shadow-xs border-2 border-stone-900';
       }
@@ -148,20 +148,20 @@
     switch (colorTheme) {
       case 'softPink':
         return isActive
-          ? `${base} bg-softPink-300 text-softPink-950 border-softPink-500 shadow-xs ring-2 ring-softPink-400`
+          ? `${base} bg-softPink-300 text-softPink-950 border-softPink-500 shadow-xs`
           : `${base} bg-softPink-200 hover:bg-softPink-300 text-softPink-950 border-softPink-400`;
       case 'softBlue':
         return isActive
-          ? `${base} bg-softBlue-300 text-softBlue-950 border-softBlue-500 shadow-xs ring-2 ring-softBlue-400`
+          ? `${base} bg-softBlue-300 text-softBlue-950 border-softBlue-500 shadow-xs`
           : `${base} bg-softBlue-200 hover:bg-softBlue-300 text-softBlue-950 border-softBlue-400`;
       case 'softYellow':
         return isActive
-          ? `${base} bg-softYellow-300 text-softYellow-950 border-softYellow-500 shadow-xs ring-2 ring-softYellow-400`
+          ? `${base} bg-softYellow-300 text-softYellow-950 border-softYellow-500 shadow-xs`
           : `${base} bg-softYellow-200 hover:bg-softYellow-300 text-softYellow-950 border-softYellow-400`;
       case 'softGreen':
       default:
         return isActive
-          ? `${base} bg-softGreen-300 text-softGreen-950 border-softGreen-500 shadow-xs ring-2 ring-softGreen-400`
+          ? `${base} bg-softGreen-300 text-softGreen-950 border-softGreen-500 shadow-xs`
           : `${base} bg-softGreen-200 hover:bg-softGreen-300 text-softGreen-950 border-softGreen-400`;
     }
   }
@@ -205,8 +205,11 @@
         {/if}
       </div>
 
-      <!-- Quick Search Suggestion Pills (Thick Bold Vector Icons - Zero Gradient) -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+      <!-- Quick Search Suggestion Pills (Smooth Momentum Scrolling & Centering) -->
+      <div
+        class="no-swipe flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none"
+        style="-webkit-overflow-scrolling: touch; scroll-behavior: smooth; overscroll-behavior-x: contain;"
+      >
         <span class="text-[11px] font-sans text-stone-500 shrink-0 font-bold uppercase tracking-wider">
           Rekomendasi:
         </span>
@@ -214,7 +217,10 @@
           {@const isActive = debouncedSearchQuery.toLowerCase() === chip.query.toLowerCase()}
           <button
             type="button"
-            onclick={() => handleQuickChipClick(chip.query)}
+            onclick={(e) => {
+              handleQuickChipClick(chip.query);
+              (e.currentTarget as HTMLElement)?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }}
             class={getQuickChipClasses(chip.colorTheme, isActive)}
             title={chip.description}
           >
@@ -236,14 +242,20 @@
         {/each}
       </div>
 
-      <!-- Category Filter Tabs: Thick Bold Vector Icons & 4 Solid Soft Colors -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none pt-1">
+      <!-- Category Filter Tabs: Smooth Momentum Scrolling & Auto-Centering -->
+      <div
+        class="no-swipe flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none pt-1"
+        style="-webkit-overflow-scrolling: touch; scroll-behavior: smooth; overscroll-behavior-x: contain;"
+      >
         {#each categories as cat}
           {@const isActive = activeCategory === cat.name}
           <button
             type="button"
-            onclick={() => (activeCategory = cat.name)}
-            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-sans whitespace-nowrap transition-all duration-150 border {getCategoryTabClasses(cat.name, isActive)}"
+            onclick={(e) => {
+              activeCategory = cat.name;
+              (e.currentTarget as HTMLElement)?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }}
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-sans whitespace-nowrap transition-all duration-150 {getCategoryTabClasses(cat.name, isActive)}"
           >
             {#if cat.name === 'Wedding'}
               <Flower2 class="w-3.5 h-3.5 shrink-0" strokeWidth={2.75} />
@@ -303,15 +315,15 @@
       {/if}
     </div>
 
-    <!-- Product Grid: 4 Columns on Desktop with Refined Proportions -->
+    <!-- Product Grid: 2 Columns on Mobile, 4 Columns on Desktop with Refined Proportions -->
     {#if filteredProducts.length > 0}
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
         {#each filteredProducts as product, index (product.id)}
           {@const isPriority = index < ABOVE_THE_FOLD_PRIORITY_COUNT}
           {@const optimizedImg = product.imageUrl ? optimizeImageUrl(product.imageUrl, IMAGE_TARGET_WIDTH_PX, IMAGE_TARGET_QUALITY_PERCENT) : ''}
           {@const waLink = createWhatsAppOrderLink(product, studio.whatsappNumber, studio.name)}
 
-          <article class="group bg-white rounded-2xl border border-stone-200/90 shadow-2xs hover:shadow-xl hover:border-softGreen-300 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+          <article class="group bg-white rounded-2xl border border-stone-200 shadow-2xs hover:shadow-xl hover:border-softGreen-300 transition-all duration-300 flex flex-col justify-between overflow-hidden">
             <div>
               <!-- Bouquet Photography (Accessible Button - Zero Gradient Policy) -->
               <button
@@ -330,43 +342,43 @@
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 {/if}
-                <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex justify-center">
-                  <span class="inline-flex items-center gap-1.5 text-xs text-stone-900 font-medium bg-white/95 px-3 py-1.5 rounded-xl shadow-xs border border-stone-200">
+                <div class="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex justify-center">
+                  <span class="inline-flex items-center gap-1.5 text-xs text-stone-900 font-medium bg-white px-3 py-1.5 rounded-xl shadow-xs border border-stone-200">
                     <Info class="w-3.5 h-3.5 text-softGreen-800" strokeWidth={2.75} />
-                    <span>Lihat Spesifikasi Rangkaian</span>
+                    <span>Lihat Spesifikasi</span>
                   </span>
                 </div>
-                <div class="absolute top-3 left-3">
-                  <span class="font-sans text-[10px] font-semibold tracking-wider px-2.5 py-1 rounded-md bg-white/95 text-stone-800 shadow-xs border border-stone-200">
+                <div class="absolute top-2 left-2">
+                  <span class="font-sans text-[9px] sm:text-[10px] font-semibold tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-white text-stone-800 shadow-xs border border-stone-200">
                     {product.code}
                   </span>
                 </div>
               </button>
 
               <!-- Card Body with Solid Soft Category Pill -->
-              <div class="p-4 flex flex-col space-y-2.5">
-                <div class="flex items-center justify-between gap-2 text-xs">
-                  <span class="font-sans text-[10px] tracking-wider uppercase font-semibold px-2 py-0.5 rounded-md border whitespace-nowrap shrink-0 {getCategoryBadgeClasses(product.category)}">
+              <div class="p-2.5 sm:p-4 flex flex-col space-y-1.5 sm:space-y-2.5">
+                <div class="flex items-center justify-between gap-1 text-xs">
+                  <span class="font-sans text-[9px] sm:text-[10px] tracking-wider uppercase font-semibold px-1.5 py-0.5 rounded-md border whitespace-nowrap shrink-0 {getCategoryBadgeClasses(product.category)}">
                     {product.category}
                   </span>
-                  <span class="font-sans text-[11px] text-stone-500 flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+                  <span class="font-sans text-[10px] sm:text-[11px] text-stone-500 hidden sm:flex items-center gap-1.5 shrink-0 whitespace-nowrap">
                     <Box class="w-3.5 h-3.5 text-stone-600 shrink-0" strokeWidth={2.75} />
                     <span>{product.dimension.split(',')[0]}</span>
                   </span>
                 </div>
 
-                <h3 class="font-serif text-base sm:text-lg font-bold text-stone-900 leading-snug">
+                <h3 class="font-serif text-xs sm:text-base font-bold text-stone-900 leading-snug">
                   <button
                     type="button"
                     onclick={() => (selectedProduct = product)}
-                    class="text-left group-hover:text-softGreen-800 transition-colors cursor-pointer line-clamp-2 min-h-[2.6rem] block w-full"
+                    class="text-left group-hover:text-softGreen-800 transition-colors cursor-pointer line-clamp-2 min-h-[2rem] sm:min-h-[2.6rem] block w-full"
                   >
                     {product.title}
                   </button>
                 </h3>
 
-                <!-- Composition Chips: Tasteful Editorial Presentation -->
-                <div class="space-y-1.5 pt-2 border-t border-stone-100">
+                <!-- Composition Chips: Desktop Only for Clean Mobile Density -->
+                <div class="hidden sm:block space-y-1.5 pt-2 border-t border-stone-100">
                   <div class="flex items-center justify-between text-[11px] font-sans text-stone-600 font-medium">
                     <span>Komposisi Rangkaian:</span>
                     {#if product.flowerComposition.length > 2}
@@ -377,7 +389,7 @@
                   </div>
                   <div class="flex flex-wrap gap-1 min-h-[1.6rem]">
                     {#each product.flowerComposition.slice(0, 2) as flower}
-                      <span class="inline-block text-[11px] bg-stone-50 text-stone-700 px-2 py-0.5 rounded-md border border-stone-200/80 font-medium whitespace-nowrap">
+                      <span class="inline-block text-[11px] bg-stone-50 text-stone-700 px-2 py-0.5 rounded-md border border-stone-200 font-medium whitespace-nowrap">
                         {flower}
                       </span>
                     {/each}
@@ -397,31 +409,24 @@
             </div>
 
             <!-- Card Action Footer -->
-            <div class="p-4 pt-3 border-t border-stone-100 bg-[#FCFBF8]">
-              <div class="flex items-baseline justify-between mb-2.5">
+            <div class="p-2.5 sm:p-4 pt-2 sm:pt-3 border-t border-stone-100 bg-[#FCFBF8]">
+              <div class="flex items-baseline justify-between mb-2">
                 <div>
-                  <span class="font-sans text-[10px] uppercase tracking-wider text-stone-400 block font-medium">
+                  <span class="font-sans text-[9px] sm:text-[10px] uppercase tracking-wider text-stone-400 block font-medium">
                     Mulai Dari
                   </span>
-                  <span class="font-serif text-lg sm:text-xl font-bold text-stone-900 tracking-tight">
+                  <span class="font-serif text-xs sm:text-lg font-bold text-stone-900 tracking-tight">
                     {product.priceDisplay}
                   </span>
                 </div>
 
                 <div class="flex items-center gap-1">
-                  <button
-                    type="button"
-                    onclick={() => (selectedProduct = product)}
-                    class="text-xs font-medium text-stone-600 hover:text-softGreen-800 flex items-center gap-1 px-2.5 py-1 rounded-lg hover:bg-stone-100 transition-colors cursor-pointer"
-                  >
-                    <Info class="w-3.5 h-3.5 text-stone-600" strokeWidth={2.75} />
-                    <span>Detail</span>
-                  </button>
                   <a
                     href="/koleksi/{product.slug}"
-                    class="text-xs font-medium text-stone-500 hover:text-softGreen-800 p-1.5 rounded-lg hover:bg-stone-100 transition-colors"
+                    class="text-[11px] sm:text-xs font-medium text-stone-500 hover:text-softGreen-800 p-1 sm:p-1.5 rounded-lg hover:bg-stone-100 transition-colors inline-flex items-center gap-1"
                     title="Buka halaman permanen buket ini"
                   >
+                    <span class="hidden sm:inline">Detail</span>
                     <ExternalLink class="w-3.5 h-3.5" strokeWidth={2.75} />
                   </a>
                 </div>
@@ -432,10 +437,12 @@
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-softGreen-800 hover:bg-softGreen-700 text-white text-xs font-semibold shadow-xs hover:shadow transition-all duration-150 active:scale-[0.99] border border-softGreen-900/20"
+                class="w-full inline-flex items-center justify-center gap-1.5 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl bg-softGreen-800 hover:bg-softGreen-700 text-white font-bold text-[11px] sm:text-xs shadow-xs hover:shadow transition-all active:scale-[0.98] border border-softGreen-900"
+                title="Pesan buket ini langsung via WhatsApp"
               >
-                <MessageCircle class="w-4 h-4 fill-white" strokeWidth={2.75} />
-                <span>Pesan via WhatsApp</span>
+                <MessageCircle class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white" strokeWidth={2.75} />
+                <span class="sm:hidden">Pesan</span>
+                <span class="hidden sm:inline">Pesan via WhatsApp</span>
               </a>
             </div>
           </article>
