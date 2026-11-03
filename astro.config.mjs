@@ -7,8 +7,8 @@ export default defineConfig({
   site: 'https://pearlstoreflowers.pages.dev',
   output: 'static',
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'load',
+    prefetchAll: false,
+    defaultStrategy: 'hover',
   },
   build: {
     format: 'directory',

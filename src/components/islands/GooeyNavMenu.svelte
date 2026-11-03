@@ -84,25 +84,6 @@
 
 <svelte:window onkeydown={handleKeyDown} />
 
-<!-- SVG Filter: 100% Solid Opacity Clamping (Zero Gradient & No Milky Blur) -->
-<svg class="sr-only" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="atelier-goo">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-      <feColorMatrix
-        in="blur"
-        mode="matrix"
-        values="1 0 0 0 0
-                0 1 0 0 0
-                0 0 1 0 0
-                0 0 0 20 -10"
-        result="goo"
-      />
-      <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-    </filter>
-  </defs>
-</svg>
-
 <!-- Mobile Exclusive Dim Backdrop on Open State -->
 {#if isOpen}
   <div
@@ -111,7 +92,7 @@
     aria-label="Tutup menu navigasi"
     onclick={closeMenu}
     onkeydown={(e) => e.key === 'Escape' && closeMenu()}
-    class="md:hidden fixed inset-0 bg-stone-900/40 backdrop-blur-xs z-40 transition-opacity duration-300"
+    class="md:hidden fixed inset-0 bg-stone-900/30 z-40 transition-opacity duration-200"
   ></div>
 {/if}
 
@@ -120,23 +101,7 @@
   aria-label="Navigasi Menu Utama Mobile"
   class="md:hidden fixed bottom-5 right-4 z-50 flex flex-col items-end select-none pointer-events-auto"
 >
-  <!-- Background Liquid Gooey Blobs Layer (Filter applied strictly to blobs) -->
-  <div
-    style="filter: url(#atelier-goo);"
-    class="absolute inset-0 pointer-events-none flex flex-col items-end justify-end p-2 overflow-visible"
-    aria-hidden="true"
-  >
-    <!-- Morphing Blob Connector behind Petals -->
-    {#if isOpen}
-      <div class="w-12 h-12 rounded-full bg-softGreen-800 transition-all duration-300"></div>
-      {#each navItems as item}
-        <div class="w-11 h-11 rounded-full {item.bg} transition-all duration-300 my-1"></div>
-      {/each}
-      <div class="w-13 h-13 rounded-full bg-stone-900"></div>
-    {/if}
-  </div>
-
-  <!-- Interactive Sharp Content Layer (NO filter: icons & text are 100% crisp) -->
+  <!-- Interactive Sharp Content Layer (120 FPS GPU Accelerated) -->
   <div class="relative z-10 flex flex-col items-end justify-end p-1">
     <!-- Petals Stack with Organic Staggered Spring Animation -->
     <div
@@ -178,7 +143,6 @@
           </span>
           <a
             href={item.href}
-            data-astro-prefetch="load"
             onclick={closeMenu}
             class="w-12 h-12 rounded-full border-2 {item.bg} {item.border} {item.text} flex items-center justify-center shadow-md active:scale-90 transition-transform shrink-0 {isActive ? 'ring-2 ring-stone-900' : ''}"
             title={item.description}

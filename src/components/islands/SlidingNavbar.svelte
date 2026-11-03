@@ -37,10 +37,20 @@
 
   function updateIndicatorToElement(el: HTMLAnchorElement | null) {
     if (!el || !navContainer) return;
-    const containerRect = navContainer.getBoundingClientRect();
-    const elRect = el.getBoundingClientRect();
-    indicatorLeft = elRect.left - containerRect.left;
-    indicatorWidth = elRect.width;
+    if (typeof window !== 'undefined' && 'requestAnimationFrame' in window) {
+      requestAnimationFrame(() => {
+        if (!el || !navContainer) return;
+        const containerRect = navContainer.getBoundingClientRect();
+        const elRect = el.getBoundingClientRect();
+        indicatorLeft = elRect.left - containerRect.left;
+        indicatorWidth = elRect.width;
+      });
+    } else {
+      const containerRect = navContainer.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      indicatorLeft = elRect.left - containerRect.left;
+      indicatorWidth = elRect.width;
+    }
   }
 
   function handleMouseEnter(index: number) {
@@ -110,7 +120,6 @@
     <a
       bind:this={linkRefs[index]}
       href={link.href}
-      data-astro-prefetch="load"
       onmouseenter={() => handleMouseEnter(index)}
       class="relative z-10 px-3.5 py-1.5 rounded-xl transition-colors duration-200 flex items-center gap-1.5 whitespace-nowrap {isActive ? 'text-softGreen-950 font-extrabold' : 'text-stone-700 hover:text-stone-950'}"
     >

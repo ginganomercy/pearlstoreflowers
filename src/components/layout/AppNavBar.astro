@@ -41,7 +41,6 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
       <div class="flex items-center gap-3">
         <a
           href="/"
-          data-astro-prefetch="load"
           class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-softPink-200 border-2 border-softPink-400 shadow-2xs shrink-0 transition-transform hover:scale-105 block"
           aria-label="Pearl Store Flowers Beranda"
         >
@@ -56,7 +55,7 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
         </a>
 
         <div>
-          <a href="/" data-astro-prefetch="load" class="hover:text-softGreen-800 transition-colors">
+          <a href="/" class="hover:text-softGreen-800 transition-colors">
             <span class="font-serif text-base sm:text-xl font-bold tracking-tight text-stone-900 block leading-tight">
               {studio.name}
             </span>
@@ -75,7 +74,6 @@ const consultWaUrl = createWhatsAppConsultLink(studio);
         <!-- Search Trigger Icon Button -->
         <a
           href="/koleksi"
-          data-astro-prefetch="load"
           class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 border-2 border-stone-300 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
           title="Cari Koleksi Buket"
           aria-label="Cari Koleksi Buket"

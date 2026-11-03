@@ -59,7 +59,6 @@ const categories = [
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <a
                 href="/koleksi"
-                data-astro-prefetch="load"
                 class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-sans text-xs sm:text-sm font-bold shadow-xs hover:shadow transition-all active:scale-95"
               >
                 <span>Eksplorasi 38 Koleksi Buket</span>
@@ -90,7 +89,6 @@ const categories = [
           {categories.map((cat) => (
             <a
               href="/koleksi"
-              data-astro-prefetch="load"
               class={`p-4 sm:p-5 rounded-2xl border-2 shadow-2xs hover:shadow-md transition-all hover:scale-[1.02] active:scale-95 flex flex-col justify-between space-y-3 ${cat.color}`}
             >
               <div class="flex items-center justify-between">
@@ -121,7 +119,6 @@ const categories = [
 
           <a
             href="/koleksi"
-            data-astro-prefetch="load"
             class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-softGreen-800 hover:text-softGreen-900 transition-colors"
           >
             <span>Semua 38 Buket</span>
@@ -138,7 +135,7 @@ const categories = [
             return (
               <article class="bg-white rounded-2xl border border-stone-200 shadow-2xs hover:shadow-xl hover:border-softGreen-300 transition-all flex flex-col justify-between overflow-hidden">
                 <div>
-                  <a href={`/koleksi/${product.slug}`} data-astro-prefetch="viewport" class="block relative aspect-[4/5] overflow-hidden bg-stone-100">
+                  <a href={`/koleksi/${product.slug}`} class="block relative aspect-[4/5] overflow-hidden bg-stone-100">
                     <img
                       src={product.imageUrl}
                       alt={product.title}
@@ -157,7 +154,7 @@ const categories = [
                       {product.category}
                     </span>
                     <h3 class="font-serif text-xs sm:text-base font-bold text-stone-900 leading-snug line-clamp-2 min-h-[2rem] sm:min-h-[2.6rem]">
-                      <a href={`/koleksi/${product.slug}`} data-astro-prefetch="viewport" class="hover:text-softGreen-800 transition-colors">
+                      <a href={`/koleksi/${product.slug}`} class="hover:text-softGreen-800 transition-colors">
                         {product.title}
                       </a>
                     </h3>

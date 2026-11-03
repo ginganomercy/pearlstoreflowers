@@ -59,49 +59,26 @@ const {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Critical Anti-FOUC CSS for Vector Graphics & Directional View Transitions -->
+    <!-- Ultra-Lightweight, 120 FPS GPU-Accelerated View Transitions -->
     <style is:inline>
       svg { max-width: 100%; }
       img { max-width: 100%; height: auto; }
 
-      /* Default Root Cross-Fade Fallback */
-      ::view-transition-old(root),
+      /* Micro-Transition: Zero GPU Raster Thrashing, Instant 140ms Native Snap */
+      ::view-transition-old(root) {
+        animation: atelier-fade-out 140ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
       ::view-transition-new(root) {
-        animation-duration: 220ms;
-        animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+        animation: atelier-fade-in 140ms cubic-bezier(0.16, 1, 0.3, 1) both;
       }
 
-      /* Forward Navigation: Physical Slide Left (Moving to Right Tab) */
-      html[data-direction="forward"]::view-transition-old(root) {
-        animation: slide-out-left 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      @keyframes atelier-fade-out {
+        from { opacity: 1; transform: scale(1); }
+        to { opacity: 0; transform: scale(0.998); }
       }
-      html[data-direction="forward"]::view-transition-new(root) {
-        animation: slide-in-right 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-      }
-
-      /* Backward Navigation: Physical Slide Right (Moving to Left Tab) */
-      html[data-direction="backward"]::view-transition-old(root) {
-        animation: slide-out-right 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-      }
-      html[data-direction="backward"]::view-transition-new(root) {
-        animation: slide-in-left 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-      }
-
-      @keyframes slide-out-left {
-        from { transform: translate3d(0, 0, 0); opacity: 1; }
-        to { transform: translate3d(-32px, 0, 0); opacity: 0; }
-      }
-      @keyframes slide-in-right {
-        from { transform: translate3d(32px, 0, 0); opacity: 0; }
-        to { transform: translate3d(0, 0, 0); opacity: 1; }
-      }
-      @keyframes slide-out-right {
-        from { transform: translate3d(0, 0, 0); opacity: 1; }
-        to { transform: translate3d(32px, 0, 0); opacity: 0; }
-      }
-      @keyframes slide-in-left {
-        from { transform: translate3d(-32px, 0, 0); opacity: 0; }
-        to { transform: translate3d(0, 0, 0); opacity: 1; }
+      @keyframes atelier-fade-in {
+        from { opacity: 0; transform: scale(1.002); }
+        to { opacity: 1; transform: scale(1); }
       }
     </style>
 
@@ -112,35 +89,10 @@ const {
   <body class="bg-atelier-bg text-atelier-text antialiased font-sans selection:bg-stone-900 selection:text-white min-h-screen flex flex-col">
     <slot />
 
-    <!-- Speculative Idle Preload & Directional Transition Controller -->
+    <!-- Lean, Non-Blocking Core Route Preloader -->
     <script>
-      import { navigate } from 'astro:transitions/client';
-
       const coreRoutes = ['/', '/koleksi', '/panduan', '/tentang'];
 
-      function getRouteIndex(pathname: string): number {
-        const clean = pathname.replace(/\/$/, '') || '/';
-        const idx = coreRoutes.indexOf(clean);
-        return idx >= 0 ? idx : 0;
-      }
-
-      // 1. Directional Detection before View Transition
-      document.addEventListener('astro:before-preparation', (event: any) => {
-        const fromPath = event.from?.pathname || window.location.pathname;
-        const toPath = event.to?.pathname || '';
-        const fromIndex = getRouteIndex(fromPath);
-        const toIndex = getRouteIndex(toPath);
-
-        if (toIndex > fromIndex) {
-          document.documentElement.dataset.direction = 'forward';
-        } else if (toIndex < fromIndex) {
-          document.documentElement.dataset.direction = 'backward';
-        } else {
-          document.documentElement.dataset.direction = 'none';
-        }
-      });
-
-      // 2. Speculative Idle Preloading of Core Routes
       function preloadCoreRoutes() {
         const current = window.location.pathname.replace(/\/$/, '') || '/';
         const targets = coreRoutes.filter((r) => r !== current);
@@ -157,65 +109,18 @@ const {
         });
       }
 
-      function initPreload() {
-        if ('requestIdleCallback' in window) {
-          (window as any).requestIdleCallback(preloadCoreRoutes);
-        } else {
-          setTimeout(preloadCoreRoutes, 200);
-        }
+      // Safe idle schedule without stealing main-thread rendering bandwidth
+      if (typeof window !== 'undefined') {
+        const scheduleIdle = () => {
+          if ('requestIdleCallback' in window) {
+            (window as any).requestIdleCallback(preloadCoreRoutes, { timeout: 2000 });
+          } else {
+            setTimeout(preloadCoreRoutes, 800);
+          }
+        };
+
+        document.addEventListener('astro:page-load', scheduleIdle, { once: true });
       }
-
-      document.addEventListener('astro:page-load', initPreload);
-
-      // 3. Mobile Touch Swipe Gesture Recognizer
-      let touchStartX = 0;
-      let touchStartY = 0;
-      let touchStartTime = 0;
-
-      document.addEventListener(
-        'touchstart',
-        (e: TouchEvent) => {
-          if (e.touches.length !== 1) return;
-          const target = e.target as HTMLElement | null;
-          // Ignore swipe if inside horizontally-scrollable containers or form inputs
-          if (target && target.closest('input, textarea, select, .no-swipe, [data-no-swipe], #catalog-scroll')) {
-            return;
-          }
-          touchStartX = e.touches[0].clientX;
-          touchStartY = e.touches[0].clientY;
-          touchStartTime = Date.now();
-        },
-        { passive: true }
-      );
-
-      document.addEventListener(
-        'touchend',
-        (e: TouchEvent) => {
-          if (touchStartX === 0 || e.changedTouches.length !== 1) return;
-          const deltaX = e.changedTouches[0].clientX - touchStartX;
-          const deltaY = e.changedTouches[0].clientY - touchStartY;
-          const duration = Date.now() - touchStartTime;
-
-          touchStartX = 0;
-          touchStartY = 0;
-
-          // Require horizontal swipe threshold (> 65px horizontal, < 0.6x vertical, < 450ms)
-          if (Math.abs(deltaX) > 65 && Math.abs(deltaX) > Math.abs(deltaY) * 1.8 && duration < 450) {
-            const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-            const currentIdx = coreRoutes.indexOf(currentPath);
-            if (currentIdx === -1) return;
-
-            if (deltaX < 0 && currentIdx < coreRoutes.length - 1) {
-              // Swiped left -> Go to next tab (forward)
-              navigate(coreRoutes[currentIdx + 1]);
-            } else if (deltaX > 0 && currentIdx > 0) {
-              // Swiped right -> Go to previous tab (backward)
-              navigate(coreRoutes[currentIdx - 1]);
-            }
-          }
-        },
-        { passive: true }
-      );
     </script>
 </html>
 
