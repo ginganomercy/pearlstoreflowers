@@ -21,8 +21,10 @@ export function generateFloristJsonLd(
         sameAs: [studio.instagramUrl],
         address: {
           '@type': 'PostalAddress',
-          addressLocality: 'Bandung',
-          addressRegion: 'Jawa Barat',
+          streetAddress: 'Ruko Kirana Lestari Blok D5, Jl. Raya Slawi Jatibarang',
+          addressLocality: 'Slawi, Tegal',
+          addressRegion: 'Jawa Tengah',
+          postalCode: '52411',
           addressCountry: 'ID',
         },
         openingHoursSpecification: [
@@ -36,12 +38,12 @@ export function generateFloristJsonLd(
               'Friday',
               'Saturday',
             ],
-            opens: '08:00',
-            closes: '20:00',
+            opens: '09:00',
+            closes: '17:00',
           },
         ],
         priceRange: 'Rp 35.000 - Rp 385.000',
-        areaServed: ['Bandung', 'Cimahi', 'Jawa Barat', 'Indonesia'],
+        areaServed: ['Slawi', 'Tegal', 'Brebes', 'Jawa Tengah', 'Indonesia'],
       },
       {
         '@type': 'ItemList',

@@ -37,7 +37,7 @@ export function createWhatsAppOrderLink(
     ``,
     `*Rencana Pemesanan:*`,
     `• Tanggal Acara / Dibutuhkan: [Tuliskan Tanggal]`,
-    `• Wilayah Pengiriman: [Contoh: Bandung Kota / Cimahi / Luar Kota]`,
+    `• Wilayah Pengiriman: [Contoh: Slawi / Tegal Kota / Brebes / Luar Kota]`,
     `• Catatan Khusus: [Warna pita / Ucapan kartu jika ada]`,
     ``,
     `Mohon informasi ketersediaan slot dan ongkirnya. Terima kasih!`,

@@ -8,7 +8,8 @@ export const STUDIO_BRAND_NAME = 'Pearl Store Flowers';
 export const STUDIO_HANDLE = '@pearl.storeflowers';
 export const STUDIO_INSTAGRAM_URL = 'https://www.instagram.com/pearl.storeflowers';
 export const STUDIO_TAGLINE = 'Luxury Floral & Hand Bouquet Atelier';
-export const STUDIO_DEFAULT_CITY = 'Bandung';
+export const STUDIO_DEFAULT_CITY = 'Slawi, Tegal';
+export const STUDIO_WORKSHOP_ADDRESS = 'Ruko Kirana Lestari Blok D5, Jl. Raya Slawi Jatibarang, Tegal/Slawi';
 
 /** Product SKU Prefix */
 export const SKU_PREFIX = 'PSF';
