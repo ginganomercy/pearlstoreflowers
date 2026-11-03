@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoreHeader from '../components/StoreHeader.astro';
+import StoreFooter from '../components/StoreFooter.astro';
+import FloatingWhatsApp from '../components/islands/FloatingWhatsApp.svelte';
+import catalogData from '../data/catalog.json';
+import type { FlowerProduct, StudioInfo } from '../domain/types';
+
+const studio: StudioInfo = catalogData.studio;
+const products: readonly FlowerProduct[] = catalogData.products as FlowerProduct[];
+---
+
+<BaseLayout
+  title={`Halaman Tidak Ditemukan — ${studio.name}`}
+  description="Halaman yang Anda tuju tidak ditemukan di katalog Pearl Store Flowers."
+>
+  <div class="min-h-screen flex flex-col bg-atelier-bg text-atelier-text">
+    <StoreHeader studio={studio} totalProducts={products.length} />
+
+    <main class="flex-1 max-w-2xl mx-auto px-4 py-20 text-center flex flex-col items-center justify-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-atelier-primary/5 text-atelier-primary border border-atelier-primary/10 text-xs font-serif italic mb-6">
+        <span>Arsip Tidak Ditemukan</span>
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-serif font-light text-atelier-primary mb-4 tracking-tight">
+        Rangkaian Bunga Tidak Ditemukan
+      </h1>
+
+      <p class="text-sm md:text-base text-atelier-muted max-w-md mx-auto mb-8 leading-relaxed">
+        Tautan yang Anda tuju mungkin telah diperbarui, dipindahkan, atau produk sudah tidak tersedia dalam katalog atelier kami.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        <a
+          href="/"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-atelier-primary text-white text-xs font-medium tracking-wide hover:bg-atelier-secondary transition-colors"
+        >
+          Lihat Katalog Koleksi
+        </a>
+        <a
+          href={`https://wa.me/${studio.whatsappNumber}?text=${encodeURIComponent('Halo Pearl Store Flowers, saya ingin menanyakan katalog koleksi rangkaian bunga.')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-atelier-card text-atelier-primary border border-atelier-primary/20 text-xs font-medium tracking-wide hover:bg-atelier-border/40 transition-colors"
+        >
+          Konsultasi WhatsApp
+        </a>
+      </div>
+    </main>
+
+    <StoreFooter studio={studio} />
+    <FloatingWhatsApp client:idle studio={studio} />
+  </div>
+</BaseLayout>
