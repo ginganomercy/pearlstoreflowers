@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppNavBar from '../components/layout/AppNavBar.astro';
+import StoreFooter from '../components/StoreFooter.astro';
+import GooeyNavMenu from '../components/islands/GooeyNavMenu.svelte';
+import catalogData from '../data/catalog.json';
+import type { StudioInfo, FlowerProduct } from '../domain/types';
+import { createWhatsAppConsultLink } from '../application/whatsapp';
+
+const studio: StudioInfo = catalogData.studio;
+const products: readonly FlowerProduct[] = catalogData.products as FlowerProduct[];
+
+// WA Consultation links for specific pricelist services
+const waAcrylicUrl = `https://wa.me/${studio.whatsappNumber}?text=${encodeURIComponent('Halo Florist Pearl Store Flowers, saya ingin tanya sewa / beli Papan Akrilik acara...')}`;
+const waSatinUrl = `https://wa.me/${studio.whatsappNumber}?text=${encodeURIComponent('Halo Florist Pearl Store Flowers, saya ingin pesan Bouquet Rose Satin bertingkat...')}`;
+const waMoneyUrl = `https://wa.me/${studio.whatsappNumber}?text=${encodeURIComponent('Halo Florist Pearl Store Flowers, saya ingin order Money Bouquet (buket uang)...')}`;
+
+const satinTiers = [
+  { stems: '5 Tangkai', price: 'Rp 90.000' },
+  { stems: '7 Tangkai', price: 'Rp 110.000' },
+  { stems: '10 Tangkai', price: 'Rp 130.000' },
+  { stems: '15 Tangkai', price: 'Rp 180.000' },
+  { stems: '20 Tangkai', price: 'Rp 225.000' },
+  { stems: '25 Tangkai', price: 'Rp 265.000' },
+  { stems: '30 Tangkai', price: 'Rp 325.000' },
+  { stems: '35 Tangkai', price: 'Rp 385.000' },
+  { stems: '40 Tangkai', price: 'Rp 405.000' },
+  { stems: '45 Tangkai', price: 'Rp 455.000' },
+  { stems: '50 Tangkai', price: 'Rp 485.000' },
+];
+
+const moneyTiers = [
+  { sheets: '5 Lembar', fee: 'Rp 55.000' },
+  { sheets: '10 Lembar', fee: 'Rp 70.000' },
+  { sheets: '15 Lembar', fee: 'Rp 85.000' },
+  { sheets: '20 Lembar', fee: 'Rp 95.000' },
+  { sheets: '25 Lembar', fee: 'Rp 115.000' },
+  { sheets: '30 Lembar', fee: 'Rp 130.000' },
+  { sheets: '35 Lembar', fee: 'Rp 135.000' },
+  { sheets: '40 Lembar', fee: 'Rp 155.000' },
+  { sheets: '50 Lembar', fee: 'Rp 165.000' },
+];
+---
+
+<BaseLayout
+  title={`Pricelist Sewa Papan Akrilik & Layanan Khusus — ${studio.name}`}
+  description={`Daftar harga resmi sewa papan akrilik (Rp 85rb/24 jam), buket mawar satin 5-50 tangkai, dan money bouquet di Slawi, Tegal & Brebes.`}
+>
+  <div id="top" class="min-h-screen flex flex-col bg-atelier-bg text-atelier-text">
+    <AppNavBar studio={studio} currentPath="/pricelist" totalProducts={products.length} />
+
+    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10 sm:space-y-14">
+      <!-- Hero Header -->
+      <header class="text-center max-w-3xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-softGreen-200 border border-softGreen-400 text-softGreen-950 text-xs font-sans font-bold">
+          <span>Pricelist Resmi Studio 2024</span>
+        </div>
+        <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-stone-900 tracking-tight">
+          Layanan Khusus & Sewa Papan
+        </h1>
+        <p class="font-sans text-xs sm:text-base text-stone-600 leading-relaxed">
+          Transparansi biaya sewa papan akrilik acara, buket mawar satin beludru bertingkat, serta jasa rangkai buket uang (*money bouquet*) resmi Pearl Store Flowers.
+        </p>
+      </header>
+
+      <!-- 3 Core Pricelist Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+        <!-- Card 1: Papan Akrilik -->
+        <article class="bg-white rounded-3xl border-2 border-softGreen-300 shadow-sm overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="bg-softGreen-200 border-b border-softGreen-300 p-5 text-center">
+              <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softGreen-900 bg-white/80 px-2.5 py-0.5 rounded-full inline-block mb-1.5 border border-softGreen-400">
+                Wedding, Wisuda & Grand Opening
+              </span>
+              <h2 class="font-serif text-xl sm:text-2xl font-bold text-softGreen-950">
+                Papan Akrilik Acara
+              </h2>
+            </div>
+
+            <div class="p-6 space-y-5">
+              <!-- Sewa Papan -->
+              <div class="p-4 rounded-2xl bg-softGreen-50 border border-softGreen-200 space-y-2">
+                <div class="flex items-baseline justify-between">
+                  <span class="font-serif font-bold text-base text-stone-900">Sewa Papan (24 Jam)</span>
+                  <span class="font-serif text-lg font-bold text-softGreen-900">Rp 85.000</span>
+                </div>
+                <ul class="text-xs font-sans text-stone-700 space-y-1.5 pt-1">
+                  <li class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-softGreen-800 shrink-0"></span>
+                    <span>Sudah termasuk hiasan bunga mekar keliling</span>
+                  </li>
+                  <li class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-softGreen-800 shrink-0"></span>
+                    <span>Gratis kustom nama & ucapan selamat</span>
+                  </li>
+                  <li class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-softGreen-800 shrink-0"></span>
+                    <span>Bebas pilih tema warna bunga sesuai acara</span>
+                  </li>
+                  <li class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-softGreen-800 shrink-0"></span>
+                    <span>Termasuk standing tripod kayu kokoh</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Beli Papan -->
+              <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200 space-y-2">
+                <div class="flex items-baseline justify-between">
+                  <span class="font-serif font-bold text-base text-stone-900">Beli Papan Baru</span>
+                  <span class="font-serif text-lg font-bold text-stone-900">Mulai Rp 485.000</span>
+                </div>
+                <p class="text-xs font-sans text-stone-600">
+                  Papan akrilik permanen hak milik untuk kenang-kenangan wisuda, ucapan pernikahan, atau peresmian usaha.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a
+              href={waAcrylicUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-softGreen-800 hover:bg-softGreen-700 text-white font-sans text-xs font-bold shadow-xs hover:shadow transition-all active:scale-95"
+            >
+              <span>Booking Papan Akrilik</span>
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: Bouquet Rose Satin -->
+        <article class="bg-white rounded-3xl border-2 border-softPink-300 shadow-sm overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="bg-softPink-200 border-b border-softPink-300 p-5 text-center">
+              <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softPink-900 bg-white/80 px-2.5 py-0.5 rounded-full inline-block mb-1.5 border border-softPink-400">
+                Mawar Satin Abadi & Elegan
+              </span>
+              <h2 class="font-serif text-xl sm:text-2xl font-bold text-softPink-950">
+                Bouquet Rose Satin
+              </h2>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <p class="text-xs font-sans text-stone-600">
+                Pilihan buket mawar satin handmade mekar rapi dengan kilau beludru mewah yang awet disimpan bertahun-tahun.
+              </p>
+
+              <!-- Tier List Grid -->
+              <div class="space-y-1.5 max-h-64 overflow-y-auto pr-1 text-xs font-sans">
+                {satinTiers.map((tier) => (
+                  <div class="flex items-center justify-between py-1.5 px-3 rounded-xl bg-stone-50 hover:bg-softPink-50 border border-stone-200/60 transition-colors">
+                    <span class="font-medium text-stone-800">{tier.stems}</span>
+                    <span class="font-serif font-bold text-softPink-950">{tier.price}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Add-ons -->
+              <div class="p-3.5 rounded-2xl bg-softPink-50 border border-softPink-200 text-xs font-sans space-y-1.5">
+                <span class="font-bold text-softPink-950 uppercase text-[10px] tracking-wider block">Tambahan / Aksesoris:</span>
+                <div class="flex justify-between text-stone-800">
+                  <span>Mahkota Princess Glitter</span>
+                  <span class="font-bold text-softPink-950">+ Rp 15.000</span>
+                </div>
+                <div class="flex justify-between text-stone-800">
+                  <span>Selempang Ucapan Kustom</span>
+                  <span class="font-bold text-softPink-950">+ Rp 15.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a
+              href={waSatinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-sans text-xs font-bold shadow-xs hover:shadow transition-all active:scale-95"
+            >
+              <span>Pesan Rose Satin via WA</span>
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: Money Bouquet -->
+        <article class="bg-white rounded-3xl border-2 border-softYellow-400 shadow-sm overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="bg-softYellow-200 border-b border-softYellow-300 p-5 text-center">
+              <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softYellow-950 bg-white/80 px-2.5 py-0.5 rounded-full inline-block mb-1.5 border border-softYellow-400">
+                Hadiah Uang Asli & Wisuda
+              </span>
+              <h2 class="font-serif text-xl sm:text-2xl font-bold text-softYellow-950">
+                Pricelist Money Bouquet
+              </h2>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <p class="text-xs font-sans text-stone-600">
+                Tarif jasa rangkai buket uang asli rapi tanpa merusak lembaran uang, dilapisi plastik pelindung bening higienis.
+              </p>
+
+              <!-- Tier List Grid -->
+              <div class="space-y-1.5 max-h-64 overflow-y-auto pr-1 text-xs font-sans">
+                {moneyTiers.map((tier) => (
+                  <div class="flex items-center justify-between py-1.5 px-3 rounded-xl bg-stone-50 hover:bg-softYellow-50 border border-stone-200/60 transition-colors">
+                    <span class="font-medium text-stone-800">{tier.sheets}</span>
+                    <span class="font-serif font-bold text-softYellow-950">{tier.fee}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Notes -->
+              <div class="p-3.5 rounded-2xl bg-softYellow-50 border border-softYellow-200 text-[11px] font-sans text-stone-700 space-y-1">
+                <span class="font-bold text-softYellow-950 uppercase text-[10px] tracking-wider block">Ketentuan Jasa:</span>
+                <p>• Biaya tertera adalah jasa rangkai & wrapping (belum termasuk nominal isian uang).</p>
+                <p>• Sudah termasuk ekstra bunga artificial pendamping & kartu ucapan gratis.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a
+              href={waMoneyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-softYellow-800 hover:bg-softYellow-700 text-white font-sans text-xs font-bold shadow-xs hover:shadow transition-all active:scale-95"
+            >
+              <span>Konsultasi Money Bouquet</span>
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- High-Res Official Studio Sheet Viewer -->
+      <section class="rounded-3xl border-2 border-stone-200 bg-white p-6 sm:p-8 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-200 pb-4">
+          <div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-stone-900">
+              Lembar Arsip Pricelist Resmi Studio
+            </h3>
+            <p class="text-xs text-stone-600 font-sans mt-0.5">
+              Poster katalog asli terbitan Pearl Store Flowers (@pearl.storeflowers) dengan nomor WhatsApp resmi.
+            </p>
+          </div>
+          <a
+            href="/images/sheets/pricelist-page-image.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-sans text-xs font-bold border border-stone-300 transition-colors shrink-0"
+          >
+            <span>Buka Ukuran Penuh (HD)</span>
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-stone-200 shadow-sm bg-stone-50">
+          <img
+            src="/images/sheets/pricelist-page-image.png"
+            alt="Pricelist Resmi Papan Akrilik dan Money Bouquet Pearl Store Flowers"
+            loading="lazy"
+            class="w-full h-auto object-contain"
+          />
+        </div>
+      </section>
+    </main>
+
+    <StoreFooter studio={studio} />
+    <GooeyNavMenu client:idle studio={studio} currentPath="/pricelist" />
+  </div>
+</BaseLayout>
+

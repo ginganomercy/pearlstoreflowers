@@ -23,8 +23,8 @@ export const SKU_PREFIX = 'PSF';
 /** Delay in milliseconds before triggering catalog search filter */
 export const SEARCH_DEBOUNCE_DELAY_MS = 150;
 
-/** Total verified product count in catalog (21 Real Authentic Atelier Bouquets) */
-export const TOTAL_CATALOG_PRODUCTS_COUNT = 21;
+/** Total verified product count in catalog (37 Real Authentic Atelier Bouquets) */
+export const TOTAL_CATALOG_PRODUCTS_COUNT = 37;
 
 /** Default image compression width for mobile webview */
 export const IMAGE_TARGET_WIDTH_PX = 600;
@@ -140,7 +140,7 @@ export const QUICK_SEARCH_SUGGESTIONS = [
     query: 'Anyelir',
     colorTheme: 'softPink' as const,
     iconType: 'flower' as const,
-    description: 'Trio bunga anyelir mini & spray carnation manis',
+    description: 'Rangkaian bunga anyelir mini & spray carnation manis',
   },
   {
     id: 'chip-rustic-goni',

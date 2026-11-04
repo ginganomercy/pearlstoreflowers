@@ -1,0 +1,194 @@
+---
+interface Props {
+  whatsappNumber?: string;
+}
+
+const { whatsappNumber = '6285198256961' } = Astro.props;
+const waConsultUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Halo Florist Pearl Store Flowers, saya tertarik dengan koleksi di Lembar Katalog Lookbook...')}`;
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-stone-200 pb-3">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-softPink-200 border border-softPink-400 text-softPink-950 text-[10px] font-sans font-bold uppercase tracking-wider mb-1.5">
+        <span>Arsip Resmi Atelier 2024</span>
+      </div>
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+        Lembar Katalog & Timeline Kreasi Studio
+      </h2>
+      <p class="text-xs text-stone-600 font-sans mt-0.5 max-w-xl">
+        Dokumentasi kurasi resmi karya buket Pearl Store Flowers — dipotret langsung dari atelier kami di Slawi, Tegal dengan transparansi harga dan komposisi kuntum.
+      </p>
+    </div>
+
+    <!-- Tab Buttons -->
+    <div class="flex items-center gap-2 p-1 bg-stone-100 rounded-2xl border border-stone-200 self-start sm:self-auto shrink-0">
+      <button
+        type="button"
+        id="tab-sheet-flower"
+        class="px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all bg-white text-stone-900 shadow-2xs border border-stone-200"
+      >
+        Flower Bouquet
+      </button>
+      <button
+        type="button"
+        id="tab-sheet-custom"
+        class="px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all text-stone-600 hover:text-stone-900"
+      >
+        Custom & Money
+      </button>
+    </div>
+  </div>
+
+  <!-- Sheet Displays -->
+  <div class="space-y-6">
+    <!-- Sheet 1: Flower Bouquet -->
+    <div id="panel-sheet-flower" class="space-y-4 transition-all duration-300">
+      <div class="relative rounded-3xl overflow-hidden border-2 border-stone-200 bg-white shadow-sm p-4 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-stone-100">
+          <div>
+            <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softPink-950 bg-softPink-200 px-2.5 py-0.5 rounded-md inline-block mb-1 border border-softPink-400">
+              Katalog Bunga Klasik
+            </span>
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-stone-900">
+              Flower Bouquet Collection Sheet
+            </h3>
+            <p class="text-xs text-stone-500 font-sans">
+              8 Rangkaian Mawar Segar, Daisy, Aster & Spray Bunga Meletup (Rp 55.000 - Rp 180.000)
+            </p>
+          </div>
+          <a
+            href="/images/sheets/flower-bouquet.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-sans text-xs font-bold border border-stone-300 transition-colors shrink-0"
+          >
+            <span>Lihat Ukuran Penuh (HD)</span>
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-stone-200 shadow-2xs bg-[#FCFBF8]">
+          <img
+            src="/images/sheets/flower-bouquet.png"
+            alt="Flower Bouquet Official Studio Catalog Sheet Pearl Store Flowers"
+            loading="lazy"
+            class="w-full h-auto object-contain hover:scale-[1.01] transition-transform duration-500 cursor-zoom-in"
+            onclick="window.open('/images/sheets/flower-bouquet.png', '_blank')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Sheet 2: Custom Bouquet -->
+    <div id="panel-sheet-custom" class="hidden space-y-4 transition-all duration-300">
+      <div class="relative rounded-3xl overflow-hidden border-2 border-stone-200 bg-white shadow-sm p-4 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-stone-100">
+          <div>
+            <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softYellow-950 bg-softYellow-200 px-2.5 py-0.5 rounded-md inline-block mb-1 border border-softYellow-400">
+              Katalog Buket Uang & Kado
+            </span>
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-stone-900">
+              Custom & Money Bouquet Sheet
+            </h3>
+            <p class="text-xs text-stone-500 font-sans">
+              8 Kreasi Buket Uang Kertas Asli, Origami Bunga Matahari, & Balon Transparan
+            </p>
+          </div>
+          <a
+            href="/images/sheets/custom-bouquet.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-sans text-xs font-bold border border-stone-300 transition-colors shrink-0"
+          >
+            <span>Lihat Ukuran Penuh (HD)</span>
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-stone-200 shadow-2xs bg-[#FCFBF8]">
+          <img
+            src="/images/sheets/custom-bouquet.png"
+            alt="Custom & Money Bouquet Official Studio Sheet Pearl Store Flowers"
+            loading="lazy"
+            class="w-full h-auto object-contain hover:scale-[1.01] transition-transform duration-500 cursor-zoom-in"
+            onclick="window.open('/images/sheets/custom-bouquet.png', '_blank')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Atelier Story & Craft Timeline Card -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 pt-2">
+      <div class="p-4 rounded-2xl bg-white border border-stone-200 shadow-2xs flex items-start gap-3">
+        <div class="w-8 h-8 rounded-xl bg-softGreen-200 text-softGreen-950 flex items-center justify-center font-serif font-bold text-xs shrink-0 border border-softGreen-400">
+          01
+        </div>
+        <div>
+          <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-900">Kurasi Bunga Segar Pilihan</h4>
+          <p class="text-[11px] font-sans text-stone-600 mt-0.5 leading-relaxed">
+            Setiap kuntum mawar, lili, dan krisan disortir manual demi ketahanan mekar maksimal saat hari perayaan.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-white border border-stone-200 shadow-2xs flex items-start gap-3">
+        <div class="w-8 h-8 rounded-xl bg-softPink-200 text-softPink-950 flex items-center justify-center font-serif font-bold text-xs shrink-0 border border-softPink-400">
+          02
+        </div>
+        <div>
+          <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-900">Presisi Lipatan Wrapping</h4>
+          <p class="text-[11px] font-sans text-stone-600 mt-0.5 leading-relaxed">
+            Teknik lipit kertas kraft, matte film, dan kain goni khas atelier menciptakan siluet buket yang megah dan kokoh.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-white border border-stone-200 shadow-2xs flex items-start gap-3">
+        <div class="w-8 h-8 rounded-xl bg-softYellow-200 text-softYellow-950 flex items-center justify-center font-serif font-bold text-xs shrink-0 border border-softYellow-400">
+          03
+        </div>
+        <div>
+          <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-900">Gratis Kartu Segel Lilin</h4>
+          <p class="text-[11px] font-sans text-stone-600 mt-0.5 leading-relaxed">
+            Pesan ucapan personal ditulis di kertas bertekstur vintage dan disegel wax stamp emas khas atelier.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupLookbookTabs() {
+    const tabFlower = document.getElementById('tab-sheet-flower');
+    const tabCustom = document.getElementById('tab-sheet-custom');
+    const panelFlower = document.getElementById('panel-sheet-flower');
+    const panelCustom = document.getElementById('panel-sheet-custom');
+
+    if (!tabFlower || !tabCustom || !panelFlower || !panelCustom) return;
+
+    tabFlower.addEventListener('click', () => {
+      panelFlower.classList.remove('hidden');
+      panelCustom.classList.add('hidden');
+      tabFlower.className = 'px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all bg-white text-stone-900 shadow-2xs border border-stone-200';
+      tabCustom.className = 'px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all text-stone-600 hover:text-stone-900';
+    });
+
+    tabCustom.addEventListener('click', () => {
+      panelCustom.classList.remove('hidden');
+      panelFlower.classList.add('hidden');
+      tabCustom.className = 'px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all bg-white text-stone-900 shadow-2xs border border-stone-200';
+      tabFlower.className = 'px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all text-stone-600 hover:text-stone-900';
+    });
+  }
+
+  setupLookbookTabs();
+  document.addEventListener('astro:page-load', setupLookbookTabs);
+</script>
+

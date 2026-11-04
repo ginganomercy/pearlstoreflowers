@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { Store, Flower2, BookOpenCheck, MapPin, Menu, X } from 'lucide-svelte';
+  import { Store, Flower2, Receipt, BookOpenCheck, MapPin, Menu, X } from 'lucide-svelte';
   import type { StudioInfo } from '../../domain/types';
   import { createWhatsAppConsultLink } from '../../application/whatsapp';
 
@@ -59,7 +59,16 @@
       bg: 'bg-softPink-200',
       border: 'border-softPink-400',
       text: 'text-softPink-950',
-      description: '21 Rangkaian Buket & Pencarian Lengkap'
+      description: '37 Rangkaian Buket & Pencarian Lengkap'
+    },
+    {
+      label: 'Pricelist',
+      href: '/pricelist',
+      icon: Receipt,
+      bg: 'bg-softGreen-200',
+      border: 'border-softGreen-400',
+      text: 'text-softGreen-950',
+      description: 'Sewa Papan Akrilik, Rose Satin & Money'
     },
     {
       label: 'Panduan Order',

@@ -6,6 +6,7 @@ import HowToOrder from '../components/HowToOrder.astro';
 import StoreFooter from '../components/StoreFooter.astro';
 import GooeyNavMenu from '../components/islands/GooeyNavMenu.svelte';
 import NewCollectionShowcase from '../components/shared/NewCollectionShowcase.astro';
+import AtelierLookbookArchive from '../components/shared/AtelierLookbookArchive.astro';
 import catalogData from '../data/catalog.json';
 import type { FlowerProduct, StudioInfo } from '../domain/types';
 import { generateFloristJsonLd } from '../infrastructure/seo-schema';
@@ -25,8 +26,8 @@ const featuredProducts = featuredCodes
 const categories = [
   { name: 'Wedding', desc: 'Buket Mawar Pengantin & Akad', color: 'bg-softPink-200 border-softPink-400 text-softPink-950', count: 6 },
   { name: 'Engagement', desc: 'Lamaran & Kotak Cincin', color: 'bg-softGreen-200 border-softGreen-400 text-softGreen-950', count: 4 },
-  { name: 'Graduation', desc: 'Wisuda & Bunga Matahari', color: 'bg-softBlue-200 border-softBlue-400 text-softBlue-950', count: 6 },
-  { name: 'Custom', desc: 'Koleksi Tematik & Bunga Pilihan', color: 'bg-softYellow-200 border-softYellow-400 text-softYellow-950', count: 5 },
+  { name: 'Graduation', desc: 'Wisuda & Boneka Toga', color: 'bg-softBlue-200 border-softBlue-400 text-softBlue-950', count: 14 },
+  { name: 'Custom', desc: 'Snack, Coklat, Rokok & Balon', color: 'bg-softYellow-200 border-softYellow-400 text-softYellow-950', count: 13 },
 ];
 ---
 
@@ -63,7 +64,7 @@ const categories = [
                 href="/koleksi"
                 class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-sans text-xs sm:text-sm font-bold shadow-xs hover:shadow transition-all active:scale-95"
               >
-                <span>Eksplorasi 21 Koleksi Buket</span>
+                <span>Eksplorasi 37 Koleksi Buket</span>
                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
                 </svg>
@@ -126,7 +127,7 @@ const categories = [
             href="/koleksi"
             class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-softGreen-800 hover:text-softGreen-900 transition-colors"
           >
-            <span>Semua 21 Buket</span>
+            <span>Semua 37 Buket</span>
             <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
             </svg>
@@ -196,13 +197,16 @@ const categories = [
             href="/koleksi"
             class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-sans text-xs sm:text-sm font-bold shadow-md hover:scale-105 active:scale-95 transition-all"
           >
-            <span>Buka Katalog Lengkap (21 Koleksi)</span>
+            <span>Buka Katalog Lengkap (37 Koleksi)</span>
             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
             </svg>
           </a>
         </div>
       </section>
+
+      <!-- Atelier Editorial Lookbook & Timeline Archive -->
+      <AtelierLookbookArchive whatsappNumber={studio.whatsappNumber} />
 
       <!-- Core Value Pillars Section -->
       <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
