@@ -40,7 +40,7 @@ const categories = [
     <!-- Clean Responsive App Bar (56px Mobile / 72px Desktop) -->
     <AppNavBar studio={studio} currentPath="/" totalProducts={products.length} />
 
-    <main class="flex-1 space-y-12 sm:space-y-16 pb-12">
+    <main class="flex-1 space-y-12 sm:space-y-16 pb-24 sm:pb-16">
       <!-- Hero Showcase Banner -->
       <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
         <div class="relative rounded-3xl overflow-hidden bg-white border-2 border-stone-200 p-6 sm:p-12 shadow-xs">
@@ -95,17 +95,27 @@ const categories = [
           {categories.map((cat) => (
             <a
               href="/koleksi"
-              class={`p-4 sm:p-5 rounded-2xl border-2 shadow-2xs hover:shadow-md transition-all hover:scale-[1.02] active:scale-95 flex flex-col justify-between space-y-3 ${cat.color}`}
+              class={`p-3.5 sm:p-5 rounded-2xl border-2 shadow-2xs hover:shadow-md transition-all hover:scale-[1.02] active:scale-95 flex flex-col justify-between gap-3 ${cat.color}`}
             >
-              <div class="flex items-center justify-between">
-                <span class="font-serif font-bold text-base sm:text-lg">{cat.name}</span>
-                <span class="text-[10px] font-sans font-bold px-2 py-0.5 rounded-full bg-white text-stone-900 border border-stone-200">
+              <!-- Top Row: Badge Count + Mini Action Indicator -->
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-[9px] sm:text-[10px] font-sans font-bold px-2 py-0.5 rounded-full bg-white text-stone-900 border border-stone-300/80 shadow-2xs whitespace-nowrap shrink-0">
                   {cat.count} Desain
                 </span>
+                <span class="text-[10px] font-sans font-bold opacity-60 sm:hidden">
+                  Buka →
+                </span>
               </div>
-              <p class="text-[11px] font-sans opacity-90 leading-tight">
-                {cat.desc}
-              </p>
+
+              <!-- Bottom Row: Proud Category Title & Description (Full Width Unconstrained) -->
+              <div>
+                <h3 class="font-serif font-bold text-sm sm:text-lg text-stone-900 leading-tight">
+                  {cat.name}
+                </h3>
+                <p class="text-[10px] sm:text-[11px] font-sans opacity-85 leading-tight mt-1 line-clamp-2">
+                  {cat.desc}
+                </p>
+              </div>
             </a>
           ))}
         </div>
@@ -113,9 +123,9 @@ const categories = [
 
       <!-- Featured Curated Bouquets (Top 6 Best Sellers) -->
       <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2.5 border-b border-stone-200 pb-3">
           <div>
-            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+            <h2 class="font-serif text-xl sm:text-3xl font-bold text-stone-900 tracking-tight">
               Koleksi Unggulan Atelier
             </h2>
             <p class="text-xs text-stone-500 font-sans mt-0.5">
@@ -125,7 +135,7 @@ const categories = [
 
           <a
             href="/koleksi"
-            class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-softGreen-800 hover:text-softGreen-900 transition-colors"
+            class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-softGreen-800 hover:text-softGreen-900 transition-colors shrink-0 whitespace-nowrap self-start sm:self-auto pt-0.5 sm:pt-0"
           >
             <span>Semua 37 Buket</span>
             <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">

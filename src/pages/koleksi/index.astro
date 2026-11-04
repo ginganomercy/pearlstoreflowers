@@ -23,7 +23,7 @@ const jsonLd = generateFloristJsonLd(studio, products);
     <AppNavBar studio={studio} currentPath="/koleksi" totalProducts={products.length} />
 
     <!-- Dedicated Catalog Surface with MiniSearch & Filters -->
-    <main class="flex-1 py-4">
+    <main class="flex-1 pt-4 pb-24 sm:pb-12">
       <CatalogIsland client:idle products={products} studio={studio} />
     </main>
 
