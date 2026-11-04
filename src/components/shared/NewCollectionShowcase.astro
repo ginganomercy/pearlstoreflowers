@@ -1,4 +1,11 @@
 ---
+interface BouquetItem {
+  name: string;
+  priceDisplay: string;
+  image: string;
+  slug: string;
+}
+
 interface CollectionTheme {
   id: string;
   name: string;
@@ -8,20 +15,24 @@ interface CollectionTheme {
   paletteBg: string;
   paletteBorder: string;
   badgeBg: string;
-  flowers: string[];
+  products: BouquetItem[];
 }
 
 const collections: CollectionTheme[] = [
   {
     id: 'sage-green',
-    name: 'Sage Mint & Forest',
+    name: 'Sage Green',
     colorName: 'Sage Green',
     tag: 'Edition 01',
     bannerImage: '/images/banners/banner-sage-green.png',
-    paletteBg: 'bg-softGreen-100',
+    paletteBg: 'bg-[#F2F7F3]',
     paletteBorder: 'border-softGreen-300',
-    badgeBg: 'bg-softGreen-200 text-softGreen-900 border-softGreen-400',
-    flowers: ['Abella Pastel Duo', 'Geny Red Rose', 'Forest Enchanted']
+    badgeBg: 'bg-softGreen-200 text-softGreen-950 border-softGreen-400',
+    products: [
+      { name: 'Abella Bouquet', priceDisplay: 'Rp 85.000', image: '/images/products/abella-bouquet.png', slug: 'psf-grad-01-abella-bouquet' },
+      { name: 'Geny Bouquet', priceDisplay: 'Rp 70.000', image: '/images/products/geny-bouquet.png', slug: 'psf-wed-01-geny-bouquet' },
+      { name: 'Forest Bouquet', priceDisplay: 'Rp 90.000', image: '/images/products/forest-bouquet.png', slug: 'psf-eng-01-forest-bouquet' }
+    ]
   },
   {
     id: 'mauve',
@@ -29,158 +40,255 @@ const collections: CollectionTheme[] = [
     colorName: 'Mauve Mist',
     tag: 'Edition 02',
     bannerImage: '/images/banners/banner-mauve.png',
-    paletteBg: 'bg-[#F7F2F6]',
+    paletteBg: 'bg-[#F8F3F7]',
     paletteBorder: 'border-softPink-300',
-    badgeBg: 'bg-softPink-200 text-softPink-900 border-softPink-400',
-    flowers: ['Alena Daisy', 'Joulen Mauve', 'Krysan Sun']
+    badgeBg: 'bg-softPink-200 text-softPink-950 border-softPink-400',
+    products: [
+      { name: 'Alena Bouquet', priceDisplay: 'Rp 80.000', image: '/images/products/alena-bouquet.png', slug: 'psf-eng-02-alena-bouquet' },
+      { name: 'Joulen Bouquet', priceDisplay: 'Rp 75.000', image: '/images/products/joulen-bouquet.png', slug: 'psf-cust-01-joulen-bouquet' },
+      { name: 'Krysan Bouquet', priceDisplay: 'Rp 85.000', image: '/images/products/krysan-bouquet.png', slug: 'psf-grad-02-krysan-bouquet' }
+    ]
   },
   {
     id: 'camel-gold',
-    name: 'Kraft & Vintage Burlap',
+    name: 'Camel Kraft',
     colorName: 'Camel Kraft',
     tag: 'Edition 03',
     bannerImage: '/images/banners/banner-camel-gold.png',
-    paletteBg: 'bg-softYellow-100',
+    paletteBg: 'bg-[#FAF6EC]',
     paletteBorder: 'border-softYellow-300',
-    badgeBg: 'bg-softYellow-200 text-softYellow-900 border-softYellow-400',
-    flowers: ['Gerberrash', 'Casablanka Lily', 'Oggliy Rouses']
+    badgeBg: 'bg-softYellow-200 text-softYellow-950 border-softYellow-400',
+    products: [
+      { name: 'Gerberrash', priceDisplay: 'Rp 120.000', image: '/images/products/gerberrash.png', slug: 'psf-wed-02-gerberrash' },
+      { name: 'Casablanka', priceDisplay: 'Rp 90.000', image: '/images/products/casablanka.png', slug: 'psf-eng-03-casablanka' },
+      { name: 'Oggliy Rouses', priceDisplay: 'Rp 150.000', image: '/images/products/oggliy-rouses.png', slug: 'psf-wed-03-oggliy-rouses' }
+    ]
   },
   {
     id: 'lilac-violet',
-    name: 'Frosted Violet & White',
+    name: 'Frosted Violet',
     colorName: 'Frosted Violet',
     tag: 'Edition 04',
     bannerImage: '/images/banners/banner-lilac-violet.png',
-    paletteBg: 'bg-softBlue-100',
+    paletteBg: 'bg-[#F2F5FB]',
     paletteBorder: 'border-softBlue-300',
-    badgeBg: 'bg-softBlue-200 text-softBlue-900 border-softBlue-400',
-    flowers: ['Merrys Tube', 'Ayunda Purple', 'Shakyra White']
+    badgeBg: 'bg-softBlue-200 text-softBlue-950 border-softBlue-400',
+    products: [
+      { name: 'Merrys Bouquet', priceDisplay: 'Rp 105.000', image: '/images/products/merrys-bouquet.png', slug: 'psf-cust-02-merrys-bouquet' },
+      { name: 'Ayunda Bouquet', priceDisplay: 'Rp 125.000', image: '/images/products/ayunda-bouquet.png', slug: 'psf-grad-03-ayunda-bouquet' },
+      { name: 'Shakyra', priceDisplay: 'Rp 130.000', image: '/images/products/shakyra.png', slug: 'psf-wed-04-shakyra' }
+    ]
   },
   {
     id: 'ballet-pink',
-    name: 'Ballet Pink & Stargazer',
+    name: 'Ballet Pink',
     colorName: 'Ballet Pink',
     tag: 'Edition 05',
     bannerImage: '/images/banners/banner-ballet-pink.png',
-    paletteBg: 'bg-softPink-100',
+    paletteBg: 'bg-[#FDF2F5]',
     paletteBorder: 'border-softPink-300',
-    badgeBg: 'bg-softPink-200 text-softPink-900 border-softPink-400',
-    flowers: ['Pinkly Thumbelina', 'Soully Meadow', 'Mounty Sunflower']
+    badgeBg: 'bg-softPink-200 text-softPink-950 border-softPink-400',
+    products: [
+      { name: 'Pinkly Thumbelina', priceDisplay: 'Rp 350.000', image: '/images/products/pinkly-thumbelina.png', slug: 'psf-wed-05-pinkly-thumbelina' },
+      { name: 'Soully Thumbelina', priceDisplay: 'Rp 185.000', image: '/images/products/soully-thumbelina.png', slug: 'psf-eng-04-soully-thumbelina' },
+      { name: 'Mounty', priceDisplay: 'Rp 135.000', image: '/images/products/mounty.png', slug: 'psf-grad-04-mounty' }
+    ]
   },
   {
     id: 'sunflower-yellow',
-    name: 'Sunshine Gold & Origami',
+    name: 'Sunflower Yellow',
     colorName: 'Golden Sun',
     tag: 'Edition 06',
     bannerImage: '/images/banners/banner-sunflower-yellow.png',
-    paletteBg: 'bg-softYellow-100',
+    paletteBg: 'bg-[#FEF9EC]',
     paletteBorder: 'border-softYellow-300',
-    badgeBg: 'bg-softYellow-200 text-softYellow-900 border-softYellow-400',
-    flowers: ['Rouse Mouwien', 'Suny Pointy', 'Flowerty Studio']
+    badgeBg: 'bg-softYellow-200 text-softYellow-950 border-softYellow-400',
+    products: [
+      { name: 'Rouse Mouwien', priceDisplay: 'Rp 100.000', image: '/images/products/rouse-mouwien.png', slug: 'psf-cust-03-rouse-mouwien' },
+      { name: 'Suny Pointy', priceDisplay: 'Rp 150.000', image: '/images/products/suny-pointy.png', slug: 'psf-grad-05-suny-pointy' },
+      { name: 'Flowerty', priceDisplay: 'Rp 200.000', image: '/images/products/flowerty.png', slug: 'psf-grad-06-flowerty' }
+    ]
   },
   {
     id: 'onyx-noir',
-    name: 'Onyx Noir & Velvet Rose',
-    colorName: 'Noir Velvet',
+    name: 'Onyx Noir',
+    colorName: 'Noir Rose',
     tag: 'Edition 07',
     bannerImage: '/images/banners/banner-onyx-noir.png',
-    paletteBg: 'bg-stone-100',
+    paletteBg: 'bg-[#F4F4F4]',
     paletteBorder: 'border-stone-300',
     badgeBg: 'bg-stone-200 text-stone-900 border-stone-400',
-    flowers: ['Talley Noir', 'Arrounyd 3D Dome', 'Maybelly Minimal']
+    products: [
+      { name: 'Talley Bouquet', priceDisplay: 'Rp 75.000', image: '/images/products/talley-bouquet.png', slug: 'psf-cust-04-talley-bouquet' },
+      { name: 'Arrounyd', priceDisplay: 'Rp 115.000', image: '/images/products/arrounyd.png', slug: 'psf-wed-06-arrounyd' },
+      { name: 'Maybelly', priceDisplay: 'Rp 70.000', image: '/images/products/maybelly.png', slug: 'psf-cust-05-maybelly' }
+    ]
   }
 ];
 ---
 
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
-  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-stone-200 pb-3">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+  <!-- Section Header & Navigation Controls -->
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-stone-200 pb-3">
     <div>
       <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-softGreen-200 border border-softGreen-400 text-softGreen-950 text-[10px] font-sans font-bold uppercase tracking-wider mb-1.5">
-        <span>Koleksi Eksklusif 2024</span>
+        <span>Koleksi Eksklusif Studio</span>
       </div>
       <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
-        7 Tema Palet New Collection
+        7 Tema New Collection
       </h2>
       <p class="text-xs text-stone-600 font-sans mt-0.5 max-w-xl">
-        Edisi editorial autentik dari studio Pearl Store Flowers — setiap palet merangkum 3 karya buket pilihan dengan harmoni warna & kuntum mekar sempurna.
+        Koleksi autentik studio Pearl Store Flowers — setiap edisi merangkum 3 karya buket pilihan dengan harmoni palet warna mekar sempurna.
       </p>
     </div>
 
-    <a
-      href="/koleksi"
-      class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-softGreen-800 hover:text-softGreen-900 transition-colors shrink-0"
-    >
-      <span>Lihat Semua 21 Buket</span>
-      <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-      </svg>
-    </a>
+    <!-- Desktop Navigation Controls & All Link -->
+    <div class="flex items-center gap-3 shrink-0">
+      <a
+        href="/koleksi"
+        class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-softGreen-800 hover:text-softGreen-900 transition-colors"
+      >
+        <span>Lihat Semua 21 Buket</span>
+        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+
+      <!-- Prev & Next Arrow Controls for Desktop -->
+      <div class="hidden sm:flex items-center gap-1.5 pl-2 border-l border-stone-200">
+        <button
+          type="button"
+          id="btn-showcase-prev"
+          class="w-8 h-8 rounded-xl bg-white border border-stone-300 hover:border-softGreen-500 text-stone-700 hover:text-softGreen-900 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-2xs"
+          aria-label="Geser ke kiri"
+        >
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+        </button>
+        <button
+          type="button"
+          id="btn-showcase-next"
+          class="w-8 h-8 rounded-xl bg-white border border-stone-300 hover:border-softGreen-500 text-stone-700 hover:text-softGreen-900 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-2xs"
+          aria-label="Geser ke kanan"
+        >
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
-  <!-- Horizontal Scrollable Showcase Track -->
-  <div class="relative -mx-4 sm:mx-0 px-4 sm:px-0">
+  <!-- Horizontal Rail without Native Scrollbar -->
+  <div class="relative">
     <div
-      class="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none"
+      id="new-collection-track"
+      class="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory no-scrollbar"
       style="scroll-behavior: smooth; -webkit-overflow-scrolling: touch;"
     >
       {collections.map((col) => (
-        <a
-          href="/koleksi"
-          class={`snap-start shrink-0 w-64 sm:w-72 rounded-2xl border-2 ${col.paletteBorder} ${col.paletteBg} p-3.5 flex flex-col justify-between shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group`}
+        <article
+          class={`snap-start shrink-0 w-[310px] sm:w-[350px] rounded-2xl border-2 ${col.paletteBorder} ${col.paletteBg} p-3.5 flex flex-col justify-between shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
         >
-          <!-- Card Header & Badge -->
-          <div class="flex items-center justify-between mb-2.5">
-            <span class={`text-[10px] font-sans font-bold px-2 py-0.5 rounded-full border ${col.badgeBg}`}>
+          <!-- Card Header: Edition Tag & Theme Name -->
+          <div class="flex items-center justify-between pb-2 border-b border-stone-200/70 mb-2.5">
+            <span class={`text-[10px] font-sans font-bold px-2.5 py-0.5 rounded-full border ${col.badgeBg}`}>
               {col.tag}
             </span>
-            <span class="text-[11px] font-sans font-semibold text-stone-600">
-              {col.colorName}
+            <span class="text-xs font-serif font-bold text-stone-800">
+              {col.name}
             </span>
           </div>
 
-          <!-- Editorial Banner Preview & Stems -->
-          <div class="flex items-center gap-3 my-1">
-            <!-- Vertical Banner Strip -->
-            <div class="w-16 h-48 sm:h-52 rounded-xl overflow-hidden border border-stone-300 bg-white shadow-2xs shrink-0 flex items-center justify-center">
+          <!-- Card Body: Unclipped Vertical Banner Spine + 3 Flower Products -->
+          <div class="flex items-center gap-3">
+            <!-- Left: Authentic Vertical Banner (Preserved 1:5.07 Ratio, 100% Unclipped) -->
+            <div class="w-13 sm:w-14 h-[208px] rounded-xl overflow-hidden border border-stone-300/80 bg-white shadow-2xs shrink-0 flex items-center justify-center p-0.5">
               <img
                 src={col.bannerImage}
-                alt={`New Collection Banner - ${col.name}`}
+                alt={`Banner ${col.name}`}
                 loading="lazy"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                class="w-full h-full object-contain"
               />
             </div>
 
-            <!-- Stems in this Collection -->
+            <!-- Right: 3 Real Flower Bouquets -->
             <div class="flex-1 space-y-2">
               <span class="text-[9px] uppercase tracking-wider text-stone-500 font-bold block">
                 3 Rangkaian Terpilih:
               </span>
-              <ul class="space-y-1.5 text-xs font-sans text-stone-800">
-                {col.flowers.map((fl) => (
-                  <li class="flex items-center gap-1.5 leading-tight">
-                    <span class="w-1.5 h-1.5 rounded-full bg-softGreen-800 shrink-0"></span>
-                    <span class="font-medium text-[11px] line-clamp-1">{fl}</span>
-                  </li>
+              <div class="space-y-1.5">
+                {col.products.map((item) => (
+                  <a
+                    href={`/koleksi/${item.slug}`}
+                    class="flex items-center gap-2 p-1.5 rounded-xl bg-white/70 hover:bg-white border border-stone-200/60 shadow-2xs hover:shadow transition-all group/item"
+                    title={`Lihat detail ${item.name}`}
+                  >
+                    <!-- Flower Photo Thumbnail -->
+                    <div class="w-10 h-10 rounded-lg overflow-hidden bg-stone-100 border border-stone-200 shrink-0">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        loading="lazy"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover/item:scale-110"
+                      />
+                    </div>
+
+                    <!-- Flower Info -->
+                    <div class="flex-1 min-w-0">
+                      <h4 class="font-serif text-[11px] sm:text-xs font-bold text-stone-900 truncate group-hover/item:text-softGreen-800 transition-colors">
+                        {item.name}
+                      </h4>
+                      <span class="font-sans text-[10px] font-bold text-softGreen-900 block leading-tight">
+                        {item.priceDisplay}
+                      </span>
+                    </div>
+                  </a>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
 
-          <!-- Card Footer CTA -->
-          <div class="pt-2.5 mt-2 border-t border-stone-200/80 flex items-center justify-between">
-            <span class="font-serif text-xs font-bold text-stone-900 group-hover:text-softGreen-800 transition-colors">
-              {col.name}
+          <!-- Card Footer: Link to Collection -->
+          <div class="pt-2.5 mt-2.5 border-t border-stone-200/70 flex items-center justify-between">
+            <span class="text-[10px] font-sans text-stone-500 font-medium">
+              3 Buket Autentik
             </span>
-            <span class="inline-flex items-center gap-1 text-[11px] font-sans font-bold text-softGreen-800 group-hover:translate-x-0.5 transition-transform">
-              <span>Buka</span>
+            <a
+              href="/koleksi"
+              class="inline-flex items-center gap-1 text-[11px] font-sans font-bold text-softGreen-800 hover:text-softGreen-950 transition-colors"
+            >
+              <span>Jelajahi Tema</span>
               <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
               </svg>
-            </span>
+            </a>
           </div>
-        </a>
+        </article>
       ))}
     </div>
   </div>
 </section>
 
+<script>
+  function setupShowcaseControls() {
+    const track = document.getElementById('new-collection-track');
+    const prevBtn = document.getElementById('btn-showcase-prev');
+    const nextBtn = document.getElementById('btn-showcase-next');
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -340, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: 340, behavior: 'smooth' });
+    });
+  }
+
+  // Setup on initial load & Astro ViewTransitions
+  setupShowcaseControls();
+  document.addEventListener('astro:page-load', setupShowcaseControls);
+</script>

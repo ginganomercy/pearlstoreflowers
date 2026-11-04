@@ -46,7 +46,7 @@
     {
       "id": "prod-02",
       "code": "PSF-WED-02",
-      "title": "Gerberrash Hand Bouquet",
+      "title": "Gerberrash",
       "slug": "psf-wed-02-gerberrash",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -69,7 +69,7 @@
     {
       "id": "prod-03",
       "code": "PSF-WED-03",
-      "title": "Oggliy Rouses Burlap Bouquet",
+      "title": "Oggliy Rouses",
       "slug": "psf-wed-03-oggliy-rouses",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -91,7 +91,7 @@
     {
       "id": "prod-04",
       "code": "PSF-WED-04",
-      "title": "Shakyra Pure White Rose Bouquet",
+      "title": "Shakyra",
       "slug": "psf-wed-04-shakyra",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -114,7 +114,7 @@
     {
       "id": "prod-05",
       "code": "PSF-WED-05",
-      "title": "Pinkly Thumbelina Luxury Grand Bouquet",
+      "title": "Pinkly Thumbelina",
       "slug": "psf-wed-05-pinkly-thumbelina",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -138,7 +138,7 @@
     {
       "id": "prod-06",
       "code": "PSF-WED-06",
-      "title": "Arrounyd Velvet Rose Dome",
+      "title": "Arrounyd",
       "slug": "psf-wed-06-arrounyd",
       "category": "Wedding",
       "categoryLabel": "Pernikahan / Bridal",
@@ -160,7 +160,7 @@
     {
       "id": "prod-07",
       "code": "PSF-ENG-01",
-      "title": "Forest Enchanted Bouquet",
+      "title": "Forest Bouquet",
       "slug": "psf-eng-01-forest-bouquet",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Tunangan",
@@ -185,7 +185,7 @@
     {
       "id": "prod-08",
       "code": "PSF-ENG-02",
-      "title": "Alena Pastel Proposal Bouquet",
+      "title": "Alena Bouquet",
       "slug": "psf-eng-02-alena-bouquet",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Tunangan",
@@ -208,7 +208,7 @@
     {
       "id": "prod-09",
       "code": "PSF-ENG-03",
-      "title": "Casablanka Oriental Lily Bouquet",
+      "title": "Casablanka",
       "slug": "psf-eng-03-casablanka",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Tunangan",
@@ -231,7 +231,7 @@
     {
       "id": "prod-10",
       "code": "PSF-ENG-04",
-      "title": "Soully Thumbelina Meadow Carnival",
+      "title": "Soully Thumbelina",
       "slug": "psf-eng-04-soully-thumbelina",
       "category": "Engagement",
       "categoryLabel": "Lamaran & Tunangan",
@@ -256,7 +256,7 @@
     {
       "id": "prod-11",
       "code": "PSF-GRAD-01",
-      "title": "Abella Pastel Duo Bouquet",
+      "title": "Abella Bouquet",
       "slug": "psf-grad-01-abella-bouquet",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Hadiah",
@@ -271,7 +271,7 @@
       "leadTime": "Pre-Order H-1",
       "isPopular": true,
       "isReadyStock": true,
-      "description": "Duo buket pastel dreamy dengan kombinasi mawar biru pastel, krisan putih, dan sentuhan lilac manis. Cocok untuk hadiah wisuda dan perayaan sahabat.",
+      "description": "Buket pastel dreamy dengan kombinasi mawar biru pastel, krisan putih, dan sentuhan lilac manis. Cocok untuk hadiah wisuda dan perayaan sahabat.",
       "dimension": "Tinggi ~35cm, Lebar ~28cm",
       "colorTheme": "Soft Blue & Lavender Lilac",
       "imageUrl": "/images/products/abella-bouquet.png"
@@ -279,7 +279,7 @@
     {
       "id": "prod-12",
       "code": "PSF-GRAD-02",
-      "title": "Krysan Golden Sun Bouquet",
+      "title": "Krysan Bouquet",
       "slug": "psf-grad-02-krysan-bouquet",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Hadiah",
@@ -301,7 +301,7 @@
     {
       "id": "prod-13",
       "code": "PSF-GRAD-03",
-      "title": "Ayunda Imperial Purple Bouquet",
+      "title": "Ayunda Bouquet",
       "slug": "psf-grad-03-ayunda-bouquet",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Hadiah",
@@ -324,7 +324,7 @@
     {
       "id": "prod-14",
       "code": "PSF-GRAD-04",
-      "title": "Mounty Sunflower Cone Bouquet",
+      "title": "Mounty",
       "slug": "psf-grad-04-mounty",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Hadiah",
@@ -347,7 +347,7 @@
     {
       "id": "prod-15",
       "code": "PSF-GRAD-05",
-      "title": "Suny Pointy Trio Sunflower",
+      "title": "Suny Pointy",
       "slug": "psf-grad-05-suny-pointy",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Hadiah",
@@ -370,7 +370,7 @@
     {
       "id": "prod-16",
       "code": "PSF-GRAD-06",
-      "title": "Flowerty Studio Graduation Bouquet",
+      "title": "Flowerty",
       "slug": "psf-grad-06-flowerty",
       "category": "Graduation",
       "categoryLabel": "Wisuda & Hadiah",
@@ -393,7 +393,7 @@
     {
       "id": "prod-17",
       "code": "PSF-CUST-01",
-      "title": "Joulen Mauve Chrysanthemum",
+      "title": "Joulen Bouquet",
       "slug": "psf-cust-01-joulen-bouquet",
       "category": "Custom",
       "categoryLabel": "Kustom & Abadi",
@@ -415,7 +415,7 @@
     {
       "id": "prod-18",
       "code": "PSF-CUST-02",
-      "title": "Merrys Trio Carnation Tube",
+      "title": "Merrys Bouquet",
       "slug": "psf-cust-02-merrys-bouquet",
       "category": "Custom",
       "categoryLabel": "Kustom & Abadi",
@@ -428,7 +428,7 @@
       "leadTime": "Pre-Order H-1",
       "isPopular": true,
       "isReadyStock": true,
-      "description": "Koleksi trio buket mini anyelir tiga warna (peach, baby pink, ungu) dalam tabung transparan frosted yang chic dan estetik.",
+      "description": "Rangkaian buket anyelir (peach, baby pink, ungu) dalam tabung transparan frosted yang chic dan estetik.",
       "dimension": "Tinggi ~30cm, Diameter ~20cm",
       "colorTheme": "Pastel Carnation Trio",
       "imageUrl": "/images/products/merrys-bouquet.png"
@@ -436,7 +436,7 @@
     {
       "id": "prod-19",
       "code": "PSF-CUST-03",
-      "title": "Rouse Mouwien Pastel Yellow Rose",
+      "title": "Rouse Mouwien",
       "slug": "psf-cust-03-rouse-mouwien",
       "category": "Custom",
       "categoryLabel": "Kustom & Abadi",
@@ -458,7 +458,7 @@
     {
       "id": "prod-20",
       "code": "PSF-CUST-04",
-      "title": "Talley Red & White Noir Bouquet",
+      "title": "Talley Bouquet",
       "slug": "psf-cust-04-talley-bouquet",
       "category": "Custom",
       "categoryLabel": "Kustom & Abadi",
@@ -480,7 +480,7 @@
     {
       "id": "prod-21",
       "code": "PSF-CUST-05",
-      "title": "Maybelly Minimalist Red Rose",
+      "title": "Maybelly",
       "slug": "psf-cust-05-maybelly",
       "category": "Custom",
       "categoryLabel": "Kustom & Abadi",

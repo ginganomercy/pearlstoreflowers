@@ -44,8 +44,8 @@ describe('MiniSearch Powerful Search Engine', () => {
   });
 
   it('should find products with fuzzy typo tolerance', () => {
-    // "holand" instead of "holland", or "mawr" instead of "mawar"
-    const results = engine.search('holand');
+    // "gerberash" instead of "gerberrash", or "mawr" instead of "mawar"
+    const results = engine.search('gerberash');
     expect(results.length).toBeGreaterThan(0);
     const mawarResults = engine.search('mawr');
     expect(mawarResults.length).toBeGreaterThan(0);
