@@ -14,7 +14,7 @@ import {
 } from '../src/domain/constants';
 
 describe('Catalog Data Guard (Zod Validation)', () => {
-  it('should validate complete catalog and verify exactly 38 products', () => {
+  it('should validate complete catalog and verify exactly 21 authentic products', () => {
     const validated = validateCatalog(rawCatalog);
     expect(validated.products.length).toBe(TOTAL_CATALOG_PRODUCTS_COUNT);
   });

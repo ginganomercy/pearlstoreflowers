@@ -6,14 +6,14 @@
     totalProducts?: number;
   }
 
-  const { currentPath = '/', totalProducts = 38 }: Props = $props();
+  const { currentPath = '/', totalProducts = 21 }: Props = $props();
 
-  const navLinks = [
+  const navLinks = $derived([
     { href: '/', label: 'Beranda' },
     { href: '/koleksi', label: 'Koleksi Buket', badge: totalProducts },
     { href: '/panduan', label: 'Panduan Order' },
     { href: '/tentang', label: 'Tentang Atelier' }
-  ];
+  ]);
 
   let activePath = $state(currentPath);
   let navContainer: HTMLElement | null = $state(null);

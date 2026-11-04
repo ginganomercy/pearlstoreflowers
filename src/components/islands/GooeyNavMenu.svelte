@@ -59,7 +59,7 @@
       bg: 'bg-softPink-200',
       border: 'border-softPink-400',
       text: 'text-softPink-950',
-      description: '38 Rangkaian Buket & Pencarian Lengkap'
+      description: '21 Rangkaian Buket & Pencarian Lengkap'
     },
     {
       label: 'Panduan Order',

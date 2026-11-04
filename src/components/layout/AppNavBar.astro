@@ -1,5 +1,6 @@
 ---
 import type { StudioInfo } from '../../domain/types';
+import { TOTAL_CATALOG_PRODUCTS_COUNT } from '../../domain/constants';
 import { createWhatsAppConsultLink } from '../../application/whatsapp';
 import SlidingNavbar from '../islands/SlidingNavbar.svelte';
 
@@ -9,7 +10,7 @@ interface Props {
   totalProducts?: number;
 }
 
-const { studio, currentPath = '/', totalProducts = 38 } = Astro.props;
+const { studio, currentPath = '/', totalProducts = TOTAL_CATALOG_PRODUCTS_COUNT } = Astro.props;
 const consultWaUrl = createWhatsAppConsultLink(studio);
 ---
 

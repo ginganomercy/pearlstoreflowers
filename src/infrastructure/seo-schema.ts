@@ -46,7 +46,7 @@ export function generateFloristJsonLd(
             closes: '17:00',
           },
         ],
-        priceRange: 'Rp 35.000 - Rp 385.000',
+        priceRange: 'Rp 70.000 - Rp 350.000',
         areaServed: ['Slawi', 'Tegal', 'Brebes', 'Jawa Tengah', 'Indonesia'],
       },
       {

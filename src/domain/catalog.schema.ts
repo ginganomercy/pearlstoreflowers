@@ -40,7 +40,7 @@ export const FlowerProductSchema = z.object({
   description: z.string().min(10),
   dimension: z.string().min(5),
   colorTheme: z.string().min(3),
-  imageUrl: z.string().url().optional(),
+  imageUrl: z.string().url().or(z.string().startsWith('/')).optional(),
 });
 
 export const CatalogSchema = z.object({

@@ -5,6 +5,7 @@ import CorePillars from '../components/shared/CorePillars.astro';
 import HowToOrder from '../components/HowToOrder.astro';
 import StoreFooter from '../components/StoreFooter.astro';
 import GooeyNavMenu from '../components/islands/GooeyNavMenu.svelte';
+import NewCollectionShowcase from '../components/shared/NewCollectionShowcase.astro';
 import catalogData from '../data/catalog.json';
 import type { FlowerProduct, StudioInfo } from '../domain/types';
 import { generateFloristJsonLd } from '../infrastructure/seo-schema';
@@ -16,15 +17,16 @@ const jsonLd = generateFloristJsonLd(studio, products);
 const consultWaUrl = createWhatsAppConsultLink(studio, 'Konsultasi Beranda Showcase');
 
 // Curated 6 Best-Seller Bouquets across categories
-const featuredProducts = products.filter((p) =>
-  ['PSF-WED-01', 'PSF-WED-02', 'PSF-ENG-01', 'PSF-GRAD-01', 'PSF-GRAD-05', 'PSF-CUST-01'].includes(p.code)
-);
+const featuredCodes = ['PSF-WED-05', 'PSF-WED-01', 'PSF-ENG-03', 'PSF-GRAD-01', 'PSF-GRAD-05', 'PSF-WED-03'];
+const featuredProducts = featuredCodes
+  .map((code) => products.find((p) => p.code === code))
+  .filter((p): p is FlowerProduct => p !== undefined);
 
 const categories = [
-  { name: 'Wedding', desc: 'Buket Mawar Pengantin & Akad', color: 'bg-softPink-200 border-softPink-400 text-softPink-950', count: 10 },
-  { name: 'Engagement', desc: 'Lamaran & Kotak Cincin', color: 'bg-softGreen-200 border-softGreen-400 text-softGreen-950', count: 8 },
-  { name: 'Graduation', desc: 'Wisuda & Boneka Teddy', color: 'bg-softBlue-200 border-softBlue-400 text-softBlue-950', count: 12 },
-  { name: 'Custom', desc: 'Buket Uang, Balon & Kawat Bulu', color: 'bg-softYellow-200 border-softYellow-400 text-softYellow-950', count: 8 },
+  { name: 'Wedding', desc: 'Buket Mawar Pengantin & Akad', color: 'bg-softPink-200 border-softPink-400 text-softPink-950', count: 6 },
+  { name: 'Engagement', desc: 'Lamaran & Kotak Cincin', color: 'bg-softGreen-200 border-softGreen-400 text-softGreen-950', count: 4 },
+  { name: 'Graduation', desc: 'Wisuda & Bunga Matahari', color: 'bg-softBlue-200 border-softBlue-400 text-softBlue-950', count: 6 },
+  { name: 'Custom', desc: 'Koleksi Tematik & Bunga Pilihan', color: 'bg-softYellow-200 border-softYellow-400 text-softYellow-950', count: 5 },
 ];
 ---
 
@@ -61,7 +63,7 @@ const categories = [
                 href="/koleksi"
                 class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-sans text-xs sm:text-sm font-bold shadow-xs hover:shadow transition-all active:scale-95"
               >
-                <span>Eksplorasi 38 Koleksi Buket</span>
+                <span>Eksplorasi 21 Koleksi Buket</span>
                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
                 </svg>
@@ -82,6 +84,9 @@ const categories = [
           </div>
         </div>
       </section>
+
+      <!-- 7 Themes New Collection Editorial Showcase -->
+      <NewCollectionShowcase />
 
       <!-- Category Quick Jump Cards (4 Core Solid Soft Colors) -->
       <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -121,7 +126,7 @@ const categories = [
             href="/koleksi"
             class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-softGreen-800 hover:text-softGreen-900 transition-colors"
           >
-            <span>Semua 38 Buket</span>
+            <span>Semua 21 Buket</span>
             <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
             </svg>
@@ -191,7 +196,7 @@ const categories = [
             href="/koleksi"
             class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-sans text-xs sm:text-sm font-bold shadow-md hover:scale-105 active:scale-95 transition-all"
           >
-            <span>Buka Katalog Lengkap (38 Koleksi)</span>
+            <span>Buka Katalog Lengkap (21 Koleksi)</span>
             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
             </svg>

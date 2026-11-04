@@ -23,8 +23,8 @@ export const SKU_PREFIX = 'PSF';
 /** Delay in milliseconds before triggering catalog search filter */
 export const SEARCH_DEBOUNCE_DELAY_MS = 150;
 
-/** Total verified product count in catalog */
-export const TOTAL_CATALOG_PRODUCTS_COUNT = 38;
+/** Total verified product count in catalog (21 Real Authentic Atelier Bouquets) */
+export const TOTAL_CATALOG_PRODUCTS_COUNT = 21;
 
 /** Default image compression width for mobile webview */
 export const IMAGE_TARGET_WIDTH_PX = 600;
@@ -103,20 +103,12 @@ export const CATEGORY_SOFT_COLOR_MAP = {
 /** Curated quick-search suggestion chips with zero-gradient solid soft themes & bold vector icons */
 export const QUICK_SEARCH_SUGGESTIONS = [
   {
-    id: 'chip-rose-pink',
-    label: 'Mawar Pink',
-    query: 'Mawar Pink',
+    id: 'chip-rose-red',
+    label: 'Mawar Merah',
+    query: 'Mawar',
     colorTheme: 'softPink' as const,
     iconType: 'flower' as const,
-    description: 'Buket mawar romantic blush',
-  },
-  {
-    id: 'chip-grad-blue',
-    label: 'Wisuda Biru',
-    query: 'Wisuda',
-    colorTheme: 'softBlue' as const,
-    iconType: 'graduation' as const,
-    description: 'Koleksi buket wisuda & hadiah kelulusan',
+    description: 'Koleksi buket mawar merah klasik & beludru romantis',
   },
   {
     id: 'chip-sunflower-yellow',
@@ -124,30 +116,38 @@ export const QUICK_SEARCH_SUGGESTIONS = [
     query: 'Sunflower',
     colorTheme: 'softYellow' as const,
     iconType: 'sun' as const,
-    description: 'Bunga matahari cerah & segar',
+    description: 'Bunga matahari cerah untuk wisuda & perayaan',
   },
   {
-    id: 'chip-sage-rustic',
-    label: 'Sage & Rustic',
-    query: 'Rustic',
-    colorTheme: 'softGreen' as const,
-    iconType: 'leaf' as const,
-    description: 'Bunga kering abadi & foliage sage',
-  },
-  {
-    id: 'chip-bridal-wedding',
-    label: 'Bridal Rose',
-    query: 'Bridal',
+    id: 'chip-casablanka-lily',
+    label: 'Lily Casablanca',
+    query: 'Lily',
     colorTheme: 'softPink' as const,
     iconType: 'gem' as const,
-    description: 'Hand bouquet pengantin & akad',
+    description: 'Bunga oriental lily Casablanca & Stargazer mekar semerbak',
   },
   {
-    id: 'chip-money-custom',
-    label: 'Buket Uang',
-    query: 'Uang',
-    colorTheme: 'softYellow' as const,
-    iconType: 'gift' as const,
-    description: 'Buket uang tarik & akrilik balon',
+    id: 'chip-krisan-pastel',
+    label: 'Bunga Krisan',
+    query: 'Krisan',
+    colorTheme: 'softBlue' as const,
+    iconType: 'graduation' as const,
+    description: 'Bunga krisan kuning, ungu mauve, dan pink pastel',
+  },
+  {
+    id: 'chip-carnation-anyelir',
+    label: 'Anyelir Pastel',
+    query: 'Anyelir',
+    colorTheme: 'softPink' as const,
+    iconType: 'flower' as const,
+    description: 'Trio bunga anyelir mini & spray carnation manis',
+  },
+  {
+    id: 'chip-rustic-goni',
+    label: 'Rustic Goni',
+    query: 'Goni',
+    colorTheme: 'softGreen' as const,
+    iconType: 'leaf' as const,
+    description: 'Buket bergaya vintage dengan kain karung goni & tali rami',
   },
 ] as const;
