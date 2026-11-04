@@ -11,6 +11,7 @@ interface CollectionTheme {
   name: string;
   colorName: string;
   tag: string;
+  colorHex: string;
   bannerImage: string;
   paletteBg: string;
   paletteBorder: string;
@@ -24,6 +25,7 @@ const collections: CollectionTheme[] = [
     name: 'Sage Green',
     colorName: 'Sage Green',
     tag: 'Edition 01',
+    colorHex: '#3E6347',
     bannerImage: '/images/banners/banner-sage-green.png',
     paletteBg: 'bg-[#F2F7F3]',
     paletteBorder: 'border-softGreen-300',
@@ -39,6 +41,7 @@ const collections: CollectionTheme[] = [
     name: 'Mauve & Lavender',
     colorName: 'Mauve Mist',
     tag: 'Edition 02',
+    colorHex: '#6E3F4F',
     bannerImage: '/images/banners/banner-mauve.png',
     paletteBg: 'bg-[#F8F3F7]',
     paletteBorder: 'border-softPink-300',
@@ -54,6 +57,7 @@ const collections: CollectionTheme[] = [
     name: 'Camel Kraft',
     colorName: 'Camel Kraft',
     tag: 'Edition 03',
+    colorHex: '#8C6738',
     bannerImage: '/images/banners/banner-camel-gold.png',
     paletteBg: 'bg-[#FAF6EC]',
     paletteBorder: 'border-softYellow-300',
@@ -69,6 +73,7 @@ const collections: CollectionTheme[] = [
     name: 'Frosted Violet',
     colorName: 'Frosted Violet',
     tag: 'Edition 04',
+    colorHex: '#4E4369',
     bannerImage: '/images/banners/banner-lilac-violet.png',
     paletteBg: 'bg-[#F2F5FB]',
     paletteBorder: 'border-softBlue-300',
@@ -84,6 +89,7 @@ const collections: CollectionTheme[] = [
     name: 'Ballet Pink',
     colorName: 'Ballet Pink',
     tag: 'Edition 05',
+    colorHex: '#9E445B',
     bannerImage: '/images/banners/banner-ballet-pink.png',
     paletteBg: 'bg-[#FDF2F5]',
     paletteBorder: 'border-softPink-300',
@@ -99,6 +105,7 @@ const collections: CollectionTheme[] = [
     name: 'Sunflower Yellow',
     colorName: 'Golden Sun',
     tag: 'Edition 06',
+    colorHex: '#996515',
     bannerImage: '/images/banners/banner-sunflower-yellow.png',
     paletteBg: 'bg-[#FEF9EC]',
     paletteBorder: 'border-softYellow-300',
@@ -114,6 +121,7 @@ const collections: CollectionTheme[] = [
     name: 'Onyx Noir',
     colorName: 'Noir Rose',
     tag: 'Edition 07',
+    colorHex: '#1C1917',
     bannerImage: '/images/banners/banner-onyx-noir.png',
     paletteBg: 'bg-[#F4F4F4]',
     paletteBorder: 'border-stone-300',
@@ -131,13 +139,22 @@ const collections: CollectionTheme[] = [
   <!-- Section Header & Navigation Controls -->
   <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-stone-200 pb-3">
     <div>
-      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-softGreen-200 border border-softGreen-400 text-softGreen-950 text-[10px] font-sans font-bold uppercase tracking-wider mb-1.5">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-softGreen-200 border border-softGreen-400 text-softGreen-950 text-[10px] sm:text-xs font-sans font-bold uppercase tracking-wider mb-2">
+        <span class="text-xs">✦</span>
         <span>Koleksi Eksklusif Studio</span>
       </div>
-      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
-        7 Tema New Collection
-      </h2>
-      <p class="text-xs text-stone-600 font-sans mt-0.5 max-w-xl">
+
+      <!-- Atelier Decoupled Numeral & Title: 7 Tema Spektrum New Collection -->
+      <div class="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+        <span class="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-stone-900 text-white font-serif font-black text-base sm:text-xl shadow-xs border border-stone-700 shrink-0">
+          7
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-900 tracking-normal leading-tight">
+          Tema Spektrum <span class="italic font-serif font-semibold text-botanical-800">New Collection</span>
+        </h2>
+      </div>
+
+      <p class="text-xs sm:text-sm text-stone-600 font-sans mt-1.5 max-w-xl">
         Koleksi autentik studio Pearl Store Flowers — setiap edisi merangkum 3 karya buket pilihan dengan harmoni palet warna mekar sempurna.
       </p>
     </div>
@@ -189,7 +206,7 @@ const collections: CollectionTheme[] = [
     >
       {collections.map((col) => (
         <article
-          class={`snap-start shrink-0 w-[310px] sm:w-[350px] rounded-2xl border-2 ${col.paletteBorder} ${col.paletteBg} p-3.5 flex flex-col justify-between shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+          class={`group snap-start shrink-0 w-[310px] sm:w-[350px] rounded-2xl border-2 ${col.paletteBorder} ${col.paletteBg} p-3.5 flex flex-col justify-between shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
         >
           <!-- Card Header: Edition Tag & Theme Name -->
           <div class="flex items-center justify-between pb-2 border-b border-stone-200/70 mb-2.5">
@@ -201,16 +218,34 @@ const collections: CollectionTheme[] = [
             </span>
           </div>
 
-          <!-- Card Body: Unclipped Vertical Banner Spine + 3 Flower Products -->
+          <!-- Card Body: Razor-Sharp Vector Editorial Spine + 3 Flower Products -->
           <div class="flex items-center gap-3">
-            <!-- Left: Authentic Vertical Banner (Preserved 1:5.07 Ratio, 100% Unclipped) -->
-            <div class="w-12 sm:w-14 h-[208px] rounded-xl overflow-hidden border border-stone-300/80 bg-white shadow-2xs shrink-0 flex items-center justify-center p-0.5">
-              <img
-                src={col.bannerImage}
-                alt={`Banner ${col.name}`}
-                loading="lazy"
-                class="w-full h-full object-contain"
-              />
+            <!-- Left: Razor-Sharp Vector Editorial Spine Ribbon (100% Crisp, Deep Pigment) -->
+            <div
+              class="w-11 sm:w-12 h-[208px] rounded-xl overflow-hidden shadow-xs shrink-0 flex flex-col items-center justify-between py-2.5 px-0.5 border border-black/10 select-none relative group/spine transition-transform duration-300 group-hover:scale-105"
+              style={`background-color: ${col.colorHex};`}
+              title={`Edisi ${col.name} — New Collection`}
+            >
+              <!-- Subtle Inner Luxury Inset Line -->
+              <div class="absolute inset-1 rounded-lg border border-white/20 pointer-events-none"></div>
+
+              <!-- Top Studio Hallmark Star -->
+              <span class="text-white/80 text-[10px] leading-none z-10">✦</span>
+
+              <!-- Center: Bold Razor-Sharp Vector Typography -->
+              <div class="flex-1 flex items-center justify-center z-10">
+                <span
+                  class="font-serif font-black tracking-[0.32em] text-[10px] sm:text-[11px] text-white uppercase drop-shadow-xs"
+                  style="writing-mode: vertical-rl; transform: rotate(180deg);"
+                >
+                  NEW COLLECTION
+                </span>
+              </div>
+
+              <!-- Bottom: Edition Tag -->
+              <span class="text-[9px] font-mono font-bold tracking-wider text-white/90 uppercase z-10">
+                {col.tag.replace('Edition ', 'ED.')}
+              </span>
             </div>
 
             <!-- Right: 3 Real Flower Bouquets -->

@@ -27,3 +27,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.log
+
+# External batch & data pipeline scripts (stored in ../images-crop/scripts/)
+*.py
+scripts/
+
