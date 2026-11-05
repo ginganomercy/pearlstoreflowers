@@ -108,7 +108,7 @@
 <!-- Mobile Exclusive Floating Action Hub (Hidden on Desktop: md:hidden) -->
 <nav
   aria-label="Navigasi Menu Utama Mobile"
-  class="md:hidden fixed bottom-5 right-4 z-50 flex flex-col items-end select-none pointer-events-auto"
+  class="md:hidden fixed bottom-5 right-4 z-50 flex flex-col items-end select-none {isOpen ? 'pointer-events-auto' : 'pointer-events-none'}"
 >
   <!-- Interactive Sharp Content Layer (120 FPS GPU Accelerated) -->
   <div class="relative z-10 flex flex-col items-end justify-end p-1">
@@ -169,7 +169,7 @@
       onclick={toggleMenu}
       aria-expanded={isOpen}
       aria-label={isOpen ? 'Tutup Menu Atelier' : 'Buka Menu Navigasi Atelier'}
-      class="w-14 h-14 rounded-full bg-stone-900 hover:bg-stone-800 text-white border-2 border-stone-800 flex items-center justify-center shadow-lg active:scale-90 transition-all duration-300 z-30 cursor-pointer"
+      class="w-14 h-14 rounded-full bg-stone-900 hover:bg-stone-800 text-white border-2 border-stone-800 flex items-center justify-center shadow-lg active:scale-90 transition-all duration-300 z-30 cursor-pointer pointer-events-auto"
     >
       {#if isOpen}
         <X class="w-6 h-6 text-white shrink-0" strokeWidth={2.75} />

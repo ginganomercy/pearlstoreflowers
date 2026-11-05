@@ -208,7 +208,7 @@
       <!-- Quick Search Suggestion Pills (Smooth Momentum Scrolling & Centering) -->
       <div
         class="no-swipe flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none"
-        style="-webkit-overflow-scrolling: touch; scroll-behavior: smooth; overscroll-behavior-x: contain;"
+        style="-webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x pan-y;"
       >
         <span class="text-[11px] font-sans text-stone-500 shrink-0 font-bold uppercase tracking-wider">
           Rekomendasi:
@@ -245,7 +245,7 @@
       <!-- Category Filter Tabs: Smooth Momentum Scrolling & Auto-Centering -->
       <div
         class="no-swipe flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none pt-1"
-        style="-webkit-overflow-scrolling: touch; scroll-behavior: smooth; overscroll-behavior-x: contain;"
+        style="-webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x pan-y;"
       >
         {#each categories as cat}
           {@const isActive = activeCategory === cat.name}

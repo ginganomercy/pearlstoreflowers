@@ -25,9 +25,14 @@
   background: #A3D0A3;
 }
 
-/* Smooth scrolling */
-html {
+/* Selective smooth scrolling for programmatic jumps without locking mobile touch-momentum */
+.smooth-scroll {
   scroll-behavior: smooth;
+}
+
+/* Fluid hardware-accelerated touch gestures without tap flash */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 @layer utilities {
