@@ -22,103 +22,152 @@ const waConsultUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       </p>
     </div>
 
-    <!-- Tab Buttons -->
-    <div class="flex items-center gap-2 p-1 bg-stone-100 rounded-2xl border border-stone-200 self-start sm:self-auto shrink-0">
-      <button
-        type="button"
-        id="tab-sheet-flower"
-        class="px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all bg-white text-stone-900 shadow-2xs border border-stone-200"
-      >
-        Flower Bouquet
-      </button>
-      <button
-        type="button"
-        id="tab-sheet-custom"
-        class="px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all text-stone-600 hover:text-stone-900"
-      >
-        Custom & Money
-      </button>
+    <!-- Controls: Tab Buttons & Prev/Next Arrows -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 self-start sm:self-auto shrink-0">
+      <div class="flex items-center gap-2">
+        <!-- Tab Buttons Container -->
+        <div class="flex items-center gap-1 p-1 bg-stone-100 rounded-2xl border border-stone-200 shrink-0">
+          <button
+            type="button"
+            id="tab-sheet-flower"
+            class="px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all bg-white text-stone-900 shadow-2xs border border-stone-200"
+          >
+            Flower Bouquet
+          </button>
+          <button
+            type="button"
+            id="tab-sheet-custom"
+            class="px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all text-stone-600 hover:text-stone-900 border border-transparent"
+          >
+            Custom & Money
+          </button>
+        </div>
+
+        <!-- Arrow Buttons -->
+        <div class="flex items-center gap-1 shrink-0">
+          <button
+            type="button"
+            id="btn-lookbook-prev"
+            class="w-8 h-8 rounded-xl border border-stone-200 bg-white hover:bg-stone-50 active:scale-95 text-stone-700 flex items-center justify-center shadow-2xs transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+            aria-label="Lembar Sebelumnya"
+          >
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button
+            type="button"
+            id="btn-lookbook-next"
+            class="w-8 h-8 rounded-xl border border-stone-200 bg-white hover:bg-stone-50 active:scale-95 text-stone-700 flex items-center justify-center shadow-2xs transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+            aria-label="Lembar Berikutnya"
+          >
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Hint & Page Indicator -->
+      <div class="flex items-center justify-between w-full sm:hidden text-[11px] font-sans text-stone-500 pt-0.5">
+        <span class="inline-flex items-center gap-1">
+          <span>👈</span>
+          <span>Geser untuk beralih lembar</span>
+          <span>👉</span>
+        </span>
+        <span id="lookbook-page-indicator" class="font-bold text-stone-700 bg-stone-100 px-2 py-0.5 rounded-full border border-stone-200">
+          1 / 2
+        </span>
+      </div>
     </div>
   </div>
 
-  <!-- Sheet Displays -->
+  <!-- Swipeable Lookbook Track -->
   <div class="space-y-6">
-    <!-- Sheet 1: Flower Bouquet -->
-    <div id="panel-sheet-flower" class="space-y-4 transition-all duration-300">
-      <div class="relative rounded-3xl overflow-hidden border-2 border-stone-200 bg-white shadow-sm p-4 sm:p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-stone-100">
-          <div>
-            <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softPink-950 bg-softPink-200 px-2.5 py-0.5 rounded-md inline-block mb-1 border border-softPink-400">
-              Katalog Bunga Klasik
-            </span>
-            <h3 class="font-serif text-lg sm:text-xl font-bold text-stone-900">
-              Flower Bouquet Collection Sheet
-            </h3>
-            <p class="text-xs text-stone-500 font-sans">
-              8 Rangkaian Mawar Segar, Daisy, Aster & Spray Bunga Meletup (Rp 55.000 - Rp 180.000)
-            </p>
+    <div
+      id="lookbook-track"
+      class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar w-full gap-4 sm:gap-6 pb-2"
+      style="-webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x pan-y;"
+    >
+      <!-- Slide 1: Flower Bouquet -->
+      <div id="slide-sheet-flower" class="w-full shrink-0 snap-center snap-always">
+        <div class="relative rounded-3xl overflow-hidden border-2 border-stone-200 bg-white shadow-sm p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-stone-100">
+            <div>
+              <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softPink-950 bg-softPink-200 px-2.5 py-0.5 rounded-md inline-block mb-1 border border-softPink-400">
+                Katalog Bunga Klasik • Lembar 1/2
+              </span>
+              <h3 class="font-serif text-lg sm:text-xl font-bold text-stone-900">
+                Flower Bouquet Collection Sheet
+              </h3>
+              <p class="text-xs text-stone-500 font-sans">
+                8 Rangkaian Mawar Segar, Daisy, Aster & Spray Bunga Meletup (Rp 55.000 - Rp 180.000)
+              </p>
+            </div>
+            <a
+              href="/images/sheets/flower-bouquet.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-sans text-xs font-bold border border-stone-300 transition-colors shrink-0 self-start sm:self-auto"
+            >
+              <span>Lihat Ukuran Penuh (HD)</span>
+              <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
           </div>
-          <a
-            href="/images/sheets/flower-bouquet.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-sans text-xs font-bold border border-stone-300 transition-colors shrink-0"
-          >
-            <span>Lihat Ukuran Penuh (HD)</span>
-            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </a>
-        </div>
 
-        <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-stone-200 shadow-2xs bg-[#FCFBF8]">
-          <img
-            src="/images/sheets/flower-bouquet.png"
-            alt="Flower Bouquet Official Studio Catalog Sheet Pearl Store Flowers"
-            loading="lazy"
-            class="w-full h-auto object-contain hover:scale-[1.01] transition-transform duration-500 cursor-zoom-in"
-            onclick="window.open('/images/sheets/flower-bouquet.png', '_blank')"
-          />
+          <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-stone-200 shadow-2xs bg-[#FCFBF8] select-none">
+            <img
+              src="/images/sheets/flower-bouquet.png"
+              alt="Flower Bouquet Official Studio Catalog Sheet Pearl Store Flowers"
+              loading="lazy"
+              draggable="false"
+              class="w-full h-auto object-contain hover:scale-[1.01] transition-transform duration-500 cursor-zoom-in"
+              style="-webkit-user-drag: none; user-select: none;"
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Sheet 2: Custom Bouquet -->
-    <div id="panel-sheet-custom" class="hidden space-y-4 transition-all duration-300">
-      <div class="relative rounded-3xl overflow-hidden border-2 border-stone-200 bg-white shadow-sm p-4 sm:p-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-stone-100">
-          <div>
-            <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softYellow-950 bg-softYellow-200 px-2.5 py-0.5 rounded-md inline-block mb-1 border border-softYellow-400">
-              Katalog Buket Uang & Kado
-            </span>
-            <h3 class="font-serif text-lg sm:text-xl font-bold text-stone-900">
-              Custom & Money Bouquet Sheet
-            </h3>
-            <p class="text-xs text-stone-500 font-sans">
-              8 Kreasi Buket Uang Kertas Asli, Origami Bunga Matahari, & Balon Transparan
-            </p>
+      <!-- Slide 2: Custom Bouquet -->
+      <div id="slide-sheet-custom" class="w-full shrink-0 snap-center snap-always">
+        <div class="relative rounded-3xl overflow-hidden border-2 border-stone-200 bg-white shadow-sm p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-stone-100">
+            <div>
+              <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-softYellow-950 bg-softYellow-200 px-2.5 py-0.5 rounded-md inline-block mb-1 border border-softYellow-400">
+                Katalog Buket Uang & Kado • Lembar 2/2
+              </span>
+              <h3 class="font-serif text-lg sm:text-xl font-bold text-stone-900">
+                Custom & Money Bouquet Sheet
+              </h3>
+              <p class="text-xs text-stone-500 font-sans">
+                8 Kreasi Buket Uang Kertas Asli, Origami Bunga Matahari, & Balon Transparan
+              </p>
+            </div>
+            <a
+              href="/images/sheets/custom-bouquet.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-sans text-xs font-bold border border-stone-300 transition-colors shrink-0 self-start sm:self-auto"
+            >
+              <span>Lihat Ukuran Penuh (HD)</span>
+              <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </a>
           </div>
-          <a
-            href="/images/sheets/custom-bouquet.png"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-sans text-xs font-bold border border-stone-300 transition-colors shrink-0"
-          >
-            <span>Lihat Ukuran Penuh (HD)</span>
-            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </a>
-        </div>
 
-        <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-stone-200 shadow-2xs bg-[#FCFBF8]">
-          <img
-            src="/images/sheets/custom-bouquet.png"
-            alt="Custom & Money Bouquet Official Studio Sheet Pearl Store Flowers"
-            loading="lazy"
-            class="w-full h-auto object-contain hover:scale-[1.01] transition-transform duration-500 cursor-zoom-in"
-            onclick="window.open('/images/sheets/custom-bouquet.png', '_blank')"
-          />
+          <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-stone-200 shadow-2xs bg-[#FCFBF8] select-none">
+            <img
+              src="/images/sheets/custom-bouquet.png"
+              alt="Custom & Money Bouquet Official Studio Sheet Pearl Store Flowers"
+              loading="lazy"
+              draggable="false"
+              class="w-full h-auto object-contain hover:scale-[1.01] transition-transform duration-500 cursor-zoom-in"
+              style="-webkit-user-drag: none; user-select: none;"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -165,30 +214,130 @@ const waConsultUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 </section>
 
 <script>
-  function setupLookbookTabs() {
+  function setupLookbookCarousel() {
+    const track = document.getElementById('lookbook-track');
     const tabFlower = document.getElementById('tab-sheet-flower');
     const tabCustom = document.getElementById('tab-sheet-custom');
-    const panelFlower = document.getElementById('panel-sheet-flower');
-    const panelCustom = document.getElementById('panel-sheet-custom');
+    const btnPrev = document.getElementById('btn-lookbook-prev') as HTMLButtonElement | null;
+    const btnNext = document.getElementById('btn-lookbook-next') as HTMLButtonElement | null;
+    const slideFlower = document.getElementById('slide-sheet-flower');
+    const slideCustom = document.getElementById('slide-sheet-custom');
+    const pageIndicator = document.getElementById('lookbook-page-indicator');
 
-    if (!tabFlower || !tabCustom || !panelFlower || !panelCustom) return;
+    if (!track || !tabFlower || !tabCustom || !slideFlower || !slideCustom) return;
 
-    tabFlower.addEventListener('click', () => {
-      panelFlower.classList.remove('hidden');
-      panelCustom.classList.add('hidden');
-      tabFlower.className = 'px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all bg-white text-stone-900 shadow-2xs border border-stone-200';
-      tabCustom.className = 'px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all text-stone-600 hover:text-stone-900';
+    const activeTabClass = 'px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all bg-white text-stone-900 shadow-2xs border border-stone-200';
+    const inactiveTabClass = 'px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all text-stone-600 hover:text-stone-900 border border-transparent';
+
+    let currentIndex = 0;
+
+    function updateActiveState(index: number) {
+      currentIndex = index;
+      if (index === 0) {
+        tabFlower.className = activeTabClass;
+        tabCustom.className = inactiveTabClass;
+        if (btnPrev) btnPrev.disabled = true;
+        if (btnNext) btnNext.disabled = false;
+        if (pageIndicator) pageIndicator.textContent = '1 / 2';
+      } else {
+        tabCustom.className = activeTabClass;
+        tabFlower.className = inactiveTabClass;
+        if (btnPrev) btnPrev.disabled = false;
+        if (btnNext) btnNext.disabled = true;
+        if (pageIndicator) pageIndicator.textContent = '2 / 2';
+      }
+    }
+
+    function scrollToIndex(index: number) {
+      if (index === 0) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        const targetPos = slideCustom.offsetLeft - track.offsetLeft;
+        track.scrollTo({ left: targetPos > 0 ? targetPos : track.offsetWidth, behavior: 'smooth' });
+      }
+      updateActiveState(index);
+    }
+
+    // Tab Clicks
+    tabFlower.addEventListener('click', () => scrollToIndex(0));
+    tabCustom.addEventListener('click', () => scrollToIndex(1));
+
+    // Arrow Button Clicks
+    if (btnPrev) {
+      btnPrev.addEventListener('click', () => scrollToIndex(0));
+    }
+    if (btnNext) {
+      btnNext.addEventListener('click', () => scrollToIndex(1));
+    }
+
+    // Synchronize tab highlights on swipe
+    let scrollRafId: number | null = null;
+    track.addEventListener('scroll', () => {
+      if (scrollRafId !== null) return;
+      scrollRafId = requestAnimationFrame(() => {
+        scrollRafId = null;
+        const slideWidth = slideFlower.offsetWidth || track.offsetWidth;
+        const idx = Math.min(1, Math.max(0, Math.round(track.scrollLeft / (slideWidth * 0.6))));
+        if (idx !== currentIndex) {
+          updateActiveState(idx);
+        }
+      });
+    }, { passive: true });
+
+    // Pointer drag gesture engine for desktop & smooth touch
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let dragDistance = 0;
+
+    track.addEventListener('pointerdown', (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest('button, a')) return;
+      isDown = true;
+      startX = e.pageX;
+      scrollStart = track.scrollLeft;
+      dragDistance = 0;
     });
 
-    tabCustom.addEventListener('click', () => {
-      panelCustom.classList.remove('hidden');
-      panelFlower.classList.add('hidden');
-      tabCustom.className = 'px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all bg-white text-stone-900 shadow-2xs border border-stone-200';
-      tabFlower.className = 'px-3.5 py-1.5 rounded-xl text-xs font-sans font-bold transition-all text-stone-600 hover:text-stone-900';
+    window.addEventListener('pointermove', (e: PointerEvent) => {
+      if (!isDown) return;
+      const x = e.pageX;
+      const walk = (x - startX);
+      dragDistance = Math.abs(walk);
+      if (dragDistance > 5) {
+        track.scrollLeft = scrollStart - walk;
+      }
     });
+
+    const endDrag = () => {
+      if (!isDown) return;
+      isDown = false;
+    };
+
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
+
+    // Prevent accidental zoom/image open if dragged
+    const sheetImages = track.querySelectorAll('img');
+    sheetImages.forEach((img) => {
+      img.addEventListener('click', (e: MouseEvent) => {
+        if (dragDistance > 6) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        const src = img.getAttribute('src');
+        if (src) {
+          window.open(src, '_blank');
+        }
+      });
+    });
+
+    // Initial state
+    updateActiveState(0);
   }
 
-  setupLookbookTabs();
-  document.addEventListener('astro:page-load', setupLookbookTabs);
+  setupLookbookCarousel();
+  document.addEventListener('astro:page-load', setupLookbookCarousel);
 </script>
 
