@@ -26,7 +26,8 @@ export interface FlowerProduct {
   readonly description: string;
   readonly dimension: string;
   readonly colorTheme: string;
-  readonly imageUrl?: string;
+  readonly imageUrl?: string | null;
+  readonly isSkeleton?: boolean;
 }
 
 export interface StudioInfo {

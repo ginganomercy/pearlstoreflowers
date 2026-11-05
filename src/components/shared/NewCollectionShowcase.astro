@@ -2,7 +2,7 @@
 interface BouquetItem {
   name: string;
   priceDisplay: string;
-  image: string;
+  image?: string;
   slug: string;
 }
 
@@ -31,7 +31,7 @@ const collections: CollectionTheme[] = [
     paletteBorder: 'border-softGreen-300',
     badgeBg: 'bg-softGreen-200 text-softGreen-950 border-softGreen-400',
     products: [
-      { name: 'Abella Bouquet', priceDisplay: 'Rp 85.000', image: '/images/products/abella-bouquet.png', slug: 'psf-grad-01-abella-bouquet' },
+      { name: 'Abella Bouquet', priceDisplay: 'Rp 85.000', image: '', slug: 'psf-grad-01-abella-bouquet' },
       { name: 'Geny Bouquet', priceDisplay: 'Rp 70.000', image: '/images/products/geny-bouquet.png', slug: 'psf-wed-01-geny-bouquet' },
       { name: 'Forest Bouquet', priceDisplay: 'Rp 90.000', image: '/images/products/forest-bouquet.png', slug: 'psf-eng-01-forest-bouquet' }
     ]
@@ -64,7 +64,7 @@ const collections: CollectionTheme[] = [
     badgeBg: 'bg-softYellow-200 text-softYellow-950 border-softYellow-400',
     products: [
       { name: 'Gerberrash', priceDisplay: 'Rp 120.000', image: '/images/products/gerberrash.png', slug: 'psf-wed-02-gerberrash' },
-      { name: 'Casablanka', priceDisplay: 'Rp 90.000', image: '/images/products/casablanka.png', slug: 'psf-eng-03-casablanka' },
+      { name: 'Casablanka', priceDisplay: 'Rp 90.000', image: '', slug: 'psf-eng-03-casablanka' },
       { name: 'Oggliy Rouses', priceDisplay: 'Rp 150.000', image: '/images/products/oggliy-rouses.png', slug: 'psf-wed-03-oggliy-rouses' }
     ]
   },
@@ -263,15 +263,26 @@ const collections: CollectionTheme[] = [
                     title={`Lihat detail ${item.name}`}
                   >
                     <!-- Flower Photo Thumbnail -->
-                    <div class="w-10 h-10 rounded-lg overflow-hidden bg-stone-100 border border-stone-200 shrink-0 pointer-events-none select-none">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        loading="lazy"
-                        draggable="false"
-                        class="w-full h-full object-cover transition-transform duration-300 group-hover/item:scale-110 pointer-events-none select-none"
-                        style="-webkit-user-drag: none;"
-                      />
+                    <div class="w-10 h-10 rounded-lg overflow-hidden bg-stone-100 border border-stone-200 shrink-0 pointer-events-none select-none flex items-center justify-center">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          loading="lazy"
+                          draggable="false"
+                          class="w-full h-full object-cover transition-transform duration-300 group-hover/item:scale-110 pointer-events-none select-none"
+                          style="-webkit-user-drag: none;"
+                        />
+                      ) : (
+                        <div class="w-full h-full bg-stone-50 flex items-center justify-center p-1 relative">
+                          <img
+                            src="/images/pearl_profile_avatar.jpg"
+                            alt="Pearl Store Flowers Logo"
+                            class="w-7 h-7 rounded-full object-cover border border-amber-300 shadow-2xs"
+                          />
+                          <span class="absolute -top-0.5 -right-0.5 text-[8px] text-amber-500 font-bold">✦</span>
+                        </div>
+                      )}
                     </div>
 
                     <!-- Flower Info -->

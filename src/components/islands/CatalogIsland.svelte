@@ -29,6 +29,7 @@
   import { createWhatsAppOrderLink, createWhatsAppConsultLink } from '../../application/whatsapp';
   import { optimizeImageUrl } from '../../application/image-optimizer';
   import ProductQuickModal from './ProductQuickModal.svelte';
+  import AtelierProductSkeleton from './AtelierProductSkeleton.svelte';
 
   interface Props {
     products: readonly FlowerProduct[];
@@ -341,14 +342,16 @@
                     fetchpriority={isPriority ? 'high' : 'auto'}
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                {:else}
+                  <AtelierProductSkeleton {product} />
                 {/if}
-                <div class="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex justify-center">
+                <div class="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex justify-center z-10">
                   <span class="inline-flex items-center gap-1.5 text-xs text-stone-900 font-medium bg-white px-3 py-1.5 rounded-xl shadow-xs border border-stone-200">
                     <Info class="w-3.5 h-3.5 text-softGreen-800" strokeWidth={2.75} />
                     <span>Lihat Spesifikasi</span>
                   </span>
                 </div>
-                <div class="absolute top-2 left-2">
+                <div class="absolute top-2 left-2 z-10">
                   <span class="font-sans text-[9px] sm:text-[10px] font-semibold tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-white text-stone-800 shadow-xs border border-stone-200">
                     {product.code}
                   </span>

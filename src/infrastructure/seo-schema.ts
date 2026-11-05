@@ -61,7 +61,7 @@ export function generateFloristJsonLd(
             name: item.title,
             sku: item.code,
             description: item.description,
-            image: item.imageUrl,
+            image: item.imageUrl || 'https://pearlstoreflowers.pages.dev/images/products/atelier-skeleton-badge.svg',
             category: item.categoryLabel,
             url: `https://shelwa-craft.pages.dev/koleksi/${item.slug}`,
             offers: {
@@ -94,7 +94,7 @@ export function generateSingleProductJsonLd(
     name: product.title,
     sku: product.code,
     description: product.description,
-    image: product.imageUrl,
+    image: product.imageUrl || 'https://pearlstoreflowers.pages.dev/images/products/atelier-skeleton-badge.svg',
     category: product.categoryLabel,
     brand: {
       '@type': 'Brand',

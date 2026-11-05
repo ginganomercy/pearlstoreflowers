@@ -226,7 +226,8 @@
       "description": "Keanggunan bunga lily Casablanca merah muda dengan wangi semerbak dan siluet mekar memikat untuk lamaran dan hadiah terindah.",
       "dimension": "Tinggi ~38cm, Lebar ~28cm",
       "colorTheme": "Pink Casablanca & Ivory",
-      "imageUrl": "/images/products/casablanka.png"
+      "imageUrl": null,
+      "isSkeleton": true
     },
     {
       "id": "prod-10",
@@ -274,7 +275,8 @@
       "description": "Buket pastel dreamy dengan kombinasi mawar biru pastel, krisan putih, dan sentuhan lilac manis. Cocok untuk hadiah wisuda dan perayaan sahabat.",
       "dimension": "Tinggi ~35cm, Lebar ~28cm",
       "colorTheme": "Soft Blue & Lavender Lilac",
-      "imageUrl": "/images/products/abella-bouquet.png"
+      "imageUrl": null,
+      "isSkeleton": true
     },
     {
       "id": "prod-12",
@@ -748,7 +750,8 @@
       "description": "Buket boneka wisuda simpel dan manis dengan boneka beruang bertoga dan wrapping elegan yang ringkas dibawa saat wisuda.",
       "dimension": "Tinggi ~26cm, Lebar ~18cm",
       "colorTheme": "White & Gold Accent",
-      "imageUrl": "/images/products/sweety-mini.png"
+      "imageUrl": null,
+      "isSkeleton": true
     },
     {
       "id": "prod-33",
@@ -770,7 +773,8 @@
       "description": "Buket bunga mini kawat bulu & artificial penuh warna yang awet selamanya, cocok sebagai kenang-kenangan wisuda sahabat.",
       "dimension": "Tinggi ~25cm, Lebar ~18cm",
       "colorTheme": "Multicolor Pastel",
-      "imageUrl": "/images/products/flowy.png"
+      "imageUrl": null,
+      "isSkeleton": true
     },
     {
       "id": "prod-34",

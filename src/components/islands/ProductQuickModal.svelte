@@ -15,6 +15,7 @@
   import { createWhatsAppOrderLink } from '../../application/whatsapp';
   import { optimizeImageUrl } from '../../application/image-optimizer';
   import { MODAL_IMAGE_TARGET_WIDTH_PX, IMAGE_TARGET_QUALITY_PERCENT } from '../../domain/constants';
+  import AtelierProductSkeleton from './AtelierProductSkeleton.svelte';
 
   interface Props {
     product: FlowerProduct | null;
@@ -125,6 +126,10 @@
               decoding="async"
               class="w-full h-full object-cover"
             />
+          </div>
+        {:else}
+          <div class="w-full aspect-video rounded-xl overflow-hidden shadow-xs border border-stone-200">
+            <AtelierProductSkeleton {product} variant="modal" />
           </div>
         {/if}
 
